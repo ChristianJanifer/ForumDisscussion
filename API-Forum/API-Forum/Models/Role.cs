@@ -8,11 +8,14 @@ using System.Threading.Tasks;
 namespace API_Forum.Models
 {
     [Table("Tb_M_Role")]
+
     public class Role
     {
         [Key]
         public int RoleId { get; set; }
+
         public string RoleName { get; set; }
+
         public virtual ICollection<AccountRole> AccountRoles { get; set; }
     }
 }

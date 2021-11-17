@@ -8,11 +8,14 @@ using System.Threading.Tasks;
 namespace API_Forum.Models
 {
     [Table("Tb_M_Category")]
+
     public class Category
     {
         [Key]
         public int CategoryId { get; set; }
+
         public string CategoryName { get; set; }
+
         public virtual ICollection<Discussion> Discussions { get; set; }
     }
 }

@@ -8,14 +8,22 @@ using System.Threading.Tasks;
 namespace API_Forum.Models
 {
     [Table("Tb_T_Discussion")]
+
     public class Discussion
     {
         [Key]
         public int DisId { get; set; }
+
         public string Title { get; set; }
+
         public string Content { get; set; }
+
         public DateTime DateDis { get; set; }
+
         public User User { get; set; }
+
         public Category Category { get; set; }
+
+        public virtual ICollection<Comment> Comments { get; set; }
     }
 }
