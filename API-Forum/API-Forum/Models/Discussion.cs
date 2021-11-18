@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -20,10 +22,21 @@ namespace API_Forum.Models
 
         public DateTime DateDis { get; set; }
 
+        [JsonConverter(typeof(StringEnumConverter))]
+        public GenericUriParserOptions StatusComt { get; set; }
+
         public User User { get; set; }
 
         public Category Category { get; set; }
 
+        public TypeDiscussion TypeDiscussion { get; set; }
+
         public virtual ICollection<Comment> Comments { get; set; }
+    }
+
+    public enum GenericUriParserOptions
+    {
+       Active,
+       Disable
     }
 }

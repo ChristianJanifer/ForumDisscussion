@@ -29,6 +29,8 @@ namespace API_Forum.Context
 
         public DbSet<Category> Categories { get; set; }
 
+        public DbSet<TypeDiscussion> TypeDiscussions { get; set; }
+
         public DbSet<AccountRole> AccountRoles { get; set; }
 
         public DbSet<Role> Roles { get; set; }
@@ -61,6 +63,11 @@ namespace API_Forum.Context
             modelBuilder.Entity<Category>()
                 .HasMany(dis => dis.Discussions)
                 .WithOne(ca => ca.Category);
+
+            // Relasi Discussion dan TypeDiscussion
+            modelBuilder.Entity<TypeDiscussion>()
+                .HasMany(dis => dis.Discussions)
+                .WithOne(tdi => tdi.TypeDiscussion);
 
             // Memanggil 2 PK AccountRole ke Account dan Role
             modelBuilder.Entity<AccountRole>()
