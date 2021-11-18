@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "D:\\METRODATA CODING CAMP\\GitHub\\ForumDisscussion\\API-Forum\\API-Forum\\API-Forum.csproj": {}
+    "C:\\Users\\LENOVO\\Documents\\GitHub\\ForumDisscussion\\API-Forum\\API-Forum\\API-Forum.csproj": {}
   },
   "projects": {
-    "D:\\METRODATA CODING CAMP\\GitHub\\ForumDisscussion\\API-Forum\\API-Forum\\API-Forum.csproj": {
+    "C:\\Users\\LENOVO\\Documents\\GitHub\\ForumDisscussion\\API-Forum\\API-Forum\\API-Forum.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\METRODATA CODING CAMP\\GitHub\\ForumDisscussion\\API-Forum\\API-Forum\\API-Forum.csproj",
+        "projectUniqueName": "C:\\Users\\LENOVO\\Documents\\GitHub\\ForumDisscussion\\API-Forum\\API-Forum\\API-Forum.csproj",
         "projectName": "API-Forum",
-        "projectPath": "D:\\METRODATA CODING CAMP\\GitHub\\ForumDisscussion\\API-Forum\\API-Forum\\API-Forum.csproj",
-        "packagesPath": "C:\\Users\\Christian Janifer\\.nuget\\packages\\",
-        "outputPath": "D:\\METRODATA CODING CAMP\\GitHub\\ForumDisscussion\\API-Forum\\API-Forum\\obj\\",
+        "projectPath": "C:\\Users\\LENOVO\\Documents\\GitHub\\ForumDisscussion\\API-Forum\\API-Forum\\API-Forum.csproj",
+        "packagesPath": "C:\\Users\\LENOVO\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\LENOVO\\Documents\\GitHub\\ForumDisscussion\\API-Forum\\API-Forum\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Christian Janifer\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\LENOVO\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -44,17 +44,11 @@
               "target": "Package",
               "version": "[5.0.11, )"
             },
-            "Microsoft.EntityFrameworkCore.Proxies": {
-              "target": "Package",
-              "version": "[5.0.11, )"
-            },
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
               "version": "[5.0.11, )"
             },
             "Microsoft.EntityFrameworkCore.Tools": {
-              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
-              "suppressParent": "All",
               "target": "Package",
               "version": "[5.0.11, )"
             }
@@ -77,7 +71,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.401\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.403\\RuntimeIdentifierGraph.json"
         }
       }
     }
