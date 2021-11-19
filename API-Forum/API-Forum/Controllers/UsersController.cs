@@ -38,5 +38,21 @@ namespace API_Forum.Controllers
             }
 
         }
+
+        [HttpGet("Profile")]
+        public ActionResult GetProfile()
+        {
+            
+                var result = user.GetProfileAll();
+                return Ok(result);
+            
+        }
+
+        [HttpGet("Profile/{Id}")]
+        public ActionResult GetProfile(int Id)
+        {
+                var result = user.GetProfile(Id);
+                return Ok(result);
+        }
     }
 }

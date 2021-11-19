@@ -32,7 +32,7 @@ namespace API_Forum.Repository
             return entity;
         }
 
-        public int Insert(Entity entity)
+        public virtual int Insert(Entity entity)
         {
             try
             {
