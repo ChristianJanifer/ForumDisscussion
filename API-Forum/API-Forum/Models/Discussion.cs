@@ -25,12 +25,17 @@ namespace API_Forum.Models
         [JsonConverter(typeof(StringEnumConverter))]
         public GenericUriParserOptions StatusComt { get; set; }
 
-        public User User { get; set; }
-
-        public Category Category { get; set; }
-
-        public TypeDiscussion TypeDiscussion { get; set; }
-
+        public int UserId { get; set; }
+        public int CategoryId { get; set; }
+        public int TypeId { get; set; }
+        [JsonIgnore]
+        public virtual User User { get; set; }
+        [JsonIgnore]
+        public virtual Category Category { get; set; }
+        [JsonIgnore]
+        [ForeignKey("TypeId")]
+        public virtual TypeDiscussion TypeDiscussion { get; set; }
+        [JsonIgnore]
         public virtual ICollection<Comment> Comments { get; set; }
     }
 

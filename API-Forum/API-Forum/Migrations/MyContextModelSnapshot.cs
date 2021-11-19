@@ -75,15 +75,15 @@ namespace API_Forum.Migrations
                     b.Property<DateTime>("DateComment")
                         .HasColumnType("datetime2");
 
-                    b.Property<int?>("DiscussionDisId")
+                    b.Property<int>("DisId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("UserId")
+                    b.Property<int>("UserId")
                         .HasColumnType("int");
 
                     b.HasKey("CommentId");
 
-                    b.HasIndex("DiscussionDisId");
+                    b.HasIndex("DisId");
 
                     b.HasIndex("UserId");
 
@@ -97,7 +97,7 @@ namespace API_Forum.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("CategoryId")
+                    b.Property<int>("CategoryId")
                         .HasColumnType("int");
 
                     b.Property<string>("Content")
@@ -112,17 +112,17 @@ namespace API_Forum.Migrations
                     b.Property<string>("Title")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("TypeDiscussionTypeId")
+                    b.Property<int>("TypeId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("UserId")
+                    b.Property<int>("UserId")
                         .HasColumnType("int");
 
                     b.HasKey("DisId");
 
                     b.HasIndex("CategoryId");
 
-                    b.HasIndex("TypeDiscussionTypeId");
+                    b.HasIndex("TypeId");
 
                     b.HasIndex("UserId");
 
@@ -223,11 +223,15 @@ namespace API_Forum.Migrations
                 {
                     b.HasOne("API_Forum.Models.Discussion", "Discussion")
                         .WithMany("Comments")
-                        .HasForeignKey("DiscussionDisId");
+                        .HasForeignKey("DisId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("API_Forum.Models.User", "User")
                         .WithMany("Comments")
-                        .HasForeignKey("UserId");
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Discussion");
 
@@ -238,15 +242,21 @@ namespace API_Forum.Migrations
                 {
                     b.HasOne("API_Forum.Models.Category", "Category")
                         .WithMany("Discussions")
-                        .HasForeignKey("CategoryId");
+                        .HasForeignKey("CategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("API_Forum.Models.TypeDiscussion", "TypeDiscussion")
                         .WithMany("Discussions")
-                        .HasForeignKey("TypeDiscussionTypeId");
+                        .HasForeignKey("TypeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("API_Forum.Models.User", "User")
                         .WithMany("Discussions")
-                        .HasForeignKey("UserId");
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Category");
 

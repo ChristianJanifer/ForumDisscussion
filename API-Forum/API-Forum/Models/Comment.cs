@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -18,8 +19,12 @@ namespace API_Forum.Models
 
         public DateTime DateComment { get; set; }
 
-        public User User { get; set; }
-
-        public Discussion Discussion { get; set; }
+        public int UserId { get; set; }
+        public int DisId { get; set; }
+        [JsonIgnore]
+        public virtual User User { get; set; }
+        [JsonIgnore]
+        [ForeignKey("DisId")]
+        public virtual Discussion Discussion { get; set; }
     }
 }

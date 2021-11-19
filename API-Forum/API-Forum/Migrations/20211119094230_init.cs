@@ -92,9 +92,9 @@ namespace API_Forum.Migrations
                     Content = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     DateDis = table.Column<DateTime>(type: "datetime2", nullable: false),
                     StatusComt = table.Column<int>(type: "int", nullable: false),
-                    UserId = table.Column<int>(type: "int", nullable: true),
-                    CategoryId = table.Column<int>(type: "int", nullable: true),
-                    TypeDiscussionTypeId = table.Column<int>(type: "int", nullable: true)
+                    UserId = table.Column<int>(type: "int", nullable: false),
+                    CategoryId = table.Column<int>(type: "int", nullable: false),
+                    TypeId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -104,19 +104,19 @@ namespace API_Forum.Migrations
                         column: x => x.CategoryId,
                         principalTable: "Tb_M_Category",
                         principalColumn: "CategoryId",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Tb_T_Discussion_Tb_M_TypeDiscussion_TypeDiscussionTypeId",
-                        column: x => x.TypeDiscussionTypeId,
+                        name: "FK_Tb_T_Discussion_Tb_M_TypeDiscussion_TypeId",
+                        column: x => x.TypeId,
                         principalTable: "Tb_M_TypeDiscussion",
                         principalColumn: "TypeId",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Tb_T_Discussion_Tb_M_User_UserId",
                         column: x => x.UserId,
                         principalTable: "Tb_M_User",
                         principalColumn: "UserId",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -151,8 +151,8 @@ namespace API_Forum.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Content = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     DateComment = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    UserId = table.Column<int>(type: "int", nullable: true),
-                    DiscussionDisId = table.Column<int>(type: "int", nullable: true)
+                    UserId = table.Column<int>(type: "int", nullable: false),
+                    DisId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -162,13 +162,13 @@ namespace API_Forum.Migrations
                         column: x => x.UserId,
                         principalTable: "Tb_M_User",
                         principalColumn: "UserId",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Tb_T_Comment_Tb_T_Discussion_DiscussionDisId",
-                        column: x => x.DiscussionDisId,
+                        name: "FK_Tb_T_Comment_Tb_T_Discussion_DisId",
+                        column: x => x.DisId,
                         principalTable: "Tb_T_Discussion",
                         principalColumn: "DisId",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.NoAction);
                 });
 
             migrationBuilder.CreateIndex(
@@ -177,9 +177,9 @@ namespace API_Forum.Migrations
                 column: "RoleId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Tb_T_Comment_DiscussionDisId",
+                name: "IX_Tb_T_Comment_DisId",
                 table: "Tb_T_Comment",
-                column: "DiscussionDisId");
+                column: "DisId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Tb_T_Comment_UserId",
@@ -192,9 +192,9 @@ namespace API_Forum.Migrations
                 column: "CategoryId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Tb_T_Discussion_TypeDiscussionTypeId",
+                name: "IX_Tb_T_Discussion_TypeId",
                 table: "Tb_T_Discussion",
-                column: "TypeDiscussionTypeId");
+                column: "TypeId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Tb_T_Discussion_UserId",
