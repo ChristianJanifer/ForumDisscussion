@@ -18,8 +18,12 @@ namespace API_Forum.Models
 
         public DateTime DateComment { get; set; }
 
-        public User User { get; set; }
+        public int DisId { get; set; }
 
-        public Discussion Discussion { get; set; }
+        public int UserId { get; set; }
+
+        public virtual User User { get; set; }
+
+        public virtual Discussion Discussion { get; set; }
     }
 }

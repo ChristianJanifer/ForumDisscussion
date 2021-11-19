@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace API_Forum.Migrations
 {
-    public partial class init : Migration
+    public partial class frmm : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -92,8 +92,9 @@ namespace API_Forum.Migrations
                     Content = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     DateDis = table.Column<DateTime>(type: "datetime2", nullable: false),
                     StatusComt = table.Column<int>(type: "int", nullable: false),
-                    UserId = table.Column<int>(type: "int", nullable: true),
-                    CategoryId = table.Column<int>(type: "int", nullable: true),
+                    CategoryId = table.Column<int>(type: "int", nullable: false),
+                    UserId = table.Column<int>(type: "int", nullable: false),
+                    TypeId = table.Column<int>(type: "int", nullable: false),
                     TypeDiscussionTypeId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
@@ -104,7 +105,7 @@ namespace API_Forum.Migrations
                         column: x => x.CategoryId,
                         principalTable: "Tb_M_Category",
                         principalColumn: "CategoryId",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Tb_T_Discussion_Tb_M_TypeDiscussion_TypeDiscussionTypeId",
                         column: x => x.TypeDiscussionTypeId,
@@ -116,7 +117,7 @@ namespace API_Forum.Migrations
                         column: x => x.UserId,
                         principalTable: "Tb_M_User",
                         principalColumn: "UserId",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -151,7 +152,8 @@ namespace API_Forum.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Content = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     DateComment = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    UserId = table.Column<int>(type: "int", nullable: true),
+                    DisId = table.Column<int>(type: "int", nullable: false),
+                    UserId = table.Column<int>(type: "int", nullable: false),
                     DiscussionDisId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
@@ -162,7 +164,7 @@ namespace API_Forum.Migrations
                         column: x => x.UserId,
                         principalTable: "Tb_M_User",
                         principalColumn: "UserId",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Tb_T_Comment_Tb_T_Discussion_DiscussionDisId",
                         column: x => x.DiscussionDisId,

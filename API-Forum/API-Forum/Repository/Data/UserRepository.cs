@@ -76,6 +76,8 @@ namespace API_Forum.Repository.Data
 		{
 			var profile = (from User in context.Users
 						   join Account in context.Accounts on User.UserId equals Account.UserId
+						   join acr in context.AccountRoles on User.UserId equals acr.UserId
+						   join r in context.Roles on acr.RoleId equals r.RoleId
 						   select new ProfileVM
 						   {
 							   UserId = User.UserId,
@@ -84,10 +86,10 @@ namespace API_Forum.Repository.Data
 							   Gender = (ViewModel.Gender)User.Gender,
 							   Phone = User.Phone,
 							   BirthDate = User.BirthDate,
-							   Email = User.Email
+							   Email = User.Email,
+							   RoleId = r.RoleId
 						   });
-			var result = profile;
-			return result;
+			return profile.ToList();
 
 		}
 
@@ -95,6 +97,8 @@ namespace API_Forum.Repository.Data
 		{
 			var profile = (from User in context.Users
 						   join Account in context.Accounts on User.UserId equals Account.UserId
+						   join acr in context.AccountRoles on User.UserId equals acr.UserId
+						   join r in context.Roles on acr.RoleId equals r.RoleId
 						   where User.UserId == Id
 						   select new ProfileVM
 						   {
@@ -104,7 +108,8 @@ namespace API_Forum.Repository.Data
 							   Gender = (ViewModel.Gender)User.Gender,
 							   Phone = User.Phone,
 							   BirthDate = User.BirthDate,
-							   Email = User.Email
+							   Email = User.Email,
+							   RoleId = r.RoleId
 						   });
 			var result = profile.First();
 			return result;

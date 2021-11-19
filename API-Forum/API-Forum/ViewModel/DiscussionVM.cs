@@ -22,4 +22,10 @@ namespace API_Forum.ViewModel
         public int TypeId { get; set; }
         public int CommentId { get; set; }
     }
+    public enum GenericUriParserOptions
+    {
+        Active,
+        Disable
+    }
 }
+
