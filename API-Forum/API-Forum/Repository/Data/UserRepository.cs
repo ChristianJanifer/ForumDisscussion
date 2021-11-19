@@ -71,5 +71,44 @@ namespace API_Forum.Repository.Data
 				return result;
 			}
 		}
-    }
+
+		public IEnumerable<ProfileVM> GetProfileAll()
+		{
+			var profile = (from User in context.Users
+						   join Account in context.Accounts on User.UserId equals Account.UserId
+						   select new ProfileVM
+						   {
+							   UserId = User.UserId,
+							   FirstName = User.FirstName,
+							   LastName = User.LastName,
+							   Gender = (ViewModel.Gender)User.Gender,
+							   Phone = User.Phone,
+							   BirthDate = User.BirthDate,
+							   Email = User.Email
+						   });
+			var result = profile;
+			return result;
+
+		}
+
+		public Object GetProfile(int Id)
+		{
+			var profile = (from User in context.Users
+						   join Account in context.Accounts on User.UserId equals Account.UserId
+						   where User.UserId == Id
+						   select new ProfileVM
+						   {
+							   UserId = User.UserId,
+							   FirstName = User.FirstName,
+							   LastName = User.LastName,
+							   Gender = (ViewModel.Gender)User.Gender,
+							   Phone = User.Phone,
+							   BirthDate = User.BirthDate,
+							   Email = User.Email
+						   });
+			var result = profile.First();
+			return result;
+
+		}
+	}
 }
