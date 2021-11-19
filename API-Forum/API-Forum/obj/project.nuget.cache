@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "8n/hEzquatiGV7WaFF2CZPNJJE/CY9npifhaEBtRNk5gKZeu0/X9AddGXvgmDlziEBTorxHlenkhG2MWdUrDzA==",
+  "dgSpecHash": "wXo4AoveEFBP+hfTq6gAINpkrzwkgW3lIbjerKaq3QM5gmCWsmIBj84sbJBq9Q/8yK23nxhCJddkrrCyOW392Q==",
   "success": true,
   "projectFilePath": "C:\\Users\\LENOVO\\Documents\\GitHub\\ForumDisscussion\\API-Forum\\API-Forum\\API-Forum.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\LENOVO\\.nuget\\packages\\bcrypt.net-core\\1.6.0\\bcrypt.net-core.1.6.0.nupkg.sha512",
     "C:\\Users\\LENOVO\\.nuget\\packages\\castle.core\\4.4.1\\castle.core.4.4.1.nupkg.sha512",
     "C:\\Users\\LENOVO\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\LENOVO\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",

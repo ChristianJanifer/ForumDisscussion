@@ -63,3 +63,4 @@ C:\Users\LENOVO\Documents\GitHub\ForumDisscussion\API-Forum\API-Forum\obj\Debug\
 C:\Users\LENOVO\Documents\GitHub\ForumDisscussion\API-Forum\API-Forum\obj\Debug\netcoreapp3.1\API-Forum.dll
 C:\Users\LENOVO\Documents\GitHub\ForumDisscussion\API-Forum\API-Forum\obj\Debug\netcoreapp3.1\API-Forum.pdb
 C:\Users\LENOVO\Documents\GitHub\ForumDisscussion\API-Forum\API-Forum\obj\Debug\netcoreapp3.1\API-Forum.genruntimeconfig.cache
+C:\Users\LENOVO\Documents\GitHub\ForumDisscussion\API-Forum\API-Forum\bin\Debug\netcoreapp3.1\BCrypt.Net-Core.dll
