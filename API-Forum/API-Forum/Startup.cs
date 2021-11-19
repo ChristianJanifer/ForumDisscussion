@@ -1,4 +1,5 @@
 using API_Forum.Context;
+using API_Forum.Repository.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -28,6 +29,14 @@ namespace API_Forum
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            services.AddScoped<UserRepository>();
+            services.AddScoped<RoleRepository>();
+            services.AddScoped<CategoryRepository>();
+            services.AddScoped<TypeDiscussionRepository>();
+            services.AddScoped<CommentRepository>();
+            services.AddScoped<DiscussionRepository>();
+            services.AddScoped<AccountRoleRepository>();
+            services.AddScoped<AccountRepository>();
             services.AddDbContext<MyContext>(options => options.UseSqlServer(Configuration.GetConnectionString("APIContext")));
         }
 
