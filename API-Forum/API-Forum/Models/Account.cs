@@ -12,7 +12,7 @@ namespace API_Forum.Models
     public class Account
     {
         [Key]
-        public string UserId { get; set; }
+        public int UserId { get; set; }
 
         public string Password { get; set; }
 

@@ -10,7 +10,7 @@ namespace API_Forum.Models
 
     public class AccountRole
     {
-        public string UserId { get; set; }
+        public int UserId { get; set; }
 
         public int RoleId { get; set; }
 
