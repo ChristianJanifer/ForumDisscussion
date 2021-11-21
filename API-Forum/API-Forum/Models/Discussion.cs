@@ -28,6 +28,7 @@ namespace API_Forum.Models
         public int UserId { get; set; }
         public int CategoryId { get; set; }
         public int TypeId { get; set; }
+        public Status Status { get; set; }
         [JsonIgnore]
         public virtual User User { get; set; }
         [JsonIgnore]

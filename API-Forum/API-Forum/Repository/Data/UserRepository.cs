@@ -39,6 +39,7 @@ namespace API_Forum.Repository.Data
 					BirthDate = registerVM.BirthDate,
 					Phone = registerVM.Phone,
 					Email = registerVM.Email,
+					Status = Status.on,
 					Account = new Account
 					{
 						Password = Hashing.HashPassword(registerVM.Password)
@@ -110,5 +111,27 @@ namespace API_Forum.Repository.Data
 			return result;
 
 		}
-	}
+
+        public override int Delete(int id)
+        {
+			var findStatus = (from u in context.Users
+							  join d in context.Discussions on u.UserId equals d.UserId
+							  join c in context.Comments on u.UserId equals c.UserId
+							  where u.UserId == id
+							  select new
+							  {
+								  User = u,
+								  Dis = d,
+								  Com = c
+							  }).ToList();
+            foreach (var x in findStatus)
+            {
+				x.User.Status = Status.off;
+				x.Dis.Status = Status.off;
+				x.Com.Status = Status.off;
+            }
+			var result = context.SaveChanges();
+			return result;
+        }
+    }
 }

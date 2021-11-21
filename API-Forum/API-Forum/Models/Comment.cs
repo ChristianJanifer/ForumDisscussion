@@ -20,7 +20,9 @@ namespace API_Forum.Models
         public DateTime DateComment { get; set; }
 
         public int UserId { get; set; }
+
         public int DisId { get; set; }
+        public Status Status { get; set; }
         [JsonIgnore]
         public virtual User User { get; set; }
         [JsonIgnore]
