@@ -116,8 +116,8 @@ namespace API_Forum.Repository.Data
 		{
 			var findStatus = (from u in context.Users
 							  join d in context.Discussions on u.UserId equals d.UserId
-							  join c in context.Comments on u.UserId equals c.UserId
-							  where u.UserId == id || d.DisId == c.DisId || d.DisId != c.DisId 
+							  join c in context.Comments on d.DisId equals c.DisId
+							  where u.UserId == id 
 							  select new
 							  {
 								  User = u,
