@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -22,6 +23,8 @@ namespace API_Forum.Models
         public int DisId { get; set; }
 
         public int UserId { get; set; }
+
+        [JsonConverter(typeof(StringEnumConverter))]
         public Status Status { get; set; }
 
         [JsonIgnore]

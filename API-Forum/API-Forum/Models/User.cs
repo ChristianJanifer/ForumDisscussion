@@ -29,6 +29,7 @@ namespace API_Forum.Models
 
         public string Phone { get; set; }
 
+        [JsonConverter(typeof(StringEnumConverter))]
         public Status Status { get; set; }
 
         [JsonIgnore]

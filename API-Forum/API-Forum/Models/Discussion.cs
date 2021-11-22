@@ -31,6 +31,7 @@ namespace API_Forum.Models
 
         public int TypeId { get; set; }
 
+        [JsonConverter(typeof(StringEnumConverter))]
         public Status Status { get; set; }
 
         [JsonIgnore]
