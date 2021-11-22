@@ -9,13 +9,13 @@ using System.Threading.Tasks;
 
 namespace API_Forum.Repository.Data
 {
-    public class UserRepository : GeneralRepository<MyContext, User, int>
-    {
-        private readonly MyContext context;
-        public UserRepository(MyContext myContext) : base(myContext)
-        {
-            this.context = myContext;
-        }
+	public class UserRepository : GeneralRepository<MyContext, User, int>
+	{
+		private readonly MyContext context;
+		public UserRepository(MyContext myContext) : base(myContext)
+		{
+			this.context = myContext;
+		}
 
 		public int Register(RegisterVM registerVM)
 		{
@@ -51,12 +51,12 @@ namespace API_Forum.Repository.Data
 				int checkRole = registerVM.RoleId;
 				int roleId = 0;
 
-				if(checkRole == 1)
-                {
+				if (checkRole == 1)
+				{
 					roleId += 1;
 				}
-				else if(checkRole == 2)
-                {
+				else if (checkRole == 2)
+				{
 					roleId += 2;
 				}
 
@@ -112,12 +112,12 @@ namespace API_Forum.Repository.Data
 
 		}
 
-        public override int Delete(int id)
-        {
+		public override int Delete(int id)
+		{
 			var findStatus = (from u in context.Users
 							  join d in context.Discussions on u.UserId equals d.UserId
 							  join c in context.Comments on u.UserId equals c.UserId
-							  where u.UserId == id
+							  where u.UserId == id || d.DisId == c.DisId || d.DisId != c.DisId 
 							  select new
 							  {
 								  User = u,
