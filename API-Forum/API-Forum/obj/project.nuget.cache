@@ -1,12 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "/a7jqrzEG1cYOuf2WzDamEjPZT0RzOqNUVP3pu1b0J9G7quVrWaeFR+eorY1P1VPyerFIkEcf6ORR6/SkIo/PQ==",
+  "dgSpecHash": "Z7s7XzpMz1BbglOFgweX48SICVr/lp49XTcgpu1SQyvu4+92GZrHHvi9kbtPP+8FrdSpdNv4Uq6sDe92z6uzWw==",
   "success": true,
   "projectFilePath": "C:\\Users\\LENOVO\\Documents\\GitHub\\ForumDisscussion\\API-Forum\\API-Forum\\API-Forum.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\LENOVO\\.nuget\\packages\\bcrypt.net-core\\1.6.0\\bcrypt.net-core.1.6.0.nupkg.sha512",
     "C:\\Users\\LENOVO\\.nuget\\packages\\castle.core\\4.4.1\\castle.core.4.4.1.nupkg.sha512",
     "C:\\Users\\LENOVO\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
+    "C:\\Users\\LENOVO\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\3.1.8\\microsoft.aspnetcore.authentication.jwtbearer.3.1.8.nupkg.sha512",
     "C:\\Users\\LENOVO\\.nuget\\packages\\microsoft.aspnetcore.jsonpatch\\3.0.0\\microsoft.aspnetcore.jsonpatch.3.0.0.nupkg.sha512",
     "C:\\Users\\LENOVO\\.nuget\\packages\\microsoft.aspnetcore.mvc.newtonsoftjson\\3.0.0\\microsoft.aspnetcore.mvc.newtonsoftjson.3.0.0.nupkg.sha512",
     "C:\\Users\\LENOVO\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",

@@ -67,3 +67,4 @@ C:\Users\LENOVO\Documents\GitHub\ForumDisscussion\API-Forum\API-Forum\bin\Debug\
 C:\Users\LENOVO\Documents\GitHub\ForumDisscussion\API-Forum\API-Forum\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.JsonPatch.dll
 C:\Users\LENOVO\Documents\GitHub\ForumDisscussion\API-Forum\API-Forum\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
 C:\Users\LENOVO\Documents\GitHub\ForumDisscussion\API-Forum\API-Forum\bin\Debug\netcoreapp3.1\Newtonsoft.Json.Bson.dll
+C:\Users\LENOVO\Documents\GitHub\ForumDisscussion\API-Forum\API-Forum\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Authentication.JwtBearer.dll

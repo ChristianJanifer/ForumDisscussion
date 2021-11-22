@@ -134,5 +134,59 @@ namespace API_Forum.Repository.Data
 			var result = context.SaveChanges();
 			return result;
         }
-    }
+
+		public int UpdatePassword(LoginVM login)
+        {
+			var findUserPassword = (from u in context.Users
+									join a in context.Accounts on u.UserId equals a.UserId
+									where u.Email == login.Email
+									select new
+									{
+										User = a
+									});
+            foreach (var x in findUserPassword)
+            {
+				x.User.Password = Hashing.HashPassword(login.Password);
+            }
+			var result = context.SaveChanges();
+			return result;
+        }
+
+		public int Login(LoginVM login)
+        {
+			var checkEmail = context.Users.Where(p => p.Email == login.Email).FirstOrDefault();
+			if(checkEmail == null)
+            {
+				return 1;
+            }
+            else
+            {
+				var dataLogin = checkEmail.UserId;
+				var dataPassword = context.Accounts.Find(dataLogin).Password;
+				var verify = Hashing.ValidatePassword(login.Password, dataPassword);
+                if (verify)
+                {
+					return 0;
+                }
+                else
+                {
+					return 2;
+                }
+            }
+        }
+
+		public string[] GetRole(LoginVM loginVM)
+		{
+			var dataExist = context.Users.Where(fn => fn.Email == loginVM.Email).FirstOrDefault();
+			var userId = dataExist.UserId;
+			var userRole = context.AccountRoles.Where(fn => fn.UserId == userId).ToList();
+			List<string> result = new List<string>();
+			foreach (var item in userRole)
+			{
+				result.Add(context.Roles.Where(fn => fn.RoleId == item.RoleId).First().RoleName);
+			}
+
+			return result.ToArray();
+		}
+	}
 }
