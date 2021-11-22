@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -16,8 +17,9 @@ namespace API_Forum.Models
 
         public string Password { get; set; }
 
+        [JsonIgnore]
         public virtual User User { get; set; }
-
+        [JsonIgnore]
         public virtual ICollection<AccountRole> AccountRoles { get; set; }
     }
 }

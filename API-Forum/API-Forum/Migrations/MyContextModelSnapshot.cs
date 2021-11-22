@@ -81,6 +81,9 @@ namespace API_Forum.Migrations
                     b.Property<int?>("DiscussionDisId")
                         .HasColumnType("int");
 
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
+
                     b.Property<int>("UserId")
                         .HasColumnType("int");
 
@@ -108,6 +111,9 @@ namespace API_Forum.Migrations
 
                     b.Property<DateTime>("DateDis")
                         .HasColumnType("datetime2");
+
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
 
                     b.Property<int>("StatusComt")
                         .HasColumnType("int");
@@ -189,6 +195,9 @@ namespace API_Forum.Migrations
 
                     b.Property<string>("Phone")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
 
                     b.HasKey("UserId");
 

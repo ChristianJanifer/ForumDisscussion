@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace API_Forum.Migrations
 {
-    public partial class frmm : Migration
+    public partial class apiforum : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -57,7 +57,8 @@ namespace API_Forum.Migrations
                     Email = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Gender = table.Column<int>(type: "int", nullable: false),
                     BirthDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Phone = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    Phone = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Status = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -95,6 +96,7 @@ namespace API_Forum.Migrations
                     CategoryId = table.Column<int>(type: "int", nullable: false),
                     UserId = table.Column<int>(type: "int", nullable: false),
                     TypeId = table.Column<int>(type: "int", nullable: false),
+                    Status = table.Column<int>(type: "int", nullable: false),
                     TypeDiscussionTypeId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
@@ -111,7 +113,7 @@ namespace API_Forum.Migrations
                         column: x => x.TypeDiscussionTypeId,
                         principalTable: "Tb_M_TypeDiscussion",
                         principalColumn: "TypeId",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Tb_T_Discussion_Tb_M_User_UserId",
                         column: x => x.UserId,
@@ -154,6 +156,7 @@ namespace API_Forum.Migrations
                     DateComment = table.Column<DateTime>(type: "datetime2", nullable: false),
                     DisId = table.Column<int>(type: "int", nullable: false),
                     UserId = table.Column<int>(type: "int", nullable: false),
+                    Status = table.Column<int>(type: "int", nullable: false),
                     DiscussionDisId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
@@ -170,7 +173,7 @@ namespace API_Forum.Migrations
                         column: x => x.DiscussionDisId,
                         principalTable: "Tb_T_Discussion",
                         principalColumn: "DisId",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.NoAction);
                 });
 
             migrationBuilder.CreateIndex(

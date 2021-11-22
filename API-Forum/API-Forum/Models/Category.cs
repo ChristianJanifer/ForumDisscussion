@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -16,6 +17,7 @@ namespace API_Forum.Models
 
         public string CategoryName { get; set; }
 
+        [JsonIgnore]
         public virtual ICollection<Discussion> Discussions { get; set; }
     }
 }

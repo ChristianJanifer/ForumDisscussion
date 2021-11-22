@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -21,9 +22,11 @@ namespace API_Forum.Models
         public int DisId { get; set; }
 
         public int UserId { get; set; }
+        public Status Status { get; set; }
 
+        [JsonIgnore]
         public virtual User User { get; set; }
-
+        [JsonIgnore]
         public virtual Discussion Discussion { get; set; }
     }
 }

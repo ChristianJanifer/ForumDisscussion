@@ -16,17 +16,10 @@ namespace API_Forum.Repository.Data
             this.context = myContext;
         }
 
-       /* public override int Insert(DiscussionVM entity)
+        public IEnumerable<Discussion> GetAll()
         {
-            var disResult = new Discussion
-            {
-                Title = entity.Title,
-                Content = entity.Content,
-                DateDis = entity.DateDis,
-                StatusComt = (Models.GenericUriParserOptions)entity.StatusComt,
-                UserId =
-            };
-
-        }*/
+            var data = context.Discussions.Where(p => p.Status == Status.on).ToList();
+            return data;
+        }
     }
 }

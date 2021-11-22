@@ -31,12 +31,15 @@ namespace API_Forum.Models
 
         public int TypeId { get; set; }
 
+        public Status Status { get; set; }
+
+        [JsonIgnore]
         public virtual User User { get; set; }
-
+        [JsonIgnore]
         public virtual Category Category { get; set; }
-
+        [JsonIgnore]
         public virtual TypeDiscussion TypeDiscussion { get; set; }
-
+        [JsonIgnore]
         public virtual ICollection<Comment> Comments { get; set; }
     }
 

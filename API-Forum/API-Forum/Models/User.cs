@@ -29,10 +29,13 @@ namespace API_Forum.Models
 
         public string Phone { get; set; }
 
+        public Status Status { get; set; }
+
+        [JsonIgnore]
         public virtual Account Account { get; set; }
-
+        [JsonIgnore]
         public virtual ICollection<Discussion> Discussions { get; set; }
-
+        [JsonIgnore]
         public virtual ICollection<Comment> Comments { get; set; }
     }
 
@@ -40,5 +43,11 @@ namespace API_Forum.Models
     {
         L,
         P
+    }
+
+    public enum Status
+    {
+        on,
+        off
     }
 }
