@@ -77,6 +77,7 @@ namespace API_Forum.Repository.Data
 		{
 			var profile = (from User in context.Users
 						   join Account in context.Accounts on User.UserId equals Account.UserId
+						   where User.Status == Status.@on
 						   select new ProfileVM
 						   {
 							   UserId = User.UserId,
