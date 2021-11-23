@@ -1,0 +1,58 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    Layout = "_LayoutPage";
+}
+
+<title>Sign In</title>
+<section class="sign-in">
+    <div class="container">
+        <div class="row d-flex justify-content-end mt-4 sign">
+            <p class="pr-2 mb-0 align-self-center">Don't have an account?</p>
+            <a asp-area="" asp-controller="Registers" asp-action="Index" class="text-body">Sign Up</a>
+        </div>
+        <div class="form col-6 mx-auto">
+            <h5 class="text-center font-weight-bold mt-5">Sign In</h5>
+            <p class="text-center px-4">
+                By singin in you can start posting, replaying to topics, vote topics and many more.
+            </p>
+            <form class="user" method="post" action="/Logins/Login">
+                <div class="bg-white mx-3 px-4 py-4 border-top border-warning">
+                    <div class="form-group">
+                        <label for="inputEmail">Email</label>
+                        <input type="email" name="email" class="form-control form-control-user"
+                               id="inputEmail" aria-describedby="emailHelp"
+                               placeholder="Enter Email Address...">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Password</label>
+                        <input type="password" name="password" class="form-control form-control-user"
+                               id="inputPassword" placeholder="Password">
+                    </div>
+                    <div class="form-group form-check d-flex justify-content-between">
+                        <div class="align-self-center ">
+                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                            <label class="form-check-label" for="exampleCheck1">Remember me</label>
+                        </div>
+                        <a asp-area="" asp-controller="Logins" asp-action="Reset">Reset Password</a>
+                    </div>
+                    <button type="submit" class="mb-3 btn-lg btn-block">Sign In</button>
+                </div>
+            </form>
+            <div class="row footer mx-5 my-5">
+                <ul class="list-group list-group-horizontal">
+                    <li><a href="#" class="text-muted pr-4">Terms</a></li>
+                    <li><a href="#" class="text-muted pr-4">Privacy</a></li>
+                    <li><a href="#" class="text-muted ">Send Feedback</a></li>
+                </ul>
+                <ul class="list-group list-group-horizontal pl-5">
+                    <li><a href="#" class="pr-3"><i class="fab fa-facebook-square text-body"></i></a></li>
+                    <li><a href="#" class="pr-3"><i class="fab fa-twitter text-body"></i></a></li>
+                    <li><a href="#" class="pr-3"><i class="fab fa-google-plus-g text-body"></i></a></li>
+                    <li><a href="#"><i class="fab fa-dribbble text-body"></i></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>

@@ -9,13 +9,13 @@ using System.Threading.Tasks;
 
 namespace API_Forum.Repository.Data
 {
-    public class UserRepository : GeneralRepository<MyContext, User, int>
-    {
-        private readonly MyContext context;
-        public UserRepository(MyContext myContext) : base(myContext)
-        {
-            this.context = myContext;
-        }
+	public class UserRepository : GeneralRepository<MyContext, User, int>
+	{
+		private readonly MyContext context;
+		public UserRepository(MyContext myContext) : base(myContext)
+		{
+			this.context = myContext;
+		}
 
 		public int Register(RegisterVM registerVM)
 		{
@@ -39,6 +39,7 @@ namespace API_Forum.Repository.Data
 					BirthDate = registerVM.BirthDate,
 					Phone = registerVM.Phone,
 					Email = registerVM.Email,
+					Status = Status.on,
 					Account = new Account
 					{
 						Password = Hashing.HashPassword(registerVM.Password)
@@ -50,12 +51,12 @@ namespace API_Forum.Repository.Data
 				int checkRole = registerVM.RoleId;
 				int roleId = 0;
 
-				if(checkRole == 1)
-                {
+				if (checkRole == 1)
+				{
 					roleId += 1;
 				}
-				else if(checkRole == 2)
-                {
+				else if (checkRole == 2)
+				{
 					roleId += 2;
 				}
 
@@ -63,7 +64,7 @@ namespace API_Forum.Repository.Data
 				var userRole = new AccountRole
 				{
 					UserId = userResult.UserId,
-					RoleId = roleId
+					RoleId = 2
 				};
 
 				context.AccountRoles.Add(userRole);
@@ -76,6 +77,7 @@ namespace API_Forum.Repository.Data
 		{
 			var profile = (from User in context.Users
 						   join Account in context.Accounts on User.UserId equals Account.UserId
+						   where User.Status == Status.@on
 						   select new ProfileVM
 						   {
 							   UserId = User.UserId,
@@ -109,6 +111,82 @@ namespace API_Forum.Repository.Data
 			var result = profile.First();
 			return result;
 
+		}
+
+		public override int Delete(int id)
+		{
+			var findStatus = (from u in context.Users
+							  join d in context.Discussions on u.UserId equals d.UserId
+							  join c in context.Comments on d.DisId equals c.DisId
+							  where u.UserId == id 
+							  select new
+							  {
+								  User = u,
+								  Dis = d,
+								  Com = c
+							  }).ToList();
+            foreach (var x in findStatus)
+            {
+				x.User.Status = Status.off;
+				x.Dis.Status = Status.off;
+				x.Com.Status = Status.off;
+            }
+			var result = context.SaveChanges();
+			return result;
+        }
+
+		public int UpdatePassword(LoginVM login)
+        {
+			var findUserPassword = (from u in context.Users
+									join a in context.Accounts on u.UserId equals a.UserId
+									where u.Email == login.Email
+									select new
+									{
+										User = a
+									});
+            foreach (var x in findUserPassword)
+            {
+				x.User.Password = Hashing.HashPassword(login.Password);
+            }
+			var result = context.SaveChanges();
+			return result;
+        }
+
+		public int Login(LoginVM login)
+        {
+			var checkEmail = context.Users.Where(p => p.Email == login.Email).FirstOrDefault();
+			if(checkEmail == null)
+            {
+				return 1;
+            }
+            else
+            {
+				var dataLogin = checkEmail.UserId;
+				var dataPassword = context.Accounts.Find(dataLogin).Password;
+				var verify = Hashing.ValidatePassword(login.Password, dataPassword);
+                if (verify)
+                {
+					return 0;
+                }
+                else
+                {
+					return 2;
+                }
+            }
+        }
+
+		public string[] GetRole(LoginVM loginVM)
+		{
+			var dataExist = context.Users.Where(fn => fn.Email == loginVM.Email).FirstOrDefault();
+			var userId = dataExist.UserId;
+			var userRole = context.AccountRoles.Where(fn => fn.UserId == userId).ToList();
+			List<string> result = new List<string>();
+			foreach (var item in userRole)
+			{
+				result.Add(context.Roles.Where(fn => fn.RoleId == item.RoleId).First().RoleName);
+			}
+
+			return result.ToArray();
 		}
 	}
 }

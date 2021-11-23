@@ -1,85 +1,3 @@
-D:\METRODATA CODING CAMP\GitHub\ForumDisscussion\API-Forum\Client\bin\Debug\netcoreapp3.1\appsettings.Development.json
-D:\METRODATA CODING CAMP\GitHub\ForumDisscussion\API-Forum\Client\bin\Debug\netcoreapp3.1\appsettings.json
-D:\METRODATA CODING CAMP\GitHub\ForumDisscussion\API-Forum\Client\bin\Debug\netcoreapp3.1\Client.exe
-D:\METRODATA CODING CAMP\GitHub\ForumDisscussion\API-Forum\Client\bin\Debug\netcoreapp3.1\Client.deps.json
-D:\METRODATA CODING CAMP\GitHub\ForumDisscussion\API-Forum\Client\bin\Debug\netcoreapp3.1\Client.runtimeconfig.json
-D:\METRODATA CODING CAMP\GitHub\ForumDisscussion\API-Forum\Client\bin\Debug\netcoreapp3.1\Client.runtimeconfig.dev.json
-D:\METRODATA CODING CAMP\GitHub\ForumDisscussion\API-Forum\Client\bin\Debug\netcoreapp3.1\Client.dll
-D:\METRODATA CODING CAMP\GitHub\ForumDisscussion\API-Forum\Client\bin\Debug\netcoreapp3.1\Client.pdb
-D:\METRODATA CODING CAMP\GitHub\ForumDisscussion\API-Forum\Client\bin\Debug\netcoreapp3.1\Client.Views.dll
-D:\METRODATA CODING CAMP\GitHub\ForumDisscussion\API-Forum\Client\bin\Debug\netcoreapp3.1\Client.Views.pdb
-D:\METRODATA CODING CAMP\GitHub\ForumDisscussion\API-Forum\Client\bin\Debug\netcoreapp3.1\Castle.Core.dll
-D:\METRODATA CODING CAMP\GitHub\ForumDisscussion\API-Forum\Client\bin\Debug\netcoreapp3.1\Humanizer.dll
-D:\METRODATA CODING CAMP\GitHub\ForumDisscussion\API-Forum\Client\bin\Debug\netcoreapp3.1\Microsoft.Data.SqlClient.dll
-D:\METRODATA CODING CAMP\GitHub\ForumDisscussion\API-Forum\Client\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.dll
-D:\METRODATA CODING CAMP\GitHub\ForumDisscussion\API-Forum\Client\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Abstractions.dll
-D:\METRODATA CODING CAMP\GitHub\ForumDisscussion\API-Forum\Client\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Design.dll
-D:\METRODATA CODING CAMP\GitHub\ForumDisscussion\API-Forum\Client\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Proxies.dll
-D:\METRODATA CODING CAMP\GitHub\ForumDisscussion\API-Forum\Client\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Relational.dll
-D:\METRODATA CODING CAMP\GitHub\ForumDisscussion\API-Forum\Client\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.SqlServer.dll
-D:\METRODATA CODING CAMP\GitHub\ForumDisscussion\API-Forum\Client\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Caching.Abstractions.dll
-D:\METRODATA CODING CAMP\GitHub\ForumDisscussion\API-Forum\Client\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Caching.Memory.dll
-D:\METRODATA CODING CAMP\GitHub\ForumDisscussion\API-Forum\Client\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.Abstractions.dll
-D:\METRODATA CODING CAMP\GitHub\ForumDisscussion\API-Forum\Client\bin\Debug\netcoreapp3.1\Microsoft.Extensions.DependencyInjection.dll
-D:\METRODATA CODING CAMP\GitHub\ForumDisscussion\API-Forum\Client\bin\Debug\netcoreapp3.1\Microsoft.Extensions.DependencyInjection.Abstractions.dll
-D:\METRODATA CODING CAMP\GitHub\ForumDisscussion\API-Forum\Client\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Logging.dll
-D:\METRODATA CODING CAMP\GitHub\ForumDisscussion\API-Forum\Client\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Logging.Abstractions.dll
-D:\METRODATA CODING CAMP\GitHub\ForumDisscussion\API-Forum\Client\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Options.dll
-D:\METRODATA CODING CAMP\GitHub\ForumDisscussion\API-Forum\Client\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Primitives.dll
-D:\METRODATA CODING CAMP\GitHub\ForumDisscussion\API-Forum\Client\bin\Debug\netcoreapp3.1\Microsoft.Identity.Client.dll
-D:\METRODATA CODING CAMP\GitHub\ForumDisscussion\API-Forum\Client\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.JsonWebTokens.dll
-D:\METRODATA CODING CAMP\GitHub\ForumDisscussion\API-Forum\Client\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Logging.dll
-D:\METRODATA CODING CAMP\GitHub\ForumDisscussion\API-Forum\Client\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Protocols.dll
-D:\METRODATA CODING CAMP\GitHub\ForumDisscussion\API-Forum\Client\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
-D:\METRODATA CODING CAMP\GitHub\ForumDisscussion\API-Forum\Client\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Tokens.dll
-D:\METRODATA CODING CAMP\GitHub\ForumDisscussion\API-Forum\Client\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
-D:\METRODATA CODING CAMP\GitHub\ForumDisscussion\API-Forum\Client\bin\Debug\netcoreapp3.1\System.Collections.Immutable.dll
-D:\METRODATA CODING CAMP\GitHub\ForumDisscussion\API-Forum\Client\bin\Debug\netcoreapp3.1\System.ComponentModel.Annotations.dll
-D:\METRODATA CODING CAMP\GitHub\ForumDisscussion\API-Forum\Client\bin\Debug\netcoreapp3.1\System.Configuration.ConfigurationManager.dll
-D:\METRODATA CODING CAMP\GitHub\ForumDisscussion\API-Forum\Client\bin\Debug\netcoreapp3.1\System.Diagnostics.DiagnosticSource.dll
-D:\METRODATA CODING CAMP\GitHub\ForumDisscussion\API-Forum\Client\bin\Debug\netcoreapp3.1\System.IdentityModel.Tokens.Jwt.dll
-D:\METRODATA CODING CAMP\GitHub\ForumDisscussion\API-Forum\Client\bin\Debug\netcoreapp3.1\System.Runtime.Caching.dll
-D:\METRODATA CODING CAMP\GitHub\ForumDisscussion\API-Forum\Client\bin\Debug\netcoreapp3.1\System.Security.Cryptography.ProtectedData.dll
-D:\METRODATA CODING CAMP\GitHub\ForumDisscussion\API-Forum\Client\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp3.1\Microsoft.Data.SqlClient.dll
-D:\METRODATA CODING CAMP\GitHub\ForumDisscussion\API-Forum\Client\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp3.1\Microsoft.Data.SqlClient.dll
-D:\METRODATA CODING CAMP\GitHub\ForumDisscussion\API-Forum\Client\bin\Debug\netcoreapp3.1\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.dll
-D:\METRODATA CODING CAMP\GitHub\ForumDisscussion\API-Forum\Client\bin\Debug\netcoreapp3.1\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.pdb
-D:\METRODATA CODING CAMP\GitHub\ForumDisscussion\API-Forum\Client\bin\Debug\netcoreapp3.1\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll
-D:\METRODATA CODING CAMP\GitHub\ForumDisscussion\API-Forum\Client\bin\Debug\netcoreapp3.1\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.pdb
-D:\METRODATA CODING CAMP\GitHub\ForumDisscussion\API-Forum\Client\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
-D:\METRODATA CODING CAMP\GitHub\ForumDisscussion\API-Forum\Client\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.pdb
-D:\METRODATA CODING CAMP\GitHub\ForumDisscussion\API-Forum\Client\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
-D:\METRODATA CODING CAMP\GitHub\ForumDisscussion\API-Forum\Client\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.pdb
-D:\METRODATA CODING CAMP\GitHub\ForumDisscussion\API-Forum\Client\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll
-D:\METRODATA CODING CAMP\GitHub\ForumDisscussion\API-Forum\Client\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
-D:\METRODATA CODING CAMP\GitHub\ForumDisscussion\API-Forum\Client\obj\Debug\netcoreapp3.1\Client.csproj.AssemblyReference.cache
-D:\METRODATA CODING CAMP\GitHub\ForumDisscussion\API-Forum\Client\obj\Debug\netcoreapp3.1\Client.GeneratedMSBuildEditorConfig.editorconfig
-D:\METRODATA CODING CAMP\GitHub\ForumDisscussion\API-Forum\Client\obj\Debug\netcoreapp3.1\Client.AssemblyInfoInputs.cache
-D:\METRODATA CODING CAMP\GitHub\ForumDisscussion\API-Forum\Client\obj\Debug\netcoreapp3.1\Client.AssemblyInfo.cs
-D:\METRODATA CODING CAMP\GitHub\ForumDisscussion\API-Forum\Client\obj\Debug\netcoreapp3.1\Client.csproj.CoreCompileInputs.cache
-D:\METRODATA CODING CAMP\GitHub\ForumDisscussion\API-Forum\Client\obj\Debug\netcoreapp3.1\Client.MvcApplicationPartsAssemblyInfo.cache
-D:\METRODATA CODING CAMP\GitHub\ForumDisscussion\API-Forum\Client\obj\Debug\netcoreapp3.1\Client.RazorAssemblyInfo.cache
-D:\METRODATA CODING CAMP\GitHub\ForumDisscussion\API-Forum\Client\obj\Debug\netcoreapp3.1\Client.RazorAssemblyInfo.cs
-D:\METRODATA CODING CAMP\GitHub\ForumDisscussion\API-Forum\Client\obj\Debug\netcoreapp3.1\staticwebassets\Client.StaticWebAssets.Manifest.cache
-D:\METRODATA CODING CAMP\GitHub\ForumDisscussion\API-Forum\Client\obj\Debug\netcoreapp3.1\staticwebassets\Client.StaticWebAssets.xml
-D:\METRODATA CODING CAMP\GitHub\ForumDisscussion\API-Forum\Client\obj\Debug\netcoreapp3.1\scopedcss\bundle\Client.styles.css
-D:\METRODATA CODING CAMP\GitHub\ForumDisscussion\API-Forum\Client\obj\Debug\netcoreapp3.1\Client.TagHelpers.input.cache
-D:\METRODATA CODING CAMP\GitHub\ForumDisscussion\API-Forum\Client\obj\Debug\netcoreapp3.1\Client.TagHelpers.output.cache
-D:\METRODATA CODING CAMP\GitHub\ForumDisscussion\API-Forum\Client\obj\Debug\netcoreapp3.1\Client.RazorCoreGenerate.cache
-D:\METRODATA CODING CAMP\GitHub\ForumDisscussion\API-Forum\Client\obj\Debug\netcoreapp3.1\Razor\Views\Home\Index.cshtml.g.cs
-D:\METRODATA CODING CAMP\GitHub\ForumDisscussion\API-Forum\Client\obj\Debug\netcoreapp3.1\Razor\Views\Home\Privacy.cshtml.g.cs
-D:\METRODATA CODING CAMP\GitHub\ForumDisscussion\API-Forum\Client\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Error.cshtml.g.cs
-D:\METRODATA CODING CAMP\GitHub\ForumDisscussion\API-Forum\Client\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_Layout.cshtml.g.cs
-D:\METRODATA CODING CAMP\GitHub\ForumDisscussion\API-Forum\Client\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_ValidationScriptsPartial.cshtml.g.cs
-D:\METRODATA CODING CAMP\GitHub\ForumDisscussion\API-Forum\Client\obj\Debug\netcoreapp3.1\Razor\Views\_ViewImports.cshtml.g.cs
-D:\METRODATA CODING CAMP\GitHub\ForumDisscussion\API-Forum\Client\obj\Debug\netcoreapp3.1\Razor\Views\_ViewStart.cshtml.g.cs
-D:\METRODATA CODING CAMP\GitHub\ForumDisscussion\API-Forum\Client\obj\Debug\netcoreapp3.1\Client.RazorTargetAssemblyInfo.cache
-D:\METRODATA CODING CAMP\GitHub\ForumDisscussion\API-Forum\Client\obj\Debug\netcoreapp3.1\Client.RazorTargetAssemblyInfo.cs
-D:\METRODATA CODING CAMP\GitHub\ForumDisscussion\API-Forum\Client\obj\Debug\netcoreapp3.1\Client.Views.pdb
-D:\METRODATA CODING CAMP\GitHub\ForumDisscussion\API-Forum\Client\obj\Debug\netcoreapp3.1\Client.csproj.CopyComplete
-D:\METRODATA CODING CAMP\GitHub\ForumDisscussion\API-Forum\Client\obj\Debug\netcoreapp3.1\Client.dll
-D:\METRODATA CODING CAMP\GitHub\ForumDisscussion\API-Forum\Client\obj\Debug\netcoreapp3.1\Client.pdb
-D:\METRODATA CODING CAMP\GitHub\ForumDisscussion\API-Forum\Client\obj\Debug\netcoreapp3.1\Client.genruntimeconfig.cache
 C:\Users\LENOVO\Documents\GitHub\ForumDisscussion\API-Forum\Client\bin\Debug\netcoreapp3.1\appsettings.Development.json
 C:\Users\LENOVO\Documents\GitHub\ForumDisscussion\API-Forum\Client\bin\Debug\netcoreapp3.1\appsettings.json
 C:\Users\LENOVO\Documents\GitHub\ForumDisscussion\API-Forum\Client\bin\Debug\netcoreapp3.1\Client.exe
@@ -90,50 +8,6 @@ C:\Users\LENOVO\Documents\GitHub\ForumDisscussion\API-Forum\Client\bin\Debug\net
 C:\Users\LENOVO\Documents\GitHub\ForumDisscussion\API-Forum\Client\bin\Debug\netcoreapp3.1\Client.pdb
 C:\Users\LENOVO\Documents\GitHub\ForumDisscussion\API-Forum\Client\bin\Debug\netcoreapp3.1\Client.Views.dll
 C:\Users\LENOVO\Documents\GitHub\ForumDisscussion\API-Forum\Client\bin\Debug\netcoreapp3.1\Client.Views.pdb
-C:\Users\LENOVO\Documents\GitHub\ForumDisscussion\API-Forum\Client\bin\Debug\netcoreapp3.1\Castle.Core.dll
-C:\Users\LENOVO\Documents\GitHub\ForumDisscussion\API-Forum\Client\bin\Debug\netcoreapp3.1\Humanizer.dll
-C:\Users\LENOVO\Documents\GitHub\ForumDisscussion\API-Forum\Client\bin\Debug\netcoreapp3.1\Microsoft.Data.SqlClient.dll
-C:\Users\LENOVO\Documents\GitHub\ForumDisscussion\API-Forum\Client\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.dll
-C:\Users\LENOVO\Documents\GitHub\ForumDisscussion\API-Forum\Client\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Abstractions.dll
-C:\Users\LENOVO\Documents\GitHub\ForumDisscussion\API-Forum\Client\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Design.dll
-C:\Users\LENOVO\Documents\GitHub\ForumDisscussion\API-Forum\Client\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Proxies.dll
-C:\Users\LENOVO\Documents\GitHub\ForumDisscussion\API-Forum\Client\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Relational.dll
-C:\Users\LENOVO\Documents\GitHub\ForumDisscussion\API-Forum\Client\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.SqlServer.dll
-C:\Users\LENOVO\Documents\GitHub\ForumDisscussion\API-Forum\Client\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Caching.Abstractions.dll
-C:\Users\LENOVO\Documents\GitHub\ForumDisscussion\API-Forum\Client\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Caching.Memory.dll
-C:\Users\LENOVO\Documents\GitHub\ForumDisscussion\API-Forum\Client\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.Abstractions.dll
-C:\Users\LENOVO\Documents\GitHub\ForumDisscussion\API-Forum\Client\bin\Debug\netcoreapp3.1\Microsoft.Extensions.DependencyInjection.dll
-C:\Users\LENOVO\Documents\GitHub\ForumDisscussion\API-Forum\Client\bin\Debug\netcoreapp3.1\Microsoft.Extensions.DependencyInjection.Abstractions.dll
-C:\Users\LENOVO\Documents\GitHub\ForumDisscussion\API-Forum\Client\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Logging.dll
-C:\Users\LENOVO\Documents\GitHub\ForumDisscussion\API-Forum\Client\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Logging.Abstractions.dll
-C:\Users\LENOVO\Documents\GitHub\ForumDisscussion\API-Forum\Client\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Options.dll
-C:\Users\LENOVO\Documents\GitHub\ForumDisscussion\API-Forum\Client\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Primitives.dll
-C:\Users\LENOVO\Documents\GitHub\ForumDisscussion\API-Forum\Client\bin\Debug\netcoreapp3.1\Microsoft.Identity.Client.dll
-C:\Users\LENOVO\Documents\GitHub\ForumDisscussion\API-Forum\Client\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.JsonWebTokens.dll
-C:\Users\LENOVO\Documents\GitHub\ForumDisscussion\API-Forum\Client\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Logging.dll
-C:\Users\LENOVO\Documents\GitHub\ForumDisscussion\API-Forum\Client\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Protocols.dll
-C:\Users\LENOVO\Documents\GitHub\ForumDisscussion\API-Forum\Client\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
-C:\Users\LENOVO\Documents\GitHub\ForumDisscussion\API-Forum\Client\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Tokens.dll
-C:\Users\LENOVO\Documents\GitHub\ForumDisscussion\API-Forum\Client\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
-C:\Users\LENOVO\Documents\GitHub\ForumDisscussion\API-Forum\Client\bin\Debug\netcoreapp3.1\System.Collections.Immutable.dll
-C:\Users\LENOVO\Documents\GitHub\ForumDisscussion\API-Forum\Client\bin\Debug\netcoreapp3.1\System.ComponentModel.Annotations.dll
-C:\Users\LENOVO\Documents\GitHub\ForumDisscussion\API-Forum\Client\bin\Debug\netcoreapp3.1\System.Configuration.ConfigurationManager.dll
-C:\Users\LENOVO\Documents\GitHub\ForumDisscussion\API-Forum\Client\bin\Debug\netcoreapp3.1\System.Diagnostics.DiagnosticSource.dll
-C:\Users\LENOVO\Documents\GitHub\ForumDisscussion\API-Forum\Client\bin\Debug\netcoreapp3.1\System.IdentityModel.Tokens.Jwt.dll
-C:\Users\LENOVO\Documents\GitHub\ForumDisscussion\API-Forum\Client\bin\Debug\netcoreapp3.1\System.Runtime.Caching.dll
-C:\Users\LENOVO\Documents\GitHub\ForumDisscussion\API-Forum\Client\bin\Debug\netcoreapp3.1\System.Security.Cryptography.ProtectedData.dll
-C:\Users\LENOVO\Documents\GitHub\ForumDisscussion\API-Forum\Client\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp3.1\Microsoft.Data.SqlClient.dll
-C:\Users\LENOVO\Documents\GitHub\ForumDisscussion\API-Forum\Client\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp3.1\Microsoft.Data.SqlClient.dll
-C:\Users\LENOVO\Documents\GitHub\ForumDisscussion\API-Forum\Client\bin\Debug\netcoreapp3.1\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.dll
-C:\Users\LENOVO\Documents\GitHub\ForumDisscussion\API-Forum\Client\bin\Debug\netcoreapp3.1\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.pdb
-C:\Users\LENOVO\Documents\GitHub\ForumDisscussion\API-Forum\Client\bin\Debug\netcoreapp3.1\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll
-C:\Users\LENOVO\Documents\GitHub\ForumDisscussion\API-Forum\Client\bin\Debug\netcoreapp3.1\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.pdb
-C:\Users\LENOVO\Documents\GitHub\ForumDisscussion\API-Forum\Client\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
-C:\Users\LENOVO\Documents\GitHub\ForumDisscussion\API-Forum\Client\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.pdb
-C:\Users\LENOVO\Documents\GitHub\ForumDisscussion\API-Forum\Client\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
-C:\Users\LENOVO\Documents\GitHub\ForumDisscussion\API-Forum\Client\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.pdb
-C:\Users\LENOVO\Documents\GitHub\ForumDisscussion\API-Forum\Client\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll
-C:\Users\LENOVO\Documents\GitHub\ForumDisscussion\API-Forum\Client\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
 C:\Users\LENOVO\Documents\GitHub\ForumDisscussion\API-Forum\Client\obj\Debug\netcoreapp3.1\Client.csproj.AssemblyReference.cache
 C:\Users\LENOVO\Documents\GitHub\ForumDisscussion\API-Forum\Client\obj\Debug\netcoreapp3.1\Client.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\LENOVO\Documents\GitHub\ForumDisscussion\API-Forum\Client\obj\Debug\netcoreapp3.1\Client.AssemblyInfoInputs.cache
@@ -158,7 +32,68 @@ C:\Users\LENOVO\Documents\GitHub\ForumDisscussion\API-Forum\Client\obj\Debug\net
 C:\Users\LENOVO\Documents\GitHub\ForumDisscussion\API-Forum\Client\obj\Debug\netcoreapp3.1\Client.RazorTargetAssemblyInfo.cache
 C:\Users\LENOVO\Documents\GitHub\ForumDisscussion\API-Forum\Client\obj\Debug\netcoreapp3.1\Client.RazorTargetAssemblyInfo.cs
 C:\Users\LENOVO\Documents\GitHub\ForumDisscussion\API-Forum\Client\obj\Debug\netcoreapp3.1\Client.Views.pdb
-C:\Users\LENOVO\Documents\GitHub\ForumDisscussion\API-Forum\Client\obj\Debug\netcoreapp3.1\Client.csproj.CopyComplete
 C:\Users\LENOVO\Documents\GitHub\ForumDisscussion\API-Forum\Client\obj\Debug\netcoreapp3.1\Client.dll
 C:\Users\LENOVO\Documents\GitHub\ForumDisscussion\API-Forum\Client\obj\Debug\netcoreapp3.1\Client.pdb
 C:\Users\LENOVO\Documents\GitHub\ForumDisscussion\API-Forum\Client\obj\Debug\netcoreapp3.1\Client.genruntimeconfig.cache
+C:\Users\LENOVO\Documents\GitHub\ForumDisscussion\API-Forum\Client\obj\Debug\netcoreapp3.1\Client.csproj.CopyComplete
+C:\Users\LENOVO\Documents\GitHub\ForumDisscussion\API-Forum\Client\bin\Debug\netcoreapp3.1\API-Forum.deps.json
+C:\Users\LENOVO\Documents\GitHub\ForumDisscussion\API-Forum\Client\bin\Debug\netcoreapp3.1\API-Forum.runtimeconfig.json
+C:\Users\LENOVO\Documents\GitHub\ForumDisscussion\API-Forum\Client\bin\Debug\netcoreapp3.1\API-Forum.runtimeconfig.dev.json
+C:\Users\LENOVO\Documents\GitHub\ForumDisscussion\API-Forum\Client\bin\Debug\netcoreapp3.1\API-Forum.exe
+C:\Users\LENOVO\Documents\GitHub\ForumDisscussion\API-Forum\Client\bin\Debug\netcoreapp3.1\BCrypt.Net-Core.dll
+C:\Users\LENOVO\Documents\GitHub\ForumDisscussion\API-Forum\Client\bin\Debug\netcoreapp3.1\Castle.Core.dll
+C:\Users\LENOVO\Documents\GitHub\ForumDisscussion\API-Forum\Client\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\LENOVO\Documents\GitHub\ForumDisscussion\API-Forum\Client\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.JsonPatch.dll
+C:\Users\LENOVO\Documents\GitHub\ForumDisscussion\API-Forum\Client\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
+C:\Users\LENOVO\Documents\GitHub\ForumDisscussion\API-Forum\Client\bin\Debug\netcoreapp3.1\Microsoft.Data.SqlClient.dll
+C:\Users\LENOVO\Documents\GitHub\ForumDisscussion\API-Forum\Client\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.dll
+C:\Users\LENOVO\Documents\GitHub\ForumDisscussion\API-Forum\Client\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Abstractions.dll
+C:\Users\LENOVO\Documents\GitHub\ForumDisscussion\API-Forum\Client\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Proxies.dll
+C:\Users\LENOVO\Documents\GitHub\ForumDisscussion\API-Forum\Client\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Relational.dll
+C:\Users\LENOVO\Documents\GitHub\ForumDisscussion\API-Forum\Client\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.SqlServer.dll
+C:\Users\LENOVO\Documents\GitHub\ForumDisscussion\API-Forum\Client\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Caching.Abstractions.dll
+C:\Users\LENOVO\Documents\GitHub\ForumDisscussion\API-Forum\Client\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Caching.Memory.dll
+C:\Users\LENOVO\Documents\GitHub\ForumDisscussion\API-Forum\Client\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.Abstractions.dll
+C:\Users\LENOVO\Documents\GitHub\ForumDisscussion\API-Forum\Client\bin\Debug\netcoreapp3.1\Microsoft.Extensions.DependencyInjection.dll
+C:\Users\LENOVO\Documents\GitHub\ForumDisscussion\API-Forum\Client\bin\Debug\netcoreapp3.1\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Users\LENOVO\Documents\GitHub\ForumDisscussion\API-Forum\Client\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Logging.dll
+C:\Users\LENOVO\Documents\GitHub\ForumDisscussion\API-Forum\Client\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Logging.Abstractions.dll
+C:\Users\LENOVO\Documents\GitHub\ForumDisscussion\API-Forum\Client\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Options.dll
+C:\Users\LENOVO\Documents\GitHub\ForumDisscussion\API-Forum\Client\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Primitives.dll
+C:\Users\LENOVO\Documents\GitHub\ForumDisscussion\API-Forum\Client\bin\Debug\netcoreapp3.1\Microsoft.Identity.Client.dll
+C:\Users\LENOVO\Documents\GitHub\ForumDisscussion\API-Forum\Client\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\LENOVO\Documents\GitHub\ForumDisscussion\API-Forum\Client\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Logging.dll
+C:\Users\LENOVO\Documents\GitHub\ForumDisscussion\API-Forum\Client\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Protocols.dll
+C:\Users\LENOVO\Documents\GitHub\ForumDisscussion\API-Forum\Client\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Users\LENOVO\Documents\GitHub\ForumDisscussion\API-Forum\Client\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Tokens.dll
+C:\Users\LENOVO\Documents\GitHub\ForumDisscussion\API-Forum\Client\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
+C:\Users\LENOVO\Documents\GitHub\ForumDisscussion\API-Forum\Client\bin\Debug\netcoreapp3.1\Newtonsoft.Json.Bson.dll
+C:\Users\LENOVO\Documents\GitHub\ForumDisscussion\API-Forum\Client\bin\Debug\netcoreapp3.1\System.Collections.Immutable.dll
+C:\Users\LENOVO\Documents\GitHub\ForumDisscussion\API-Forum\Client\bin\Debug\netcoreapp3.1\System.ComponentModel.Annotations.dll
+C:\Users\LENOVO\Documents\GitHub\ForumDisscussion\API-Forum\Client\bin\Debug\netcoreapp3.1\System.Configuration.ConfigurationManager.dll
+C:\Users\LENOVO\Documents\GitHub\ForumDisscussion\API-Forum\Client\bin\Debug\netcoreapp3.1\System.Diagnostics.DiagnosticSource.dll
+C:\Users\LENOVO\Documents\GitHub\ForumDisscussion\API-Forum\Client\bin\Debug\netcoreapp3.1\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\LENOVO\Documents\GitHub\ForumDisscussion\API-Forum\Client\bin\Debug\netcoreapp3.1\System.Runtime.Caching.dll
+C:\Users\LENOVO\Documents\GitHub\ForumDisscussion\API-Forum\Client\bin\Debug\netcoreapp3.1\System.Security.Cryptography.ProtectedData.dll
+C:\Users\LENOVO\Documents\GitHub\ForumDisscussion\API-Forum\Client\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp3.1\Microsoft.Data.SqlClient.dll
+C:\Users\LENOVO\Documents\GitHub\ForumDisscussion\API-Forum\Client\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp3.1\Microsoft.Data.SqlClient.dll
+C:\Users\LENOVO\Documents\GitHub\ForumDisscussion\API-Forum\Client\bin\Debug\netcoreapp3.1\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\LENOVO\Documents\GitHub\ForumDisscussion\API-Forum\Client\bin\Debug\netcoreapp3.1\runtimes\win-arm\native\Microsoft.Data.SqlClient.SNI.pdb
+C:\Users\LENOVO\Documents\GitHub\ForumDisscussion\API-Forum\Client\bin\Debug\netcoreapp3.1\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\LENOVO\Documents\GitHub\ForumDisscussion\API-Forum\Client\bin\Debug\netcoreapp3.1\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.pdb
+C:\Users\LENOVO\Documents\GitHub\ForumDisscussion\API-Forum\Client\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\LENOVO\Documents\GitHub\ForumDisscussion\API-Forum\Client\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.pdb
+C:\Users\LENOVO\Documents\GitHub\ForumDisscussion\API-Forum\Client\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
+C:\Users\LENOVO\Documents\GitHub\ForumDisscussion\API-Forum\Client\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.pdb
+C:\Users\LENOVO\Documents\GitHub\ForumDisscussion\API-Forum\Client\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll
+C:\Users\LENOVO\Documents\GitHub\ForumDisscussion\API-Forum\Client\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
+C:\Users\LENOVO\Documents\GitHub\ForumDisscussion\API-Forum\Client\bin\Debug\netcoreapp3.1\API-Forum.dll
+C:\Users\LENOVO\Documents\GitHub\ForumDisscussion\API-Forum\Client\bin\Debug\netcoreapp3.1\API-Forum.pdb
+C:\Users\LENOVO\Documents\GitHub\ForumDisscussion\API-Forum\Client\obj\Debug\netcoreapp3.1\Client.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\LENOVO\Documents\GitHub\ForumDisscussion\API-Forum\Client\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_LayoutPage.cshtml.g.cs
+C:\Users\LENOVO\Documents\GitHub\ForumDisscussion\API-Forum\Client\obj\Debug\netcoreapp3.1\Razor\Views\Registers\Index.cshtml.g.cs
+C:\Users\LENOVO\Documents\GitHub\ForumDisscussion\API-Forum\Client\obj\Debug\netcoreapp3.1\Razor\Views\Logins\Index.cshtml.g.cs
+C:\Users\LENOVO\Documents\GitHub\ForumDisscussion\API-Forum\Client\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_LayoutLanding.cshtml.g.cs
+C:\Users\LENOVO\Documents\GitHub\ForumDisscussion\API-Forum\Client\obj\Debug\netcoreapp3.1\Razor\Views\Users\Dashboard.cshtml.g.cs
+C:\Users\LENOVO\Documents\GitHub\ForumDisscussion\API-Forum\Client\obj\Debug\netcoreapp3.1\Razor\Views\Users\Index.cshtml.g.cs
+C:\Users\LENOVO\Documents\GitHub\ForumDisscussion\API-Forum\Client\obj\Debug\netcoreapp3.1\Razor\Views\Logins\Reset.cshtml.g.cs

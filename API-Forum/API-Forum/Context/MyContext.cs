@@ -11,7 +11,7 @@ namespace API_Forum.Context
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            //optionsBuilder.UseLazyLoadingProxies();
+            optionsBuilder.UseLazyLoadingProxies();
         }
 
         public MyContext(DbContextOptions<MyContext> option) : base(option)
