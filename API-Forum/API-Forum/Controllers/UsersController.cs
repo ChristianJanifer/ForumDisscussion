@@ -43,7 +43,6 @@ namespace API_Forum.Controllers
             {
                 return Ok(new { HttpStatusCode.OK });
             }
-
         }
 
         [HttpGet("Profile")]

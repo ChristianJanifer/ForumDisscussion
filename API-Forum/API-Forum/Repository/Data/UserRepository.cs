@@ -64,7 +64,7 @@ namespace API_Forum.Repository.Data
 				var userRole = new AccountRole
 				{
 					UserId = userResult.UserId,
-					RoleId = roleId
+					RoleId = 2
 				};
 
 				context.AccountRoles.Add(userRole);

@@ -60,6 +60,10 @@ namespace API_Forum
                     ClockSkew = TimeSpan.Zero
                 };
             });
+            services.AddCors(c =>
+            {
+                c.AddPolicy("AllowOrigin", options => options.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -69,6 +73,8 @@ namespace API_Forum
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseCors(options => options.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
 
             app.UseHttpsRedirection();
 
