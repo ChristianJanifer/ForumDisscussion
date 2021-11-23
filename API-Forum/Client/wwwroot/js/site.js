@@ -6,53 +6,6 @@
 });
 
 $(document).ready(function () {
-    $('#tabelSW').DataTable({
-        'ajax': {
-            'url': "GetProfile",
-            'dataType': 'json',
-            'dataSrc': '',
-        },
-        'columns': [
-            {
-                "data": "",
-                "render": function (data, type, row, meta) {
-                    return row['firstName'] + ' ' + row['lastName'];
-                }
-            },
-            {
-                "data": "",
-                "render": function (data, type, row, meta) {
-                    if (row['phone'].search(0) == 0) {
-                        return row['phone'].replace('0', '+62');
-                    } else {
-                        return row['phone'];
-                    }
-                }
-            },
-            {
-                "data": "email"
-            },
-            {
-                "data": "",
-                "render": function (data, type, row, meta) {
-                    if (row['gender'] == 0) {
-                        return ("Male");
-                    }
-                    else {
-                        return ("Female");
-                    }
-                }
-            },
-            {
-                "data": "",
-                "render": function (data, type, row, meta) {
-                    var date = row['birthDate'].substr(0, 10);
-                    return date;
-                }
-            }
-        ]
-    });
-
     $("#register").validate({
         rules: {
             firstName: {
@@ -83,6 +36,59 @@ $(document).ready(function () {
         }
     });
 });
+
+$(document).ready(function () {
+    $('#tabelLand').DataTable({
+        'ajax': {
+            'url': "GetLanding",
+            'dataType': 'json',
+            'dataSrc': '',
+        },
+        'columns': [
+            {
+                "data": "title",
+            },
+            {
+                "data": "",
+                "render": function (data, type, row, meta) {
+                    var date = row['dateDis'].substr(0, 10);
+                    return date;
+                }
+            },
+            {
+                "data": "categoryName",
+            },
+            {
+                "data": "",
+                "render": function (data, type, row, meta) {
+                    return row['firstName'] + ' ' + row['lastName'];
+                }
+            },
+            {
+                "data": "",
+                "render": function (data, type, row, meta) {
+                    var button = '<td> <button onclick="getCom();" class="btn btn-primary btn-sm text-center" data-toggle="modal" data-target="#exampleModal">Klik Comment </button></td>';
+                    return button;
+                }
+            }
+        ]
+    });
+});
+
+function getCom() {
+    $.ajax({
+        url: "Comments/GetComments",
+        success: function (result) {
+            console.log(result);
+        },
+        error: function (errormessage) {
+            alert(errormessage.responseText);
+        }
+    });
+    return false;
+}
+
+
 
 function Valid() {
     var ini = $("#register").valid();

@@ -34,6 +34,12 @@ namespace Client.Controllers
             return Json(result);
         }
 
+        public async Task<JsonResult> GetLanding()
+        {
+            var result = await user.GetLanding();
+            return Json(result);
+        }
+
         /*public async Task<JsonResult> Profile(string id)
         {
             var result = await employee.Profile(id);

@@ -3,27 +3,43 @@
     Layout = "_LayoutLanding";
 }
 
-<div class="container-fluid p-3 text-black">
-    <div>
-        <h2 class="h3 mb-2 text-gray-800">Forum Diskusi</h2>
-    </div>
+<div class="container">
     <div class="card shadow mb-4">
         <div class="card-header py-3"></div>
         <div class="card-body">
             <div class="table-responsive">
-                <table id="tabelSW" class="table table-hover table-primary">
+                <table id="tabelLand" class="table table-hover table-primary">
                     <thead>
                         <tr>
-                            <td>FullName</td>
-                            <td>Phone</td>
-                            <td>Email</td>
-                            <td>Gender</td>
-                            <td>BirthDate</td>
+                            <td>Title</td>
+                            <td>Date Discussion</td>
+                            <td>Category</td>
+                            <td>Users</td>
+                            <td>Action</td>
                         </tr>
                     </thead>
                     <tbody class="tbody">
                     </tbody>
                 </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade bd-example-modal-lg" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Detil Comment</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
             </div>
         </div>
     </div>

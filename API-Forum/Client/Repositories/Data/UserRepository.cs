@@ -38,6 +38,18 @@ namespace Client.Repositories.Data
             return entities;
         }
 
+        public async Task<List<LandingVM>> GetLanding()
+        {
+            List<LandingVM> entities = new List<LandingVM>();
+
+            using (var response = await httpClient.GetAsync(request + "Landing/"))
+            {
+                string apiResponse = await response.Content.ReadAsStringAsync();
+                entities = JsonConvert.DeserializeObject<List<LandingVM>>(apiResponse);
+            }
+            return entities;
+        }
+
         /*public async Task<ProfileVM> Profile(string id)
         {
             ProfileVM entity = null;

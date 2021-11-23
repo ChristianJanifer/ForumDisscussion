@@ -109,5 +109,31 @@ namespace API_Forum.Controllers
                 return BadRequest(new JWTokenVM { Messages = "Email/Password Salah", Token = null });
             }
         }
+
+        [HttpGet]
+        [Route("Landing")]
+
+        public ActionResult GetLanding()
+        {
+            var result = user.GetLanding();
+            return Ok(result);
+        }
+
+        [HttpGet]
+        [Route("Replies")]
+
+        public ActionResult GetReplies()
+        {
+            var getReplies = user.GetReplies();
+
+            if (getReplies != null)
+            {
+                return Ok(getReplies);
+            }
+            else
+            {
+                return NotFound(new { status = HttpStatusCode.OK, result = getReplies, message = "Tidak ada data tampil" });
+            }
+        }
     }
 }

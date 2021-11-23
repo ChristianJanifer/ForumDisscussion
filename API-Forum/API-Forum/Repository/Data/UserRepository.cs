@@ -3,6 +3,7 @@ using API_Forum.HashingPassword;
 using API_Forum.Models;
 using API_Forum.ViewModel;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -187,6 +188,35 @@ namespace API_Forum.Repository.Data
 			}
 
 			return result.ToArray();
+		}
+
+		public IEnumerable GetLanding()
+		{
+			var landing = (from u in context.Users
+						   join d in context.Discussions on u.UserId equals d.UserId
+						   join c in context.Categories on d.CategoryId equals c.CategoryId
+						   select new LandingVM
+						   {
+							   Title = d.Title,
+							   DateDis = d.DateDis,
+							   CategoryName = c.CategoryName,
+							   FirstName = u.FirstName,
+							   LastName = u.LastName,
+						   });
+			return landing;
+		}
+
+		public IEnumerable GetReplies()
+		{
+			var result = from u in context.Users
+						 join c in context.Comments on u.UserId equals c.UserId
+						 group c by c.DisId into a
+						 select new
+						 {
+							 DisId = a.Key,
+							 value = a.Count()
+						 };
+			return result;
 		}
 	}
 }

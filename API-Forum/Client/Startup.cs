@@ -33,6 +33,7 @@ namespace Client
             services.AddScoped<RegisterRepository>();
             services.AddScoped<LoginRepository>();
             services.AddScoped<UserRepository>();
+            services.AddScoped<CommentRepository>();
             services.AddScoped<Address>();
             services.AddSession();
             services.AddHttpContextAccessor();
