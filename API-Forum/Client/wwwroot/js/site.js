@@ -3,9 +3,53 @@
 
 // Write your JavaScript code.
 
-$(document).ready({
+$(document).ready(function () {
+    $("#register").validate({
+        rules: {
+            firstName: {
+                required: true
+            },
+            lastName: {
+                required: true
+            },
+            phone: {
+                required: true
+            },
+            birthDate: {
+                required: true
+            },
+            email: {
+                required: true
+            },
+            password: {
+                required: true
+            }
+        },
+        errorPlacement: function (error, element) { },
+        highlight: function (element) {
+            $(element).closest('.form-control').addClass('is-invalid');
+        },
+        unhighlight: function (element) {
+            $(element).closest('.form-control').removeClass('is-invalid');
+        }
+    });
+});
 
-})
+function Valid() {
+    var ini = $("#register").valid();
+    console.log(ini);
+
+    if (ini === true) {
+        insertData();
+    }
+    else {
+        Swal.fire(
+            'Failed!',
+            'Please enter all fields.',
+            'error'
+        );
+    }
+}
 
 function clearTextBox() {
     $('#firstName').val("");
@@ -39,6 +83,31 @@ function insertData() {
     $.ajax({
         url: "Registers/Register",
         type: "POST",
+        data: { entity: obj },
+        dataType: 'json'
+    }).done((result) => {
+        console.log(result);
+        Swal.fire(
+            'Your account has been created.',
+            'Please sign in to enter forum',
+            'success'
+        );
+        clearTextBox();
+    }).fail((error) => {
+        console.log(error);
+    });
+}
+
+function resetPassword() {
+    var obj = new Object();
+
+    obj.Email = $('#email').val();
+    obj.Password = $('#password').val();
+
+    console.log(obj);
+    $.ajax({
+        url: "ResetPassword",
+        type: "PUT",
         data: { entity: obj },
         dataType: 'json'
     }).done((result) => {

@@ -1,7 +1,6 @@
-﻿using API_Forum.ViewModel;
+﻿using API_Forum.Models;
 using Client.Base.Controllers;
 using Client.Repositories.Data;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -10,12 +9,12 @@ using System.Threading.Tasks;
 
 namespace Client.Controllers
 {
-    public class LoginsController : BaseController<LoginVM, LoginRepository, string>
+    public class UsersController : BaseController<User, UserRepository, int>
     {
-        private readonly LoginRepository log;
-        public LoginsController(LoginRepository repository) : base(repository)
+        private readonly UserRepository user;
+        public UsersController(UserRepository repository) : base(repository)
         {
-            this.log = repository;
+            this.user = repository;
         }
 
         /*[Authorize]*/
@@ -23,8 +22,8 @@ namespace Client.Controllers
         {
             return View();
         }
-        
-        public IActionResult Reset()
+
+        public IActionResult Dashboard()
         {
             return View();
         }
@@ -41,37 +40,29 @@ namespace Client.Controllers
             return Json(result);
         }*/
 
-        public JsonResult ResetPassword(LoginVM entity)
+        /*public JsonResult Register(RegisterVM entity)
         {
-            var result = log.ResetPassword(entity);
+            var result = register.Register(entity);
             return Json(result);
-        }
+        }*/
 
         /*[ValidateAntiForgeryToken]*/
         /*[HttpPost("Login/")]*/
-        public async Task<IActionResult> Login(LoginVM login)
+        /*public async Task<IActionResult> Login(LoginVM login)
         {
             var jwtToken = await log.Login(login);
             var token = jwtToken.Token;
-            var role = jwtToken.Roles;
 
             if (token == null)
             {
+
                 return RedirectToAction("Index", "Home");
             }
 
             HttpContext.Session.SetString("JWToken", token);
 
-            foreach (var x in role)
-            {
-                if (x is "Admin")
-                {
-                    return RedirectToAction("Dashboard", "Users");
-                }
-            }
-
-            return RedirectToAction("Index", "Users");
-        }
+            return RedirectToAction("Dashboard", "Home");
+        }*/
 
         /*[Authorize]*/
         /* [HttpGet("Logout")]*/
