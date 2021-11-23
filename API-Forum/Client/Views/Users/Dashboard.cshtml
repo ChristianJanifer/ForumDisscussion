@@ -1,5 +1,30 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
+﻿@{
+    ViewData["Title"] = "Home Page";
+    Layout = "_LayoutLanding";
 }
+
+<div class="container-fluid p-3 text-black">
+    <div>
+        <h2 class="h3 mb-2 text-gray-800">Forum Diskusi</h2>
+    </div>
+    <div class="card shadow mb-4">
+        <div class="card-header py-3"></div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table id="tabelSW" class="table table-hover table-primary">
+                    <thead>
+                        <tr>
+                            <td>FullName</td>
+                            <td>Phone</td>
+                            <td>Email</td>
+                            <td>Gender</td>
+                            <td>BirthDate</td>
+                        </tr>
+                    </thead>
+                    <tbody class="tbody">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

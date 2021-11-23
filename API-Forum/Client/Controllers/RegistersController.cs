@@ -25,7 +25,7 @@ namespace Client.Controllers
 
         /*public async Task<JsonResult> GetProfile()
         {
-            var result = await employee.GetProfile();
+            var result = await register.GetProfile();
             return Json(result);
         }*/
 

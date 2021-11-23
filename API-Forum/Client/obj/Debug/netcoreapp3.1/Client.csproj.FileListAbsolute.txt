@@ -97,12 +97,12 @@ C:\Users\LENOVO\Documents\GitHub\ForumDisscussion\API-Forum\Client\obj\Debug\net
 C:\Users\LENOVO\Documents\GitHub\ForumDisscussion\API-Forum\Client\obj\Debug\netcoreapp3.1\Razor\Views\Users\Dashboard.cshtml.g.cs
 C:\Users\LENOVO\Documents\GitHub\ForumDisscussion\API-Forum\Client\obj\Debug\netcoreapp3.1\Razor\Views\Users\Index.cshtml.g.cs
 C:\Users\LENOVO\Documents\GitHub\ForumDisscussion\API-Forum\Client\obj\Debug\netcoreapp3.1\Razor\Views\Logins\Reset.cshtml.g.cs
-C:\Users\Buala Hulu\Documents\GitHub\ForumDisscussion\API-Forum\Client\bin\Debug\netcoreapp3.1\appsettings.Development.json
-C:\Users\Buala Hulu\Documents\GitHub\ForumDisscussion\API-Forum\Client\bin\Debug\netcoreapp3.1\appsettings.json
 C:\Users\Buala Hulu\Documents\GitHub\ForumDisscussion\API-Forum\Client\bin\Debug\netcoreapp3.1\API-Forum.deps.json
 C:\Users\Buala Hulu\Documents\GitHub\ForumDisscussion\API-Forum\Client\bin\Debug\netcoreapp3.1\API-Forum.runtimeconfig.json
 C:\Users\Buala Hulu\Documents\GitHub\ForumDisscussion\API-Forum\Client\bin\Debug\netcoreapp3.1\API-Forum.runtimeconfig.dev.json
 C:\Users\Buala Hulu\Documents\GitHub\ForumDisscussion\API-Forum\Client\bin\Debug\netcoreapp3.1\API-Forum.exe
+C:\Users\Buala Hulu\Documents\GitHub\ForumDisscussion\API-Forum\Client\bin\Debug\netcoreapp3.1\appsettings.Development.json
+C:\Users\Buala Hulu\Documents\GitHub\ForumDisscussion\API-Forum\Client\bin\Debug\netcoreapp3.1\appsettings.json
 C:\Users\Buala Hulu\Documents\GitHub\ForumDisscussion\API-Forum\Client\bin\Debug\netcoreapp3.1\Client.exe
 C:\Users\Buala Hulu\Documents\GitHub\ForumDisscussion\API-Forum\Client\bin\Debug\netcoreapp3.1\Client.deps.json
 C:\Users\Buala Hulu\Documents\GitHub\ForumDisscussion\API-Forum\Client\bin\Debug\netcoreapp3.1\Client.runtimeconfig.json

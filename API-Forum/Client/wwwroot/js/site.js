@@ -1,9 +1,58 @@
-﻿// Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
-// for details on configuring this project to bundle and minify static web assets.
-
-// Write your JavaScript code.
+﻿$.ajax({
+    url: "https://localhost:44312/API/Users",
+    success: function (result) {
+        console.log(result);
+    }
+});
 
 $(document).ready(function () {
+    $('#tabelSW').DataTable({
+        'ajax': {
+            'url': "GetProfile",
+            'dataType': 'json',
+            'dataSrc': '',
+        },
+        'columns': [
+            {
+                "data": "",
+                "render": function (data, type, row, meta) {
+                    return row['firstName'] + ' ' + row['lastName'];
+                }
+            },
+            {
+                "data": "",
+                "render": function (data, type, row, meta) {
+                    if (row['phone'].search(0) == 0) {
+                        return row['phone'].replace('0', '+62');
+                    } else {
+                        return row['phone'];
+                    }
+                }
+            },
+            {
+                "data": "email"
+            },
+            {
+                "data": "",
+                "render": function (data, type, row, meta) {
+                    if (row['gender'] == 0) {
+                        return ("Male");
+                    }
+                    else {
+                        return ("Female");
+                    }
+                }
+            },
+            {
+                "data": "",
+                "render": function (data, type, row, meta) {
+                    var date = row['birthDate'].substr(0, 10);
+                    return date;
+                }
+            }
+        ]
+    });
+
     $("#register").validate({
         rules: {
             firstName: {

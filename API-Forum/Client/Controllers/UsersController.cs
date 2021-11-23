@@ -28,11 +28,11 @@ namespace Client.Controllers
             return View();
         }
 
-        /*public async Task<JsonResult> GetProfile()
+        public async Task<JsonResult> GetProfile()
         {
-            var result = await employee.GetProfile();
+            var result = await user.GetProfile();
             return Json(result);
-        }*/
+        }
 
         /*public async Task<JsonResult> Profile(string id)
         {

@@ -1,5 +1,7 @@
 ﻿using API_Forum.Models;
+using API_Forum.ViewModel;
 using Client.Base.Urls;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,7 +26,7 @@ namespace Client.Repositories.Data
             };
         }
 
-        /*public async Task<List<ProfileVM>> GetProfile()
+        public async Task<List<ProfileVM>> GetProfile()
         {
             List<ProfileVM> entities = new List<ProfileVM>();
 
@@ -34,7 +36,7 @@ namespace Client.Repositories.Data
                 entities = JsonConvert.DeserializeObject<List<ProfileVM>>(apiResponse);
             }
             return entities;
-        }*/
+        }
 
         /*public async Task<ProfileVM> Profile(string id)
         {
