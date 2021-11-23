@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace API_Forum.Migrations
 {
     [DbContext(typeof(MyContext))]
-    [Migration("20211121124020_init")]
-    partial class init
+    [Migration("20211123084002_forumjalanpls")]
+    partial class forumjalanpls
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
