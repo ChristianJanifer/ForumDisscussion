@@ -197,7 +197,9 @@ namespace API_Forum.Repository.Data
 						   join c in context.Categories on d.CategoryId equals c.CategoryId
 						   select new LandingVM
 						   {
+							   DisId = d.DisId,
 							   Title = d.Title,
+							   Content = d.Content,
 							   DateDis = d.DateDis,
 							   CategoryName = c.CategoryName,
 							   FirstName = u.FirstName,
@@ -212,12 +214,29 @@ namespace API_Forum.Repository.Data
 						 join co in context.Comments on u.UserId equals co.UserId
 						 select new ReplyVM
 						 {
+							 DisId = co.DisId,
 							 Content = co.Content,
 							 DateComment = co.DateComment,
 							 FirstName = u.FirstName,
 							 LastName = u.LastName
 						 });
 			return reply;
+		}
+
+		public Object GetReply(int id)
+		{
+			var reply = (from u in context.Users
+						 join co in context.Comments on u.UserId equals co.UserId
+						 where co.DisId == id
+						 select new ReplyVM
+						 {
+							 DisId = co.DisId,
+							 Content = co.Content,
+							 DateComment = co.DateComment,
+							 FirstName = u.FirstName,
+							 LastName = u.LastName
+						 });
+			return reply.ToList();
 		}
 
 		public IEnumerable GetReplies()

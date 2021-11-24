@@ -46,6 +46,12 @@ namespace Client.Controllers
             return Json(result);
         }
 
+        public async Task<JsonResult> GetReplybyId(int id)
+        {
+            var result = await user.GetReplybyId(id);
+            return Json(result);
+        }
+
         /*public async Task<JsonResult> Profile(string id)
         {
             var result = await employee.Profile(id);

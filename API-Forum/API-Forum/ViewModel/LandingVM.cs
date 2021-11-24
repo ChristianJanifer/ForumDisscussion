@@ -7,7 +7,10 @@ namespace API_Forum.ViewModel
 {
     public class LandingVM
     {
+        public int DisId { get; set; }
         public string Title { get; set; }
+
+        public string Content { get; set; }
 
         public DateTime DateDis { get; set; }
 

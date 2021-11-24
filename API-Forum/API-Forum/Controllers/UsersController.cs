@@ -129,6 +129,14 @@ namespace API_Forum.Controllers
         }
 
         [HttpGet]
+        [Route("Reply/{id}")]
+        public ActionResult GetReply(int id)
+        {
+            var result = user.GetReply(id);
+            return Ok(result);
+        }
+
+        [HttpGet]
         [Route("Replies")]
         public ActionResult GetReplies()
         {

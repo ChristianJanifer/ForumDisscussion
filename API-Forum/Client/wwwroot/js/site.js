@@ -46,7 +46,13 @@ $(document).ready(function () {
         },
         'columns': [
             {
+                "data": "disId",
+            },
+            {
                 "data": "title",
+            },
+            {
+                "data": "content",
             },
             {
                 "data": "",
@@ -67,7 +73,7 @@ $(document).ready(function () {
             {
                 "data": "",
                 "render": function (data, type, row, meta) {
-                    var button = '<td> <button onclick="getCom();" class="btn btn-primary btn-sm text-center" data-toggle="modal" data-target="#exampleModal">Click Comment </button></td>';
+                    var button = '<td> <button onclick="getCom(' + row['disId'] + ');" class="btn btn-primary btn-sm text-center" data-toggle="modal" data-target="#exampleModal">Click Comment </button></td>';
                     return button;
                 }
             }
@@ -75,14 +81,14 @@ $(document).ready(function () {
     });
 });
 
-function getCom() {
+function getCom(id) {
     listSerah = "";
     listCo = "";
     listDa = "";
     listFn = "";
     listLn = "";
     $.ajax({
-        url: "GetReply",
+        url: "GetReplybyId/" + id,
         success: function (result) {
             console.log(result);
 
@@ -96,6 +102,12 @@ function getCom() {
             listSerah += `  <div class="container-fluid">
                                 <div class="row">
                                     <table class="table">
+                                        <tr>
+                                            <td>Comments</td>
+                                            <td>Date Comments</td>
+                                            <td>First Name</td>
+                                            <td>Last Name</td>
+                                        </tr>
                                         <tr>
                                             <td>${listCo}</td>
                                             <td>${listDa}</td>

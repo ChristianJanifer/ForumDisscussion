@@ -7,6 +7,7 @@ namespace API_Forum.ViewModel
 {
     public class ReplyVM
     {
+        public int DisId { get; set; }
         public string Content { get; set; }
 
         public DateTime DateComment { get; set; }
