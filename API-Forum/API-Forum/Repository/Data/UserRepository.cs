@@ -137,19 +137,27 @@ namespace API_Forum.Repository.Data
 
 		public int UpdatePassword(LoginVM login)
         {
-			var findUserPassword = (from u in context.Users
-									join a in context.Accounts on u.UserId equals a.UserId
-									where u.Email == login.Email
-									select new
-									{
-										User = a
-									});
-            foreach (var x in findUserPassword)
+			var checkEmail = context.Users.Where(p => p.Email == login.Email).FirstOrDefault();
+			if(checkEmail == null)
             {
-				x.User.Password = Hashing.HashPassword(login.Password);
+				return 0;
             }
-			var result = context.SaveChanges();
-			return result;
+            else
+            {
+				var findUserPassword = (from u in context.Users
+										join a in context.Accounts on u.UserId equals a.UserId
+										where u.Email == login.Email
+										select new
+										{
+											User = a
+										});
+				foreach (var x in findUserPassword)
+				{
+					x.User.Password = Hashing.HashPassword(login.Password);
+				}
+				var result = context.SaveChanges();
+				return result;
+			}
         }
 
 		public int Login(LoginVM login)
@@ -187,6 +195,40 @@ namespace API_Forum.Repository.Data
 			}
 
 			return result.ToArray();
+		}
+
+		public IEnumerable<DiscussionVM> GetDiscussion()
+		{
+			var data1 = (from d in context.Discussions
+						 join c in context.Categories on d.CategoryId equals c.CategoryId
+						 join u in context.Users on d.UserId equals u.UserId
+						 where d.Status == Status.@on
+						 select new DiscussionVM
+						 {
+							 DisId = d.DisId,
+							 FirstName = u.FirstName,
+							 LastName = u.LastName,
+							 Title = d.Title,
+							 Content = d.Content,
+							 DateDis = d.DateDis,
+							 CategoryName = c.CategoryName
+						 });
+			var data = context.Discussions.Where(p => p.Status == Status.on).ToList();
+			return data1;
+		}
+
+		public IEnumerable<CommentVM> GetComment(int id)
+		{
+			var data1 = (from u in context.Users
+						 join c in context.Comments on u.UserId equals c.UserId
+						 where c.DisId == id
+						 select new CommentVM
+						 {
+							 FirstName = u.FirstName,
+							 Content = c.Content,
+							 DateCom = c.DateComment
+						 });
+			return data1;
 		}
 	}
 }

@@ -28,6 +28,18 @@ namespace Client.Controllers
             return View();
         }
 
+        public async Task<JsonResult> GetLanding()
+        {
+            var result = await user.GetLanding();
+            return Json(result);
+        }
+
+        public async Task<JsonResult> GetReplybyId(int id)
+        {
+            var result = await user.GetReplybyId(id);
+            return Json(result);
+        }
+
         /*public async Task<JsonResult> GetProfile()
         {
             var result = await employee.GetProfile();

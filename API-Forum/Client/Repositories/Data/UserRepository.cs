@@ -1,5 +1,7 @@
 ﻿using API_Forum.Models;
+using API_Forum.ViewModel;
 using Client.Base.Urls;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,6 +24,30 @@ namespace Client.Repositories.Data
             {
                 BaseAddress = new Uri(address.link)
             };
+        }
+
+        public async Task<List<DiscussionVM>> GetLanding()
+        {
+            List<DiscussionVM> entities = new List<DiscussionVM>();
+
+            using (var response = await httpClient.GetAsync(request + "GetDiscussion/"))
+            {
+                string apiResponse = await response.Content.ReadAsStringAsync();
+                entities = JsonConvert.DeserializeObject<List<DiscussionVM>>(apiResponse);
+            }
+            return entities;
+        }
+
+        public async Task<List<CommentVM>> GetReplybyId(int id)
+        {
+            List<CommentVM> entities = new List<CommentVM>();
+
+            using (var response = await httpClient.GetAsync(request + "GetComment/" + id))
+            {
+                string apiResponse = await response.Content.ReadAsStringAsync();
+                entities = JsonConvert.DeserializeObject<List<CommentVM>>(apiResponse);
+            }
+            return entities;
         }
 
         /*public async Task<List<ProfileVM>> GetProfile()

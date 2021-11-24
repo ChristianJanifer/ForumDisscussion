@@ -64,7 +64,14 @@ namespace API_Forum.Controllers
         public ActionResult ResetPassword(LoginVM login)
         {
             var result = user.UpdatePassword(login);
-            return Ok(result);
+            if(result == 0)
+            {
+                return NotFound(new { status = HttpStatusCode.NotFound, message = "Email tidak terdaftar" });
+            }
+            else
+            {
+                return Ok(result);
+            }
         }
 
         [Route("Login")]
@@ -108,6 +115,20 @@ namespace API_Forum.Controllers
             {
                 return BadRequest(new JWTokenVM { Messages = "Email/Password Salah", Token = null });
             }
+        }
+
+        [HttpGet("GetDiscussion")]
+        public ActionResult GetDiscussion()
+        {
+            var result = user.GetDiscussion();
+            return Ok(result);
+        }
+
+        [HttpGet("GetComment/{id}")]
+        public ActionResult GetComment(int id)
+        {
+            var result = user.GetComment(id);
+            return Ok(result);
         }
     }
 }
