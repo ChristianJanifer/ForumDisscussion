@@ -52,11 +52,15 @@ namespace Client.Controllers
             {
                 if (x is "Admin")
                 {
-                    return RedirectToAction("Dashboard", "Users");
+                    return RedirectToAction("Dashboard", "Admins");
+                }
+                else
+                {
+                    return RedirectToAction("Dashboard", "Members");
                 }
             }
 
-            return RedirectToAction("Index", "Users");
+            return RedirectToAction("Index", "Home");
         }
     }
 }

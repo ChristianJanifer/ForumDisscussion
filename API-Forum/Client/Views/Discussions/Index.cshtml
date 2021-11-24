@@ -1,0 +1,113 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    Layout = "_LayoutMember";
+}
+
+
+<section>
+    <div class="text-left">
+        <div class="text-black">
+            <h2>Discussion</h2>
+        </div>
+    </div>
+
+    <p>
+        <button class="btn btn-primary" data-toggle="modal" data-target="#modalDiscussion">
+            <i class="fa fa-plus"></i>
+        </button>
+    </p>
+
+    @*Table Category*@
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="tableDiscussion" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>No</th>
+                        <th>Discussion Id</th>
+                        <th>Title</th>
+                        <th>Content</th>
+                        <th>Date</th>
+                        <th>StatusComt</th>
+                        <th>User Id</th>
+                        <th>Category Id</th>
+                        <th>Type Id</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody class="tbody" id="listDiscussion"></tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="modal" id="modalDiscussion" name="modalDiscussion" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Data Discussion</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="formDiscussion">
+                        <div class="form-row">
+                            <div class="col-md-6 mb-3">
+                                <label for="formInputTitle">Title</label>
+                                <input type="text" class="form-control" id="title" name="title" placeholder="Title">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-md-6 mb-3">
+                                <label for="formInputContent">Content</label>
+                                <input type="text" class="form-control" id="content" name="content" placeholder="Content">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-md-6 mb-3">
+                                <label for="formInputDateDis">DateDis</label>
+                                <input type="date" class="form-control" id="dateDis" name="dateDis" placeholder="DateDis">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-md-6 mb-3">
+                                <label for="formInputStatusComt">StatusComt</label>
+                                <input type="text" class="form-control" id="statusComt" name="statusComt" placeholder="StatusComt">
+                            </div>
+                        </div><div class="form-row">
+                            <div class="col-md-6 mb-3">
+                                <label for="formInputUserId">UserId</label>
+                                <input type="text" class="form-control" id="userId" name="userId" placeholder="UserId">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-md-6 mb-3">
+                                <label for="formInputCategoryId">CategoryId</label>
+                                <input type="text" class="form-control" id="CategoryId" name="CategoryId" placeholder="CategoryId">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-md-6 mb-3">
+                                <label for="formInputTypeId">TypeId</label>
+                                <input type="text" class="form-control" id="typeId" name="typeId" placeholder="TypeId">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-md-6 mb-3">
+                                <label for="formInputStatus">Status</label>
+                                <input type="text" class="form-control" id="status" name="status" placeholder="Status">
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-warning">Add Data</button>
+                            <button type="button" class="btn btn-danger" data-dismiss="modal" onclick=window.location.reload();>Close</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
