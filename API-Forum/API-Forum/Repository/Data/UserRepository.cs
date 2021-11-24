@@ -201,9 +201,23 @@ namespace API_Forum.Repository.Data
 							   DateDis = d.DateDis,
 							   CategoryName = c.CategoryName,
 							   FirstName = u.FirstName,
-							   LastName = u.LastName,
+							   LastName = u.LastName
 						   });
 			return landing;
+		}
+
+		public IEnumerable GetReply()
+		{
+			var reply = (from u in context.Users
+						 join co in context.Comments on u.UserId equals co.UserId
+						 select new ReplyVM
+						 {
+							 Content = co.Content,
+							 DateComment = co.DateComment,
+							 FirstName = u.FirstName,
+							 LastName = u.LastName
+						 });
+			return reply;
 		}
 
 		public IEnumerable GetReplies()

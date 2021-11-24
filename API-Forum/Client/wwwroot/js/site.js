@@ -67,7 +67,7 @@ $(document).ready(function () {
             {
                 "data": "",
                 "render": function (data, type, row, meta) {
-                    var button = '<td> <button onclick="getCom();" class="btn btn-primary btn-sm text-center" data-toggle="modal" data-target="#exampleModal">Klik Comment </button></td>';
+                    var button = '<td> <button onclick="getCom();" class="btn btn-primary btn-sm text-center" data-toggle="modal" data-target="#exampleModal">Click Comment </button></td>';
                     return button;
                 }
             }
@@ -76,10 +76,38 @@ $(document).ready(function () {
 });
 
 function getCom() {
+    listSerah = "";
+    listCo = "";
+    listDa = "";
+    listFn = "";
+    listLn = "";
     $.ajax({
-        url: "Comments/GetComments",
+        url: "GetReply",
         success: function (result) {
             console.log(result);
+
+            for (let i = 0; i < result.length; i++) {
+                listCo += `<p>${result[i].content}</p>`;
+                listDa += `<p>${result[i].dateComment}</p>`;
+                listFn += `<p>${result[i].firstName}</p>`;
+                listLn += `<p>${result[i].lastName}</p>`;
+            }
+
+            listSerah += `  <div class="container-fluid">
+                                <div class="row">
+                                    <table class="table">
+                                        <tr>
+                                            <td>${listCo}</td>
+                                            <td>${listDa}</td>
+                                            <td>${listFn}</td>
+                                            <td>${listLn}</td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                         `;
+            $('.modal-body').html(listSerah);
+
         },
         error: function (errormessage) {
             alert(errormessage.responseText);
@@ -87,7 +115,6 @@ function getCom() {
     });
     return false;
 }
-
 
 
 function Valid() {

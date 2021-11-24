@@ -50,6 +50,18 @@ namespace Client.Repositories.Data
             return entities;
         }
 
+        public async Task<List<ReplyVM>> GetReply()
+        {
+            List<ReplyVM> entities = new List<ReplyVM>();
+
+            using (var response = await httpClient.GetAsync(request + "Reply/"))
+            {
+                string apiResponse = await response.Content.ReadAsStringAsync();
+                entities = JsonConvert.DeserializeObject<List<ReplyVM>>(apiResponse);
+            }
+            return entities;
+        }
+
         /*public async Task<ProfileVM> Profile(string id)
         {
             ProfileVM entity = null;

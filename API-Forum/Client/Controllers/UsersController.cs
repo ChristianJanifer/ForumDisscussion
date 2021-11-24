@@ -40,6 +40,12 @@ namespace Client.Controllers
             return Json(result);
         }
 
+        public async Task<JsonResult> GetReply()
+        {
+            var result = await user.GetReply();
+            return Json(result);
+        }
+
         /*public async Task<JsonResult> Profile(string id)
         {
             var result = await employee.Profile(id);
