@@ -1,7 +1,9 @@
-﻿// Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
-// for details on configuring this project to bundle and minify static web assets.
-
-// Write your JavaScript code.
+﻿$.ajax({
+    url: "https://localhost:44312/API/Users",
+    success: function (result) {
+        console.log(result);
+    }
+});
 
 $(document).ready(function () {
     $("#register").validate({
@@ -33,7 +35,29 @@ $(document).ready(function () {
             $(element).closest('.form-control').removeClass('is-invalid');
         }
     });
+
+    $("#reset").validate({
+        rules: {
+            email: {
+                required: true
+            },
+            password: {
+                required: true
+            }
+        },
+        errorPlacement: function (error, element) { },
+        highlight: function (element) {
+            $(element).closest('.form-control').addClass('is-invalid');
+        },
+        unhighlight: function (element) {
+            $(element).closest('.form-control').removeClass('is-invalid');
+        }
+    });
+
+
 });
+
+
 
 function Valid() {
     var ini = $("#register").valid();
@@ -41,6 +65,22 @@ function Valid() {
 
     if (ini === true) {
         insertData();
+    }
+    else {
+        Swal.fire(
+            'Failed!',
+            'Please enter all fields.',
+            'error'
+        );
+    }
+}
+
+function ValidR() {
+    var ini = $("#reset").valid();
+    console.log(ini);
+
+    if (ini === true) {
+        resetPassword();
     }
     else {
         Swal.fire(
@@ -113,7 +153,7 @@ function resetPassword() {
     }).done((result) => {
         console.log(result);
         Swal.fire(
-            'Your account has been created.',
+            'Your password has been updated.',
             'Please sign in to enter forum',
             'success'
         );

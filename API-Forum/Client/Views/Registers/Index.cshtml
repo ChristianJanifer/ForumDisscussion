@@ -4,6 +4,7 @@
 @{
     Layout = "_LayoutPage";
 }
+
 <title>Sign Up</title>
 <section class="sign-up">
     <div class="container">
@@ -12,7 +13,7 @@
             <a asp-area="" asp-controller="Logins" asp-action="Index" class="text-body">Sign In</a>
         </div>
         <div class="form col-8 mx-auto">
-           
+
             <h5 class="text-center font-weight-bold mt-5">Create a New Account</h5>
             <p class="text-center px-5 mx-5">By singin up you can start posting, replaying to topics, vote topics and many more.</p>
             <form id="register">
@@ -48,7 +49,7 @@
                         </div>
                         <div class="col-4 form-group">
                             <label for="inputBirthDate">BirthDate</label>
-                            <input type="date" class="form-control" id="birthDate" name="birthDate"  required>
+                            <input type="date" class="form-control" id="birthDate" name="birthDate" required>
                             <div class="invalid-feedback">
                                 Please insert your birth date
                             </div>
@@ -98,4 +99,3 @@
         </div>
     </div>
 </section>
-

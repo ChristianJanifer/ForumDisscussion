@@ -1,4 +1,5 @@
 ﻿using API_Forum.Models;
+using API_Forum.ViewModel;
 using Client.Base.Controllers;
 using Client.Repositories.Data;
 using Microsoft.AspNetCore.Mvc;
@@ -28,48 +29,40 @@ namespace Client.Controllers
             return View();
         }
 
-        /*public async Task<JsonResult> GetProfile()
+        public async Task<JsonResult> GetProfile()
         {
-            var result = await employee.GetProfile();
+            var result = await user.GetProfile();
             return Json(result);
-        }*/
+        }
 
-        /*public async Task<JsonResult> Profile(string id)
+        public async Task<JsonResult> GetLanding()
         {
-            var result = await employee.Profile(id);
+            var result = await user.GetLanding();
             return Json(result);
-        }*/
+        }
 
-        /*public JsonResult Register(RegisterVM entity)
+        public async Task<JsonResult> GetReplybyId(int id)
         {
-            var result = register.Register(entity);
+            var result = await user.GetReplybyId(id);
             return Json(result);
-        }*/
+        }
 
-        /*[ValidateAntiForgeryToken]*/
-        /*[HttpPost("Login/")]*/
-        /*public async Task<IActionResult> Login(LoginVM login)
+        /*public JsonResult PostCategory(CategoryVM entity)
         {
-            var jwtToken = await log.Login(login);
-            var token = jwtToken.Token;
+            var result = user.PostCategory(entity);
+            return Json(result);
+        }
 
-            if (token == null)
-            {
-
-                return RedirectToAction("Index", "Home");
-            }
-
-            HttpContext.Session.SetString("JWToken", token);
-
-            return RedirectToAction("Dashboard", "Home");
-        }*/
-
-        /*[Authorize]*/
-        /* [HttpGet("Logout")]*/
-        /*public IActionResult Logout()
+        public async Task<JsonResult> GetCategoryAll()
         {
-            HttpContext.Session.Clear();
-            return RedirectToAction("Index", "Home");
+            var result = await user.GetCategoryAll();
+            return Json(result);
+        }
+
+        public async Task<JsonResult> GetCategorybyId(int id)
+        {
+            var result = await user.GetCategorybyId(id);
+            return Json(result);
         }*/
     }
 }

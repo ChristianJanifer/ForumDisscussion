@@ -33,9 +33,16 @@ namespace Client
             services.AddScoped<RegisterRepository>();
             services.AddScoped<LoginRepository>();
             services.AddScoped<UserRepository>();
+            services.AddScoped<CommentRepository>();
+            services.AddScoped<AdminRepository>();
+            services.AddScoped<CategoryRepository>();
+            services.AddScoped<TypeDiscussionRepository>();
+
             services.AddScoped<Address>();
+
             services.AddSession();
             services.AddHttpContextAccessor();
+
             services.AddAuthentication(auth =>
             {
                 auth.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
