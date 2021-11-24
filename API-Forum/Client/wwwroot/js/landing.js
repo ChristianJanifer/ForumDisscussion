@@ -54,7 +54,7 @@ function getCom(id) {
 
             for (let i = 0; i < result.length; i++) {
                 listCo += `<p>${result[i].content}</p>`;
-                listDa += `<p>${result[i].dateComment}</p>`;
+                listDa += `<p>${result[i].dateCom.substr(0, 10)}</p>`;
                 listFn += `<p>${result[i].firstName}</p>`;
             }
 
