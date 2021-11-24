@@ -35,98 +35,28 @@ $(document).ready(function () {
             $(element).closest('.form-control').removeClass('is-invalid');
         }
     });
-});
 
-$(document).ready(function () {
-    $('#tabelLand').DataTable({
-        'ajax': {
-            'url': "GetLanding",
-            'dataType': 'json',
-            'dataSrc': '',
-        },
-        'columns': [
-            {
-                "data": "disId",
+    $("#reset").validate({
+        rules: {
+            email: {
+                required: true
             },
-            {
-                "data": "title",
-            },
-            {
-                "data": "content",
-            },
-            {
-                "data": "",
-                "render": function (data, type, row, meta) {
-                    var date = row['dateDis'].substr(0, 10);
-                    return date;
-                }
-            },
-            {
-                "data": "categoryName",
-            },
-            {
-                "data": "",
-                "render": function (data, type, row, meta) {
-                    return row['firstName'] + ' ' + row['lastName'];
-                }
-            },
-            {
-                "data": "",
-                "render": function (data, type, row, meta) {
-                    var button = '<td> <button onclick="getCom(' + row['disId'] + ');" class="btn btn-primary btn-sm text-center" data-toggle="modal" data-target="#exampleModal">Click Comment </button></td>';
-                    return button;
-                }
+            password: {
+                required: true
             }
-        ]
-    });
-});
-
-function getCom(id) {
-    listSerah = "";
-    listCo = "";
-    listDa = "";
-    listFn = "";
-    listLn = "";
-    $.ajax({
-        url: "GetReplybyId/" + id,
-        success: function (result) {
-            console.log(result);
-
-            for (let i = 0; i < result.length; i++) {
-                listCo += `<p>${result[i].content}</p>`;
-                listDa += `<p>${result[i].dateComment}</p>`;
-                listFn += `<p>${result[i].firstName}</p>`;
-                listLn += `<p>${result[i].lastName}</p>`;
-            }
-
-            listSerah += `  <div class="container-fluid">
-                                <div class="row">
-                                    <table class="table">
-                                        <tr>
-                                            <td>Comments</td>
-                                            <td>Date Comments</td>
-                                            <td>First Name</td>
-                                            <td>Last Name</td>
-                                        </tr>
-                                        <tr>
-                                            <td>${listCo}</td>
-                                            <td>${listDa}</td>
-                                            <td>${listFn}</td>
-                                            <td>${listLn}</td>
-                                        </tr>
-                                    </table>
-                                </div>
-                            </div>
-                         `;
-            $('.modal-body').html(listSerah);
-
         },
-        error: function (errormessage) {
-            alert(errormessage.responseText);
+        errorPlacement: function (error, element) { },
+        highlight: function (element) {
+            $(element).closest('.form-control').addClass('is-invalid');
+        },
+        unhighlight: function (element) {
+            $(element).closest('.form-control').removeClass('is-invalid');
         }
     });
-    return false;
-}
+
+
+});
+
 
 
 function Valid() {
@@ -135,6 +65,22 @@ function Valid() {
 
     if (ini === true) {
         insertData();
+    }
+    else {
+        Swal.fire(
+            'Failed!',
+            'Please enter all fields.',
+            'error'
+        );
+    }
+}
+
+function ValidR() {
+    var ini = $("#reset").valid();
+    console.log(ini);
+
+    if (ini === true) {
+        resetPassword();
     }
     else {
         Swal.fire(
@@ -207,7 +153,7 @@ function resetPassword() {
     }).done((result) => {
         console.log(result);
         Swal.fire(
-            'Your account has been created.',
+            'Your password has been updated.',
             'Please sign in to enter forum',
             'success'
         );

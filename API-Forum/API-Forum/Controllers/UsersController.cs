@@ -64,7 +64,14 @@ namespace API_Forum.Controllers
         public ActionResult ResetPassword(LoginVM login)
         {
             var result = user.UpdatePassword(login);
-            return Ok(result);
+            if (result == 0)
+            {
+                return NotFound(new { status = HttpStatusCode.NotFound, message = "Email tidak terdaftar" });
+            }
+            else
+            {
+                return Ok(result);
+            }
         }
 
         [Route("Login")]
@@ -110,29 +117,17 @@ namespace API_Forum.Controllers
             }
         }
 
-        [HttpGet]
-        [Route("Landing")]
-
-        public ActionResult GetLanding()
+        [HttpGet("GetDiscussion")]
+        public ActionResult GetDiscussion()
         {
-            var result = user.GetLanding();
+            var result = user.GetDiscussion();
             return Ok(result);
         }
 
-        [HttpGet]
-        [Route("Reply")]
-
-        public ActionResult GetReply()
+        [HttpGet("GetComment/{id}")]
+        public ActionResult GetComment(int id)
         {
-            var result = user.GetReply();
-            return Ok(result);
-        }
-
-        [HttpGet]
-        [Route("Reply/{id}")]
-        public ActionResult GetReply(int id)
-        {
-            var result = user.GetReply(id);
+            var result = user.GetComment(id);
             return Ok(result);
         }
 
@@ -151,5 +146,31 @@ namespace API_Forum.Controllers
                 return NotFound(new { status = HttpStatusCode.OK, result = getReplies, message = "Tidak ada data tampil" });
             }
         }
+
+        /*[Route("PostCategory")]
+        [HttpPost]
+        public ActionResult PostCategory(CategoryVM categoryVM)
+        {
+            var result = user.PostCategory(categoryVM);
+            return Ok(result);
+
+        }
+
+        [HttpGet]
+        [Route("GetCategoryAll")]
+
+        public ActionResult GetCategoryAll()
+        {
+            var result = user.GetCategoryAll();
+            return Ok(result);
+        }
+
+        [HttpGet]
+        [Route("GetCategory/{id}")]
+        public ActionResult GetCategory(int id)
+        {
+            var result = user.GetCategory(id);
+            return Ok(result);
+        }*/
     }
 }

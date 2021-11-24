@@ -29,26 +29,12 @@ namespace Client.Controllers
             return View();
         }
 
-        /*public async Task<JsonResult> GetProfile()
-        {
-            var result = await employee.GetProfile();
-            return Json(result);
-        }*/
-
-        /*public async Task<JsonResult> Profile(string id)
-        {
-            var result = await employee.Profile(id);
-            return Json(result);
-        }*/
-
         public JsonResult ResetPassword(LoginVM entity)
         {
             var result = log.ResetPassword(entity);
             return Json(result);
         }
 
-        /*[ValidateAntiForgeryToken]*/
-        /*[HttpPost("Login/")]*/
         public async Task<IActionResult> Login(LoginVM login)
         {
             var jwtToken = await log.Login(login);
@@ -72,13 +58,5 @@ namespace Client.Controllers
 
             return RedirectToAction("Index", "Users");
         }
-
-        /*[Authorize]*/
-        /* [HttpGet("Logout")]*/
-        /*public IActionResult Logout()
-        {
-            HttpContext.Session.Clear();
-            return RedirectToAction("Index", "Home");
-        }*/
     }
 }

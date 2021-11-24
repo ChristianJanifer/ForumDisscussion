@@ -137,44 +137,52 @@ namespace API_Forum.Repository.Data
         }
 
 		public int UpdatePassword(LoginVM login)
-        {
-			var findUserPassword = (from u in context.Users
-									join a in context.Accounts on u.UserId equals a.UserId
-									where u.Email == login.Email
-									select new
-									{
-										User = a
-									});
-            foreach (var x in findUserPassword)
-            {
-				x.User.Password = Hashing.HashPassword(login.Password);
-            }
-			var result = context.SaveChanges();
-			return result;
-        }
+		{
+			var checkEmail = context.Users.Where(p => p.Email == login.Email).FirstOrDefault();
+			if (checkEmail == null)
+			{
+				return 0;
+			}
+			else
+			{
+				var findUserPassword = (from u in context.Users
+										join a in context.Accounts on u.UserId equals a.UserId
+										where u.Email == login.Email
+										select new
+										{
+											User = a
+										});
+				foreach (var x in findUserPassword)
+				{
+					x.User.Password = Hashing.HashPassword(login.Password);
+				}
+				var result = context.SaveChanges();
+				return result;
+			}
+		}
 
 		public int Login(LoginVM login)
-        {
+		{
 			var checkEmail = context.Users.Where(p => p.Email == login.Email).FirstOrDefault();
-			if(checkEmail == null)
-            {
+			if (checkEmail == null)
+			{
 				return 1;
-            }
-            else
-            {
+			}
+			else
+			{
 				var dataLogin = checkEmail.UserId;
 				var dataPassword = context.Accounts.Find(dataLogin).Password;
 				var verify = Hashing.ValidatePassword(login.Password, dataPassword);
-                if (verify)
-                {
+				if (verify)
+				{
 					return 0;
-                }
-                else
-                {
+				}
+				else
+				{
 					return 2;
-                }
-            }
-        }
+				}
+			}
+		}
 
 		public string[] GetRole(LoginVM loginVM)
 		{
@@ -190,53 +198,38 @@ namespace API_Forum.Repository.Data
 			return result.ToArray();
 		}
 
-		public IEnumerable GetLanding()
+		public IEnumerable<DiscussionVM> GetDiscussion()
 		{
-			var landing = (from u in context.Users
-						   join d in context.Discussions on u.UserId equals d.UserId
-						   join c in context.Categories on d.CategoryId equals c.CategoryId
-						   select new LandingVM
-						   {
-							   DisId = d.DisId,
-							   Title = d.Title,
-							   Content = d.Content,
-							   DateDis = d.DateDis,
-							   CategoryName = c.CategoryName,
-							   FirstName = u.FirstName,
-							   LastName = u.LastName
-						   });
-			return landing;
+			var data1 = (from d in context.Discussions
+						 join c in context.Categories on d.CategoryId equals c.CategoryId
+						 join u in context.Users on d.UserId equals u.UserId
+						 where d.Status == Status.@on
+						 select new DiscussionVM
+						 {
+							 DisId = d.DisId,
+							 FirstName = u.FirstName,
+							 LastName = u.LastName,
+							 Title = d.Title,
+							 Content = d.Content,
+							 DateDis = d.DateDis,
+							 CategoryName = c.CategoryName
+						 });
+			var data = context.Discussions.Where(p => p.Status == Status.on).ToList();
+			return data1;
 		}
 
-		public IEnumerable GetReply()
+		public IEnumerable<CommentVM> GetComment(int id)
 		{
-			var reply = (from u in context.Users
-						 join co in context.Comments on u.UserId equals co.UserId
-						 select new ReplyVM
+			var data1 = (from u in context.Users
+						 join c in context.Comments on u.UserId equals c.UserId
+						 where c.DisId == id
+						 select new CommentVM
 						 {
-							 DisId = co.DisId,
-							 Content = co.Content,
-							 DateComment = co.DateComment,
 							 FirstName = u.FirstName,
-							 LastName = u.LastName
+							 Content = c.Content,
+							 DateCom = c.DateComment
 						 });
-			return reply;
-		}
-
-		public Object GetReply(int id)
-		{
-			var reply = (from u in context.Users
-						 join co in context.Comments on u.UserId equals co.UserId
-						 where co.DisId == id
-						 select new ReplyVM
-						 {
-							 DisId = co.DisId,
-							 Content = co.Content,
-							 DateComment = co.DateComment,
-							 FirstName = u.FirstName,
-							 LastName = u.LastName
-						 });
-			return reply.ToList();
+			return data1;
 		}
 
 		public IEnumerable GetReplies()
@@ -251,5 +244,41 @@ namespace API_Forum.Repository.Data
 						 };
 			return result;
 		}
+
+		/*public int PostCategory(CategoryVM categoryVM)
+		{
+			var categoryResult = new Category()
+			{
+				CategoryName = categoryVM.CategoryName
+			};
+
+			context.Categories.Add(categoryResult);
+			var result = context.SaveChanges();
+			return result;
+		}
+
+		public IEnumerable<CategoryVM> GetCategoryAll()
+		{
+			var category = (from ca in context.Categories
+						   select new CategoryVM
+						   {
+							   CategoryId = ca.CategoryId,
+							   CategoryName = ca.CategoryName
+						   });
+			var result = category;
+			return result;
+		}
+
+		public Object GetCategory(int id)
+		{
+			var category = (from ca in context.Categories
+							where ca.CategoryId == id
+							select new CategoryVM
+							{
+								CategoryId = ca.CategoryId,
+								CategoryName = ca.CategoryName
+							});
+			return category.ToList();
+		}*/
 	}
 }

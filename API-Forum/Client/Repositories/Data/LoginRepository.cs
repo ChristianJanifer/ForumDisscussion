@@ -27,30 +27,6 @@ namespace Client.Repositories.Data
             };
         }
 
-        /*public async Task<List<ProfileVM>> GetProfile()
-        {
-            List<ProfileVM> entities = new List<ProfileVM>();
-
-            using (var response = await httpClient.GetAsync(request + "Profile/"))
-            {
-                string apiResponse = await response.Content.ReadAsStringAsync();
-                entities = JsonConvert.DeserializeObject<List<ProfileVM>>(apiResponse);
-            }
-            return entities;
-        }*/
-
-        /*public async Task<ProfileVM> Profile(string id)
-        {
-            ProfileVM entity = null;
-
-            using (var response = await httpClient.GetAsync(request + "Profile/" + id))
-            {
-                string apiResponse = await response.Content.ReadAsStringAsync();
-                entity = JsonConvert.DeserializeObject<ProfileVM>(apiResponse);
-            }
-            return entity;
-        }*/
-
         public HttpStatusCode ResetPassword(LoginVM entity)
         {
             StringContent content = new StringContent(JsonConvert.SerializeObject(entity), Encoding.UTF8, "application/json");
