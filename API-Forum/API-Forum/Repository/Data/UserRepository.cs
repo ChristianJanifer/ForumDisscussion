@@ -116,25 +116,11 @@ namespace API_Forum.Repository.Data
 
 		public override int Delete(int id)
 		{
-			var findStatus = (from u in context.Users
-							  join d in context.Discussions on u.UserId equals d.UserId
-							  join c in context.Comments on d.DisId equals c.DisId
-							  where u.UserId == id 
-							  select new
-							  {
-								  User = u,
-								  Dis = d,
-								  Com = c
-							  }).ToList();
-            foreach (var x in findStatus)
-            {
-				x.User.Status = Status.off;
-				x.Dis.Status = Status.off;
-				x.Com.Status = Status.off;
-            }
+			var find = context.Users.Find(id);
+			find.Status = Status.off;
 			var result = context.SaveChanges();
 			return result;
-        }
+		}
 
 		public int UpdatePassword(LoginVM login)
 		{

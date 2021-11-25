@@ -50,9 +50,9 @@ namespace Client.Controllers
 
             foreach (var x in role)
             {
-                if (x is "Admin")
+                if (x == "Admin")
                 {
-                    return RedirectToAction("Dashboard", "Users");
+                    return RedirectToAction("Dashboard", "Admins");
                 }
             }
 

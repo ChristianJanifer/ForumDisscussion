@@ -200,3 +200,7 @@ C:\Users\Buala Hulu\Documents\GitHub\ForumDisscussion\API-Forum\Client\obj\Debug
 C:\Users\Buala Hulu\Documents\GitHub\ForumDisscussion\API-Forum\Client\obj\Debug\netcoreapp3.1\Razor\Views\Categories\Index.cshtml.g.cs
 C:\Users\Buala Hulu\Documents\GitHub\ForumDisscussion\API-Forum\Client\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_LayoutAdmin.cshtml.g.cs
 C:\Users\Buala Hulu\Documents\GitHub\ForumDisscussion\API-Forum\Client\obj\Debug\netcoreapp3.1\Razor\Views\TypeDiscussions\Index.cshtml.g.cs
+C:\Users\LENOVO\Documents\GitHub\ForumDisscussion\API-Forum\Client\obj\Debug\netcoreapp3.1\Razor\Views\Admins\Dashboard.cshtml.g.cs
+C:\Users\LENOVO\Documents\GitHub\ForumDisscussion\API-Forum\Client\obj\Debug\netcoreapp3.1\Razor\Views\Categories\Index.cshtml.g.cs
+C:\Users\LENOVO\Documents\GitHub\ForumDisscussion\API-Forum\Client\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_LayoutAdmin.cshtml.g.cs
+C:\Users\LENOVO\Documents\GitHub\ForumDisscussion\API-Forum\Client\obj\Debug\netcoreapp3.1\Razor\Views\TypeDiscussions\Index.cshtml.g.cs

@@ -40,6 +40,12 @@ namespace Client.Repositories.Data
             return entities;
         }
 
+        public HttpStatusCode DeleteUser(int id)
+        {
+            var result = httpClient.DeleteAsync(address.link + request + "Delete/"+ id).Result;
+            return result.StatusCode;
+        }
+
         public async Task<List<DiscussionVM>> GetLanding()
         {
             List<DiscussionVM> entities = new List<DiscussionVM>();

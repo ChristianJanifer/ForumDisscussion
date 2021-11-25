@@ -35,6 +35,12 @@ namespace Client.Controllers
             return Json(result);
         }
 
+        public JsonResult DeleteUser(int id)
+        {
+            var result = user.DeleteUser(id);
+            return Json(result);
+        }
+
         public async Task<JsonResult> GetLanding()
         {
             var result = await user.GetLanding();
