@@ -87,7 +87,7 @@ function getCategory(CategoryId) {
         contentType: "application/json;charset=UTF-8",
         dataType: "json",
         success: function (result) {
-            console.log(result)
+            console.log(result);
             $('#categoryId').val(result.categoryId);
             $('#categoryName').val(result.categoryName);
             $('#formCat').show();

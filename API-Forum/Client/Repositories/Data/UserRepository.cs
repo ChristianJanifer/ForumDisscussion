@@ -52,6 +52,18 @@ namespace Client.Repositories.Data
             return entities;
         }
 
+        /*public async Task<List<DiscussionVM>> GetLandingbyId(int id)
+        {
+            List<DiscussionVM> entities = new List<DiscussionVM>();
+
+            using (var response = await httpClient.GetAsync(request + "GetDiscussion/" + id))
+            {
+                string apiResponse = await response.Content.ReadAsStringAsync();
+                entities = JsonConvert.DeserializeObject<List<DiscussionVM>>(apiResponse);
+            }
+            return entities;
+        }*/
+
         public async Task<List<CommentVM>> GetReplybyId(int id)
         {
             List<CommentVM> entities = new List<CommentVM>();

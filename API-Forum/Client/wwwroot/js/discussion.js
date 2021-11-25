@@ -71,6 +71,18 @@
 });
 
 $.ajax({
+    url: "/Users/GetAll",
+    success: function (result) {
+        console.log(result);
+        var name = "";
+        $.each(result, function (key, val) {
+            name += `<option value="${val.userId}">${val.firstName}</option>`
+        });
+        $("#userId").html(name);
+    }
+})
+
+$.ajax({
     url: "/Categories/GetAll",
     success: function (result) {
         console.log(result);

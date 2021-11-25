@@ -218,6 +218,26 @@ namespace API_Forum.Repository.Data
 			return data1;
 		}
 
+		/*public IEnumerable<DiscussionVM> GetDiscussion(int id)
+		{
+			var data1 = (from d in context.Discussions
+						 join c in context.Categories on d.CategoryId equals c.CategoryId
+						 join u in context.Users on d.UserId equals u.UserId
+						 where d.Status == Status.@on && d.DisId == id
+						 select new DiscussionVM
+						 {
+							 DisId = d.DisId,
+							 FirstName = u.FirstName,
+							 LastName = u.LastName,
+							 Title = d.Title,
+							 Content = d.Content,
+							 DateDis = d.DateDis,
+							 CategoryName = c.CategoryName
+						 });
+			var data = context.Discussions.Where(p => p.Status == Status.on).ToList();
+			return data1;
+		}*/
+
 		public IEnumerable<CommentVM> GetComment(int id)
 		{
 			var data1 = (from u in context.Users

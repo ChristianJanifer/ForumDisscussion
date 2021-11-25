@@ -124,12 +124,21 @@ namespace API_Forum.Controllers
             return Ok(result);
         }
 
+        /*[HttpGet("GetDiscussion/{id}")]
+        public ActionResult GetDiscussion(int id)
+        {
+            var result = user.GetDiscussion(id);
+            return Ok(result);
+        }*/
+
         [HttpGet("GetComment/{id}")]
         public ActionResult GetComment(int id)
         {
             var result = user.GetComment(id);
             return Ok(result);
         }
+
+        
 
         [HttpGet]
         [Route("Replies")]

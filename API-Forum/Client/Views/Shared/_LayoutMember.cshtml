@@ -74,11 +74,7 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Konten Diskusi :</h6>
                         <a asp-area="" asp-controller="Discussions" asp-action="Index" class="collapse-item">Discussion</a>
-                        @*<h6 class="collapse-header">Discussion :</h6>
-                        <a asp-area="" asp-controller="TypeDiscussions" asp-action="Index" class="collapse-item">Type Discussion</a>*@
-                        @*<a class="collapse-item" href="#">See Content Discussion</a>*@
-@*                        <h6 class="collapse-header">Comment :</h6>
-                        <a class="collapse-item" href="#">See Comment</a>*@
+                        <a asp-area="" asp-controller="Comments" asp-action="Index" class="collapse-item">Comment</a>
                     </div>
                 </div>
             </li>
@@ -268,6 +264,8 @@
     <script src="https://cdn.datatables.net/buttons/2.0.1/js/buttons.print.min.js"></script>
 
     <script src="~/js/discussion.js" asp-append-version="true"></script>
+    <script src="~/js/comment.js" asp-append-version="true"></script>
+    <script src="~/js/landing.js" asp-append-version="true"></script>
 
     @RenderSection("Scripts", required: false)
 </body>

@@ -203,3 +203,4 @@ C:\Users\Buala Hulu\Documents\GitHub\ForumDisscussion\API-Forum\Client\obj\Debug
 C:\Users\Buala Hulu\Documents\GitHub\ForumDisscussion\API-Forum\Client\obj\Debug\netcoreapp3.1\Client.dll
 C:\Users\Buala Hulu\Documents\GitHub\ForumDisscussion\API-Forum\Client\obj\Debug\netcoreapp3.1\Client.pdb
 C:\Users\Buala Hulu\Documents\GitHub\ForumDisscussion\API-Forum\Client\obj\Debug\netcoreapp3.1\Client.genruntimeconfig.cache
+C:\Users\Buala Hulu\Documents\GitHub\ForumDisscussion\API-Forum\Client\obj\Debug\netcoreapp3.1\Razor\Views\Comments\Index.cshtml.g.cs

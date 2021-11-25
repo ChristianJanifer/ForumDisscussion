@@ -135,7 +135,6 @@ C:\Users\Buala Hulu\Documents\GitHub\ForumDisscussion\API-Forum\API-Forum\obj\De
 C:\Users\Buala Hulu\Documents\GitHub\ForumDisscussion\API-Forum\API-Forum\obj\Debug\netcoreapp3.1\staticwebassets\API-Forum.StaticWebAssets.xml
 C:\Users\Buala Hulu\Documents\GitHub\ForumDisscussion\API-Forum\API-Forum\obj\Debug\netcoreapp3.1\scopedcss\bundle\API-Forum.styles.css
 C:\Users\Buala Hulu\Documents\GitHub\ForumDisscussion\API-Forum\API-Forum\obj\Debug\netcoreapp3.1\API-Forum.RazorTargetAssemblyInfo.cache
-C:\Users\Buala Hulu\Documents\GitHub\ForumDisscussion\API-Forum\API-Forum\obj\Debug\netcoreapp3.1\API-Forum.csproj.CopyComplete
 C:\Users\Buala Hulu\Documents\GitHub\ForumDisscussion\API-Forum\API-Forum\obj\Debug\netcoreapp3.1\API-Forum.dll
 C:\Users\Buala Hulu\Documents\GitHub\ForumDisscussion\API-Forum\API-Forum\obj\Debug\netcoreapp3.1\API-Forum.pdb
 C:\Users\Buala Hulu\Documents\GitHub\ForumDisscussion\API-Forum\API-Forum\obj\Debug\netcoreapp3.1\API-Forum.genruntimeconfig.cache
