@@ -1,6 +1,7 @@
 ﻿using API_Forum.ViewModel;
 using Client.Base.Controllers;
 using Client.Repositories.Data;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -57,6 +58,14 @@ namespace Client.Controllers
             }
 
             return RedirectToAction("Index", "Users");
+        }
+
+        [Authorize]
+        /* [HttpGet("Logout")]*/
+        public IActionResult Logout()
+        {
+            HttpContext.Session.Clear();
+            return RedirectToAction("Index", "Home");
         }
     }
 }
