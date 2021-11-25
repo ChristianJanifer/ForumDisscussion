@@ -5,6 +5,15 @@
             'order': [[0, 'asc']],
             'dataSrc': ''
         },
+        "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
+        'columnDefs': [{
+
+            'targets': [6],
+
+            'orderable': false,
+
+        }],
+
         'columns': [
             {
                 data: 'no', name: 'id', render: function (data, type, row, meta) {
@@ -21,10 +30,23 @@
                 "data": "content"
             },
             {
-                "data": "dateDis"
+                "data": "",
+                'render': function (data, type, row, meta) {
+                    var date = row['dateDis'].substr(0, 10);
+                    var newDate = date.split('-');
+                    return newDate[2] + '-' + newDate[1] + '-' + newDate[0];
+                }
             },
             {
-                "data": "statusComt"
+                "data": "",
+                "render": function (data, type, row, meta) {
+                    if (row['statusComt'] == 0) {
+                        return ("Active");
+                    }
+                    else {
+                        return ("Disable");
+                    }
+                }
             },
             {
                 "data": "userId"
@@ -34,9 +56,6 @@
             },
             {
                 "data": "typeId"
-            },
-            {
-                "data": "status"
             },
             {
                 "data": " ",
@@ -51,6 +70,30 @@
     });
 });
 
+$.ajax({
+    url: "/Categories/GetAll",
+    success: function (result) {
+        console.log(result);
+        var categoryName = "";
+        $.each(result, function (key, val) {
+            categoryName += `<option value="${val.categoryId}">${val.categoryName}</option>`
+        });
+        $("#categoryId").html(categoryName);
+    }
+})
+
+$.ajax({
+    url: "/TypeDiscussions/GetAll",
+    success: function (result) {
+        console.log(result);
+        var typeName = "";
+        $.each(result, function (key, val) {
+            typeName += `<option value="${val.typeId}">${val.typeName}</option>`
+        });
+        $("#typeId").html(typeName);
+    }
+})
+
 $(document).ready(function () {
 
     $("#formDiscussion").validate({
@@ -58,21 +101,17 @@ $(document).ready(function () {
             title: "required",
             content: "required",
             dateDis: "required",
-            statusComt: "required",
             userId: "required",
             categoryId: "required",
             typeId: "required",
-            status: "required"
         },
         messages: {
             title: "Please input",
             content: "Please input",
             dateDis: "Please input ",
-            statusComt: "Please input",
             userId: "Please input",
             categoryId: "Please input",
             typeId: "Please input ",
-            status: "Please input "
         },
         submitHandler: function () {
             var obj = new Object();
@@ -81,9 +120,8 @@ $(document).ready(function () {
             obj.DateDis = $('#dateDis').val();
             obj.StatusComt = $('#statusComt').val();
             obj.UserId = $('#userId').val();
-            obj.CategoryId = $('#categoryId').val();
-            obj.TypeId = $('#typeId').val();
-            obj.Status = $('#status').val();
+            obj.CategoryId = parseInt($('#categoryId').val());
+            obj.TypeId = parseInt($('#typeId').val());
 
             console.log(obj);
             $.ajax({
@@ -105,10 +143,10 @@ $(document).ready(function () {
                     $('#title').val("");
                     $('#content').val("");
                     $('#dateDis').val("");
-                    $('#statusComt').val("");
+                    /*$('#statusComt').val("");*/
                     $('#userId').val("");
-                    $('#categoryId').val("");
-                    $('#typeId').val("");
+/*                    $('#categoryId').val("");
+                    $('#typeId').val("");*/
                     $('#status').val("");
 
                 } else if (result == 400) {

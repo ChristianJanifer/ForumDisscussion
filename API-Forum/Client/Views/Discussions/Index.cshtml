@@ -6,45 +6,42 @@
 }
 
 
-<section>
-    <div class="text-left">
-        <div class="text-black">
-            <h2>Discussion</h2>
-        </div>
+<div class="container-fluid p-3 text-black">
+    <div class="text-black">
+        <h2>Discussion</h2>
+        <p>
+            <button class="btn btn-primary" data-toggle="modal" data-target="#modalDiscussion">
+                <i class="fa fa-plus"></i>
+            </button>
+        </p>
     </div>
-
-    <p>
-        <button class="btn btn-primary" data-toggle="modal" data-target="#modalDiscussion">
-            <i class="fa fa-plus"></i>
-        </button>
-    </p>
-
-    @*Table Category*@
-    <div class="card-body">
-        <div class="table-responsive">
-            <table class="table table-bordered" id="tableDiscussion" width="100%" cellspacing="0">
-                <thead>
-                    <tr>
-                        <th>No</th>
-                        <th>Discussion Id</th>
-                        <th>Title</th>
-                        <th>Content</th>
-                        <th>Date</th>
-                        <th>StatusComt</th>
-                        <th>User Id</th>
-                        <th>Category Id</th>
-                        <th>Type Id</th>
-                        <th>Status</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
-                <tbody class="tbody" id="listDiscussion"></tbody>
-            </table>
+    <div class="card shadow mb-4">
+        <div class="card-header py-3"></div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-hover table-primary" id="tableDiscussion" width="150%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>Discussion Id</th>
+                            <th>Title</th>
+                            <th>Content</th>
+                            <th>Date</th>
+                            <th>StatusComt</th>
+                            <th>User Id</th>
+                            <th>Category Id</th>
+                            <th>Type Id</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody class="tbody" id="listDiscussion"></tbody>
+                </table>
+            </div>
         </div>
     </div>
 
     <div class="modal" id="modalDiscussion" name="modalDiscussion" tabindex="-1" role="dialog">
-        <div class="modal-dialog" role="document">
+        <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title">Data Discussion</h5>
@@ -54,51 +51,45 @@
                 </div>
                 <div class="modal-body">
                     <form id="formDiscussion">
-                        <div class="form-row">
-                            <div class="col-md-6 mb-3">
-                                <label for="formInputTitle">Title</label>
-                                <input type="text" class="form-control" id="title" name="title" placeholder="Title">
-                            </div>
+                        <div class="form-group">
+                            <label for="formInputTitle">Title</label>
+                            <input type="text" class="form-control" id="title" name="title" placeholder="Title">
+                        </div>
+                        <div class="form-group">
+                            <label for="formInputContent">Content</label>
+                            <input type="text" class="form-control" id="content" name="content" placeholder="Content">
                         </div>
                         <div class="form-row">
-                            <div class="col-md-6 mb-3">
-                                <label for="formInputContent">Content</label>
-                                <input type="text" class="form-control" id="content" name="content" placeholder="Content">
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="col-md-6 mb-3">
-                                <label for="formInputDateDis">DateDis</label>
+                            <div class="form-group col-md-6">
+                                <label for="formInputDateDis">Date Discussion</label>
                                 <input type="date" class="form-control" id="dateDis" name="dateDis" placeholder="DateDis">
                             </div>
+                            <div class="form-group col-md-6">
+                                <label for="formInputStatusComt">Status Comt</label>
+                                <select id="statusComt" class="form-control" name="statusComt" required>
+                                    <option>Choose...</option>
+                                    <option value="0">Active</option>
+                                    <option value="1">Disable</option>
+                                </select>
+                                <div class="invalid-tooltip">
+                                    Please insert your statusComt
+                                </div>
+                            </div>
                         </div>
                         <div class="form-row">
-                            <div class="col-md-6 mb-3">
-                                <label for="formInputStatusComt">StatusComt</label>
-                                <input type="text" class="form-control" id="statusComt" name="statusComt" placeholder="StatusComt">
-                            </div>
-                        </div><div class="form-row">
-                            <div class="col-md-6 mb-3">
+                            <div class="form-group col-md-4">
                                 <label for="formInputUserId">UserId</label>
                                 <input type="text" class="form-control" id="userId" name="userId" placeholder="UserId">
                             </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="col-md-6 mb-3">
+                            <div class="form-group col-md-4">
                                 <label for="formInputCategoryId">CategoryId</label>
-                                <input type="text" class="form-control" id="CategoryId" name="CategoryId" placeholder="CategoryId">
+                                <select id="categoryId" class="form-control" name="categoryId">
+                                </select>
                             </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="col-md-6 mb-3">
+                            <div class="form-group col-md-4">
                                 <label for="formInputTypeId">TypeId</label>
-                                <input type="text" class="form-control" id="typeId" name="typeId" placeholder="TypeId">
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="col-md-6 mb-3">
-                                <label for="formInputStatus">Status</label>
-                                <input type="text" class="form-control" id="status" name="status" placeholder="Status">
+                                <select id="typeId" class="form-control" name="typeId">
+                                </select>
                             </div>
                         </div>
                         <div class="modal-footer">
@@ -110,4 +101,4 @@
             </div>
         </div>
     </div>
-</section>
+</div>
