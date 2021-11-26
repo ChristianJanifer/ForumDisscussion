@@ -208,3 +208,4 @@ C:\Users\LENOVO\Documents\GitHub\ForumDisscussion\API-Forum\Client\obj\Debug\net
 C:\Users\LENOVO\Documents\GitHub\ForumDisscussion\API-Forum\Client\obj\Debug\netcoreapp3.1\Razor\Views\Members\Dashboard.cshtml.g.cs
 C:\Users\LENOVO\Documents\GitHub\ForumDisscussion\API-Forum\Client\obj\Debug\netcoreapp3.1\Razor\Views\Discussions\Index.cshtml.g.cs
 C:\Users\LENOVO\Documents\GitHub\ForumDisscussion\API-Forum\Client\obj\Debug\netcoreapp3.1\Razor\Views\Comments\Index.cshtml.g.cs
+C:\Users\LENOVO\Documents\GitHub\ForumDisscussion\API-Forum\Client\obj\Debug\netcoreapp3.1\Razor\Views\Users\Profile.cshtml.g.cs

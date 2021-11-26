@@ -57,7 +57,7 @@ namespace Client.Controllers
                 }
             }
 
-            return RedirectToAction("Dashboard", "Members");
+            return RedirectToAction("Profile", "Users");
         }
 
         [Authorize]
