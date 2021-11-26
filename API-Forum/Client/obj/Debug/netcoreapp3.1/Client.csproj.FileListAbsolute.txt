@@ -205,3 +205,14 @@ C:\Users\Buala Hulu\Documents\GitHub\ForumDisscussion\API-Forum\Client\obj\Debug
 C:\Users\Buala Hulu\Documents\GitHub\ForumDisscussion\API-Forum\Client\obj\Debug\netcoreapp3.1\Client.dll
 C:\Users\Buala Hulu\Documents\GitHub\ForumDisscussion\API-Forum\Client\obj\Debug\netcoreapp3.1\Client.pdb
 C:\Users\Buala Hulu\Documents\GitHub\ForumDisscussion\API-Forum\Client\obj\Debug\netcoreapp3.1\Client.genruntimeconfig.cache
+C:\Users\LENOVO\Documents\GitHub\ForumDisscussion\API-Forum\Client\obj\Debug\netcoreapp3.1\Razor\Views\Admins\Dashboard.cshtml.g.cs
+C:\Users\LENOVO\Documents\GitHub\ForumDisscussion\API-Forum\Client\obj\Debug\netcoreapp3.1\Razor\Views\Categories\Index.cshtml.g.cs
+C:\Users\LENOVO\Documents\GitHub\ForumDisscussion\API-Forum\Client\obj\Debug\netcoreapp3.1\Razor\Views\Comments\Index.cshtml.g.cs
+C:\Users\LENOVO\Documents\GitHub\ForumDisscussion\API-Forum\Client\obj\Debug\netcoreapp3.1\Razor\Views\Discussions\Index.cshtml.g.cs
+C:\Users\LENOVO\Documents\GitHub\ForumDisscussion\API-Forum\Client\obj\Debug\netcoreapp3.1\Razor\Views\Members\Dashboard.cshtml.g.cs
+C:\Users\LENOVO\Documents\GitHub\ForumDisscussion\API-Forum\Client\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_LayoutAdmin.cshtml.g.cs
+C:\Users\LENOVO\Documents\GitHub\ForumDisscussion\API-Forum\Client\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_LayoutMember.cshtml.g.cs
+C:\Users\LENOVO\Documents\GitHub\ForumDisscussion\API-Forum\Client\obj\Debug\netcoreapp3.1\Razor\Views\TypeDiscussions\Index.cshtml.g.cs
+C:\Users\LENOVO\Documents\GitHub\ForumDisscussion\API-Forum\Client\obj\Debug\netcoreapp3.1\Razor\Views\Users\Profile.cshtml.g.cs
+C:\Users\LENOVO\Documents\GitHub\ForumDisscussion\API-Forum\Client\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_LayoutDiskusi.cshtml.g.cs
+C:\Users\LENOVO\Documents\GitHub\ForumDisscussion\API-Forum\Client\obj\Debug\netcoreapp3.1\Razor\Views\Users\Content.cshtml.g.cs
