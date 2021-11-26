@@ -22,6 +22,12 @@ namespace Client.Controllers
             return View();
         }
 
+        public JsonResult Comment(Comment entity)
+        {
+            var result = comment.Comment(entity);
+            return Json(result);
+        }
+
         public async Task<JsonResult> GetComments()
         {
             var result = await comment.GetComments();

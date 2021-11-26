@@ -11,13 +11,13 @@ using System.Threading.Tasks;
 
 namespace Client.Repositories.Data
 {
-    public class CommentRepository : GeneralRepository<Comment, int>
+    public class DiscussionRepository : GeneralRepository<Discussion, int>
     {
         private readonly Address address;
-        private readonly string request;
         private readonly HttpClient httpClient;
+        private readonly string request;
 
-        public CommentRepository(Address address, string request = "Comments/") : base(address, request)
+        public DiscussionRepository(Address address, string request = "Discussions/") : base(address, request)
         {
             this.address = address;
             this.request = request;
@@ -27,23 +27,11 @@ namespace Client.Repositories.Data
             };
         }
 
-        public HttpStatusCode Comment(Comment entity)
+        public HttpStatusCode Discussion(Discussion entity)
         {
             StringContent content = new StringContent(JsonConvert.SerializeObject(entity), Encoding.UTF8, "application/json");
             var result = httpClient.PostAsync(address.link + request, content).Result;
             return result.StatusCode;
-        }
-
-        public async Task<List<Comment>> GetComments()
-        {
-            List<Comment> entities = new List<Comment>();
-
-            using (var response = await httpClient.GetAsync(request + "GetAll/"))
-            {
-                string apiResponse = await response.Content.ReadAsStringAsync();
-                entities = JsonConvert.DeserializeObject<List<Comment>>(apiResponse);
-            }
-            return entities;
         }
     }
 }

@@ -131,7 +131,9 @@ function insertData() {
             'Your account has been created.',
             'Please sign in to enter forum',
             'success'
-        );
+        ).then(function () {
+            window.location = "/Logins";
+        });
         clearTextBox();
     }).fail((error) => {
         console.log(error);

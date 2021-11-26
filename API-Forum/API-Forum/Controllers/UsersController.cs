@@ -105,7 +105,7 @@ namespace API_Forum.Controllers
                             );
                 var idtoken = new JwtSecurityTokenHandler().WriteToken(token);
                 claims.Add(new Claim("TokenSecurity", idtoken.ToString()));
-                return Ok(new JWTokenVM { Messages = "Login Berhasil", Token = idtoken, Roles = user.GetRole(loginVM) });
+                return Ok(new JWTokenVM { Messages = "Login Berhasil", Token = idtoken, Roles = user.GetRole(loginVM), UserId = user.GetId(loginVM) });
             }
             else if (result == 1)
             {
@@ -151,6 +151,54 @@ namespace API_Forum.Controllers
             else
             {
                 return NotFound(new { status = HttpStatusCode.OK, result = getReplies, message = "Tidak ada data tampil" });
+            }
+        }
+
+        [HttpGet]
+        [Route("Gender")]
+        public ActionResult GetGender()
+        {
+            var getGender = user.GetGender();
+
+            if (getGender != null)
+            {
+                return Ok(getGender);
+            }
+            else
+            {
+                return NotFound(new { status = HttpStatusCode.OK, result = getGender, message = "Tidak ada data tampil" });
+            }
+        }
+
+        [HttpGet]
+        [Route("UserDis")]
+        public ActionResult GetUserDis()
+        {
+            var getUserDis = user.GetUserDis();
+
+            if (getUserDis != null)
+            {
+                return Ok(getUserDis);
+            }
+            else
+            {
+                return NotFound(new { status = HttpStatusCode.OK, result = getUserDis, message = "Tidak ada data tampil" });
+            }
+        }
+
+        [HttpGet]
+        [Route("CatDis")]
+        public ActionResult GetCatDis()
+        {
+            var getCatDis = user.GetCatDis();
+
+            if (getCatDis != null)
+            {
+                return Ok(getCatDis);
+            }
+            else
+            {
+                return NotFound(new { status = HttpStatusCode.OK, result = getCatDis, message = "Tidak ada data tampil" });
             }
         }
 

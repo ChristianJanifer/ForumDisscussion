@@ -184,6 +184,13 @@ namespace API_Forum.Repository.Data
 			return result.ToArray();
 		}
 
+		public int GetId(LoginVM login)
+        {
+			var dataExist = context.Users.Where(fn => fn.Email == login.Email).FirstOrDefault();
+			var userId = dataExist.UserId;
+			return userId;
+		}
+
 		public IEnumerable<DiscussionVM> GetDiscussion()
 		{
 			var data1 = (from d in context.Discussions
@@ -227,6 +234,44 @@ namespace API_Forum.Repository.Data
 						 {
 							 DisId = a.Key,
 							 value = a.Count()
+						 };
+			return result;
+		}
+
+		public IEnumerable GetGender()
+		{
+			var result = from u in context.Users
+						 group u by u.Gender into x
+						 select new
+						 {
+							 Gender = (ViewModel.Gender)x.Key,
+							 value = x.Count()
+						 };
+			return result;
+		}
+
+		public IEnumerable GetUserDis()
+		{
+			var result = from u in context.Users
+						 join d in context.Discussions on u.UserId equals d.UserId
+						 group d by d.UserId into a
+						 select new
+						 {
+							 UserId = a.Key,
+							 value = a.Count()
+						 };
+			return result;
+		}
+
+		public IEnumerable GetCatDis()
+		{
+			var result = from c in context.Categories
+						 join d in context.Discussions on c.CategoryId equals d.CategoryId
+						 group d by d.CategoryId into c
+						 select new
+						 {
+							 CategoryId = c.Key,
+							 value = c.Count()
 						 };
 			return result;
 		}

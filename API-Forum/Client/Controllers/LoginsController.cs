@@ -44,7 +44,7 @@ namespace Client.Controllers
 
             if (token == null)
             {
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Index", "Logins");
             }
 
             HttpContext.Session.SetString("JWToken", token);
@@ -57,7 +57,7 @@ namespace Client.Controllers
                 }
             }
 
-            return RedirectToAction("Index", "Users");
+            return RedirectToAction("Dashboard", "Members");
         }
 
         [Authorize]

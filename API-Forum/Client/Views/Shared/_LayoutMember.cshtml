@@ -1,4 +1,10 @@
-﻿<!doctype html>
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+<!doctype html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -7,7 +13,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Admin Forum Discussion Dashboard</title>
+    <title>Member Forum Discussion Dashboard</title>
 
     <!-- Custom fonts for this template-->
     <link href="~/admin/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -39,7 +45,7 @@
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-laugh-wink"></i>
                 </div>
-                <div class="sidebar-brand-text">ADMIN FORUM DISCUSSION</div>
+                <div class="sidebar-brand-text">Member FORUM DISCUSSION</div>
             </a>
 
             <p></p>
@@ -49,7 +55,7 @@
 
             <!-- Nav Item - Employee -->
             <li class="nav-item active">
-                <a class="nav-link" asp-area="" asp-controller="Admins" asp-action="Dashboard">
+                <a class="nav-link" href="#">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span>
                 </a>
@@ -72,14 +78,9 @@
                 </a>
                 <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Category :</h6>
-                        <a asp-area="" asp-controller="Categories" asp-action="Index" class="collapse-item">Category</a>
-                        <h6 class="collapse-header">Discussion :</h6>
-                        <a asp-area="" asp-controller="TypeDiscussions" asp-action="Index" class="collapse-item">Type Discussion</a>
-                        @*<a class="collapse-item" href="#">See Content Discussion</a>*@
-                        <h6 class="collapse-header">Account Member :</h6>
-                        <a class="collapse-item" asp-area="" asp-controller="Users" asp-action="Dashboard">List Discussion</a>
-                        <a class="collapse-item" asp-area="" asp-controller="Users" asp-action="Index">List Member</a>
+                        <h6 class="collapse-header">Konten Diskusi :</h6>
+                        <a asp-area="" asp-controller="Discussions" asp-action="Index" class="collapse-item">Discussion</a>
+                        <a asp-area="" asp-controller="Comments" asp-action="Index" class="collapse-item">Comment</a>
                     </div>
                 </div>
             </li>
@@ -161,7 +162,7 @@
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Admin</span>
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Member</span>
                                 <img class="img-profile rounded-circle"
                                      src="~/admin/img/undraw_profile.svg">
                             </a>
@@ -268,10 +269,9 @@
     <script src="https://cdn.datatables.net/buttons/2.0.1/js/buttons.html5.min.js"></script>
     <script src="https://cdn.datatables.net/buttons/2.0.1/js/buttons.print.min.js"></script>
 
-    <script src="~/js/category.js" asp-append-version="true"></script>
-    <script src="~/js/type.js" asp-append-version="true"></script>
-    <script src="~/js/member.js" asp-append-version="true"></script>
-    <script src="~/js/chart.js" asp-append-version="true"></script>
+    <script src="~/js/discussion.js" asp-append-version="true"></script>
+    <script src="~/js/comment.js" asp-append-version="true"></script>
+    <script src="~/js/landing.js" asp-append-version="true"></script>
 
     @RenderSection("Scripts", required: false)
 </body>
