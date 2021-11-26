@@ -21,6 +21,7 @@
                 "data": " ",
                 "render": function (data, type, row, meta) {
                     var button = '<td>' +
+                     '<button type="button" onclick="getCategory(' + row['categoryId'] + ');"  class="btn btn-success text-center" data-toggle="modal" href="#modalCategory"><i class="fa fa-edit"></i></button>' + ' ' +
                         '<button type="button" onclick="deleteCategory(' + row['categoryId'] + ');" class="btn btn-danger text-center"><i class="fa fa-trash"></i></button>' +
                         '</td > ';
                     return button;
@@ -31,7 +32,6 @@
 });
 
 $(document).ready(function () {
-
     $("#formCategory").validate({
         rules: {
             categoryName: "required"
@@ -79,6 +79,62 @@ $(document).ready(function () {
         }
     });
 });
+
+function getCategory(CategoryId) {
+    $.ajax({
+        url: "/Categories/Get/" + CategoryId,
+        type: "GET",
+        contentType: "application/json;charset=UTF-8",
+        dataType: "json",
+        success: function (result) {
+            console.log(result);
+            $('#categoryId').val(result.categoryId);
+            $('#categoryName').val(result.categoryName);
+            $('#formCat').show();
+            $('#btnUpdate').show();
+            $('#btnAdd').hide();
+        },
+        error: function (errormessage) {
+            swal({
+                title: "FAILED",
+                text: "DATA TIDAK DITEMUKAN!",
+                icon: "error"
+            });
+        }
+    });
+    return false;
+}
+
+function updateCategory() {
+    var categoryId = $('#categoryId').val();
+    var obj = new Object();
+    obj.CategoryId = $("#categoryId").val();
+    obj.CategoryName = $("#categoryName").val();
+    $.ajax({
+        url: "/Categories/Put/",
+        type: "PUT",
+        data: { id: categoryId, entity: obj },
+        success: function (result) {
+            console.log(obj);
+            $('#categoryName').val("");
+            swal({
+                title: "Good job!",
+                text: "DATA BERHASIL DIUPDATE!!",
+                icon: "success",
+                button: "Okey!",
+            })
+            $('#tableCategory').DataTable().ajax.reload();
+        },
+        error: function (errormessage) {
+            swal({
+                title: "Failed!",
+                text: "DATA GAGAL DIUPDATE!!",
+                icon: "error",
+                button: "Close",
+            });
+        }
+    });
+}
 
 function deleteCategory(CategoryId) {
     swal({

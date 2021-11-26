@@ -33,14 +33,13 @@
             {
                 "data": "",
                 "render": function (data, type, row, meta) {
-                    var button = '<td> <button onclick="getCom(' + row['disId'] + ');" class="btn btn-primary btn-sm text-center" data-toggle="modal" data-target="#exampleModal">Click Comment </button></td>';
+                    var button = '<td> <button onclick="getCom(' + row['disId'] + ');" class="btn btn-primary btn-sm text-center" data-toggle="modal" data-target="#exampleModal">See Comment </button></td>';
                     return button;
                 }
             }
         ]
     });
 });
-
 
 function getCom(id) {
     listSerah = "";
@@ -76,7 +75,6 @@ function getCom(id) {
                             </div>
                          `;
             $('.modal-body').html(listSerah);
-
         },
         error: function (errormessage) {
             alert(errormessage.responseText);

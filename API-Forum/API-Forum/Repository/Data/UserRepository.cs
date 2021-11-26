@@ -116,25 +116,11 @@ namespace API_Forum.Repository.Data
 
 		public override int Delete(int id)
 		{
-			var findStatus = (from u in context.Users
-							  join d in context.Discussions on u.UserId equals d.UserId
-							  join c in context.Comments on d.DisId equals c.DisId
-							  where u.UserId == id 
-							  select new
-							  {
-								  User = u,
-								  Dis = d,
-								  Com = c
-							  }).ToList();
-            foreach (var x in findStatus)
-            {
-				x.User.Status = Status.off;
-				x.Dis.Status = Status.off;
-				x.Com.Status = Status.off;
-            }
+			var find = context.Users.Find(id);
+			find.Status = Status.off;
 			var result = context.SaveChanges();
 			return result;
-        }
+		}
 
 		public int UpdatePassword(LoginVM login)
 		{
@@ -198,6 +184,13 @@ namespace API_Forum.Repository.Data
 			return result.ToArray();
 		}
 
+		public int GetId(LoginVM login)
+		{
+			var dataExist = context.Users.Where(fn => fn.Email == login.Email).FirstOrDefault();
+			var userId = dataExist.UserId;
+			return userId;
+		}
+
 		public IEnumerable<DiscussionVM> GetDiscussion()
 		{
 			var data1 = (from d in context.Discussions
@@ -245,40 +238,42 @@ namespace API_Forum.Repository.Data
 			return result;
 		}
 
-		/*public int PostCategory(CategoryVM categoryVM)
+		public IEnumerable GetGender()
 		{
-			var categoryResult = new Category()
-			{
-				CategoryName = categoryVM.CategoryName
-			};
-
-			context.Categories.Add(categoryResult);
-			var result = context.SaveChanges();
+			var result = from u in context.Users
+						 group u by u.Gender into x
+						 select new
+						 {
+							 Gender = (ViewModel.Gender)x.Key,
+							 value = x.Count()
+						 };
 			return result;
 		}
 
-		public IEnumerable<CategoryVM> GetCategoryAll()
+		public IEnumerable GetUserDis()
 		{
-			var category = (from ca in context.Categories
-						   select new CategoryVM
-						   {
-							   CategoryId = ca.CategoryId,
-							   CategoryName = ca.CategoryName
-						   });
-			var result = category;
+			var result = from u in context.Users
+						 join d in context.Discussions on u.UserId equals d.UserId
+						 group d by d.UserId into a
+						 select new
+						 {
+							 UserId = a.Key,
+							 value = a.Count()
+						 };
 			return result;
 		}
 
-		public Object GetCategory(int id)
+		public IEnumerable GetCatDis()
 		{
-			var category = (from ca in context.Categories
-							where ca.CategoryId == id
-							select new CategoryVM
-							{
-								CategoryId = ca.CategoryId,
-								CategoryName = ca.CategoryName
-							});
-			return category.ToList();
-		}*/
+			var result = from c in context.Categories
+						 join d in context.Discussions on c.CategoryId equals d.CategoryId
+						 group d by d.CategoryId into c
+						 select new
+						 {
+							 CategoryId = c.Key,
+							 value = c.Count()
+						 };
+			return result;
+		}
 	}
 }

@@ -37,6 +37,8 @@ namespace Client
             services.AddScoped<AdminRepository>();
             services.AddScoped<CategoryRepository>();
             services.AddScoped<TypeDiscussionRepository>();
+            services.AddScoped<MemberRepository>();
+            services.AddScoped<DiscussionRepository>();
 
             services.AddScoped<Address>();
 

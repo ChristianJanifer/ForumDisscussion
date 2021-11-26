@@ -21,6 +21,7 @@
                 "data": " ",
                 "render": function (data, type, row, meta) {
                     var button = '<td>' +
+                        '<button type="button" onclick="getType(' + row['typeId'] + ');"  class="btn btn-success text-center" data-toggle="modal" href="#modalType"><i class="fa fa-edit"></i></button>' + ' ' +
                         '<button type="button" onclick="deleteType(' + row['typeId'] + ');" class="btn btn-danger text-center"><i class="fa fa-trash"></i></button>' +
                         '</td > ';
                     return button;
@@ -77,6 +78,62 @@ $(document).ready(function () {
         }
     });
 });
+
+function getType(TypeId) {
+    $.ajax({
+        url: "/TypeDiscussions/Get/" + TypeId,
+        type: "GET",
+        contentType: "application/json;charset=UTF-8",
+        dataType: "json",
+        success: function (result) {
+            console.log(result)
+            $('#typeId').val(result.typeId);
+            $('#typeName').val(result.typeName);
+            $('#formType1').show();
+            $('#btnUpdate').show();
+            $('#btnAdd').hide();
+        },
+        error: function (errormessage) {
+            swal({
+                title: "FAILED",
+                text: "DATA TIDAK DITEMUKAN!",
+                icon: "error"
+            });
+        }
+    });
+    return false;
+}
+
+function updateType() {
+    var typeId = $('#typeId').val();
+    var obj = new Object();
+    obj.TypeId = $("#typeId").val();
+    obj.TypeName = $("#typeName").val();
+    $.ajax({
+        url: "/TypeDiscussions/Put/",
+        type: "PUT",
+        data: { id: typeId, entity: obj },
+        success: function (result) {
+            console.log(obj);
+            $('#typeName').val("");
+            swal({
+                title: "Good job!",
+                text: "DATA BERHASIL DIUPDATE!!",
+                icon: "success",
+                button: "Okey!",
+            })
+            $('#tableType').DataTable().ajax.reload();
+        },
+        error: function (errormessage) {
+            swal({
+                title: "Failed!",
+                text: "DATA GAGAL DIUPDATE!!",
+                icon: "error",
+                button: "Close",
+            });
+        }
+    });
+}
 
 function deleteType(TypeId) {
     swal({

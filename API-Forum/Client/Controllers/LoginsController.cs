@@ -1,6 +1,7 @@
 ﻿using API_Forum.ViewModel;
 using Client.Base.Controllers;
 using Client.Repositories.Data;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -18,7 +19,6 @@ namespace Client.Controllers
             this.log = repository;
         }
 
-        /*[Authorize]*/
         public IActionResult Index()
         {
             return View();
@@ -43,7 +43,7 @@ namespace Client.Controllers
 
             if (token == null)
             {
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Index", "Logins");
             }
 
             HttpContext.Session.SetString("JWToken", token);
@@ -52,11 +52,22 @@ namespace Client.Controllers
             {
                 if (x is "Admin")
                 {
-                    return RedirectToAction("Dashboard", "Users");
+                    return RedirectToAction("Dashboard", "Admins");
+                }
+                else
+                {
+                    return RedirectToAction("Dashboard", "Members");
                 }
             }
 
-            return RedirectToAction("Index", "Users");
+            return RedirectToAction("Profile", "Users");
+        }
+
+        [Authorize]
+        public IActionResult Logout()
+        {
+            HttpContext.Session.Clear();
+            return RedirectToAction("Index", "Home");
         }
     }
 }

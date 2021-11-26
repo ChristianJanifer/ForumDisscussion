@@ -152,12 +152,25 @@ function resetPassword() {
         dataType: 'json'
     }).done((result) => {
         console.log(result);
-        Swal.fire(
-            'Your password has been updated.',
-            'Please sign in to enter forum',
-            'success'
-        );
-        clearTextBox();
+        if (result == 200) {
+            Swal.fire(
+                'Your password has been updated.',
+                'Please sign in to enter forum',
+                'success'
+            ).then(function () {
+                window.location = "/Logins";
+            });
+            clearTextBox();
+        } else if (result == 404) {
+            Swal.fire(
+                'Failed!',
+                'Your email is not registered.',
+                'error'
+            ).then(function () {
+                window.location = "/Logins/Reset";
+            });
+            clearTextBox();
+        }
     }).fail((error) => {
         console.log(error);
     });
