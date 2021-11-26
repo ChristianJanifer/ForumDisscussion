@@ -49,11 +49,12 @@
 
             <!-- Nav Item - Employee -->
             <li class="nav-item active">
-                <a class="nav-link" href="#">
+                <a class="nav-link"  asp-area="" asp-controller="Admins" asp-action="Dashboard">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span>
                 </a>
             </li>
+
 
             <!-- Divider -->
             <hr class="sidebar-divider">
@@ -76,20 +77,20 @@
                         <a asp-area="" asp-controller="Categories" asp-action="Index" class="collapse-item">Category</a>
                         <h6 class="collapse-header">Discussion :</h6>
                         <a asp-area="" asp-controller="TypeDiscussions" asp-action="Index" class="collapse-item">Type Discussion</a>
-                        @*<a class="collapse-item" href="#">See Content Discussion</a>*@
-                        <h6 class="collapse-header">Comment :</h6>
-                        <a class="collapse-item" href="#">See Comment</a>
+                        <h6 class="collapse-header">Account Member :</h6>
+                        <a class="collapse-item" asp-area="" asp-controller="Users" asp-action="Dashboard">List Discussion</a>
+                        <a class="collapse-item" asp-area="" asp-controller="Users" asp-action="Index">List Member</a>
                     </div>
                 </div>
             </li>
 
             <!-- Nav Item - Charts -->
             <!--<li class="nav-item">
-                <a class="nav-link" href="#">
-                    <i class="fas fa-fw fa-chart-area"></i>
-                    <span>Charts</span>
-                </a>
-            </li>-->
+        <a class="nav-link" href="#">
+            <i class="fas fa-fw fa-chart-area"></i>
+            <span>Charts</span>
+        </a>
+    </li>-->
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
 
@@ -233,7 +234,7 @@
                 <div class="modal-body">Pilih Logout, jika Anda ingin Keluar.</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="/Employees/Logout">Logout</a>
+                    <a class="btn btn-primary" href="/Logins/Logout">Logout</a>
                 </div>
             </div>
         </div>
@@ -269,6 +270,8 @@
 
     <script src="~/js/category.js" asp-append-version="true"></script>
     <script src="~/js/type.js" asp-append-version="true"></script>
+    <script src="~/js/member.js" asp-append-version="true"></script>
+    <script src="~/js/chart.js" asp-append-version="true"></script>
 
     @RenderSection("Scripts", required: false)
 </body>

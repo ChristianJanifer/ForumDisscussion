@@ -131,7 +131,7 @@ $(document).ready(function () {
             obj.Content = $('#content').val();
             obj.DateDis = $('#dateDis').val();
             obj.StatusComt = $('#statusComt').val();
-            obj.UserId = $('#userId').val();
+            obj.UserId = parseInt$('#userId').val();
             obj.CategoryId = parseInt($('#categoryId').val());
             obj.TypeId = parseInt($('#typeId').val());
 
@@ -149,17 +149,16 @@ $(document).ready(function () {
                         icon: "success",
                         button: "Okey!",
                     }).then(function () {
-                        window.location = "/Discussions";
+                        window.location= "/Discussions";
                     });
 
                     $('#title').val("");
                     $('#content').val("");
                     $('#dateDis').val("");
-                    /*$('#statusComt').val("");*/
+                    $('#statusComt').val("");
                     $('#userId').val("");
-/*                    $('#categoryId').val("");
-                    $('#typeId').val("");*/
-                    $('#status').val("");
+                    $('#categoryId').val("");
+                    $('#typeId').val("");
 
                 } else if (result == 400) {
                     swal({

@@ -29,9 +29,20 @@ namespace Client.Controllers
             return View();
         }
 
+        public IActionResult Profile()
+        {
+            return View();
+        }
+
         public async Task<JsonResult> GetProfile()
         {
             var result = await user.GetProfile();
+            return Json(result);
+        }
+
+        public JsonResult DeleteUser(int id)
+        {
+            var result = user.DeleteUser(id);
             return Json(result);
         }
 
@@ -41,34 +52,10 @@ namespace Client.Controllers
             return Json(result);
         }
 
-/*        public async Task<JsonResult> GetLandingbyId(int id)
-        {
-            var result = await user.GetLandingbyId(id);
-            return Json(result);
-        }
-*/
         public async Task<JsonResult> GetReplybyId(int id)
         {
             var result = await user.GetReplybyId(id);
             return Json(result);
         }
-
-        /*public JsonResult PostCategory(CategoryVM entity)
-        {
-            var result = user.PostCategory(entity);
-            return Json(result);
-        }
-
-        public async Task<JsonResult> GetCategoryAll()
-        {
-            var result = await user.GetCategoryAll();
-            return Json(result);
-        }
-
-        public async Task<JsonResult> GetCategorybyId(int id)
-        {
-            var result = await user.GetCategorybyId(id);
-            return Json(result);
-        }*/
     }
 }

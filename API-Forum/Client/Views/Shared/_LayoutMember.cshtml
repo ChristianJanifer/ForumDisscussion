@@ -72,7 +72,7 @@
                 </a>
                 <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Konten Diskusi :</h6>
+                        <a asp-area="" asp-controller="Users" asp-action="Profile" class="collapse-item">Profile</a>
                         <a asp-area="" asp-controller="Discussions" asp-action="Index" class="collapse-item">Discussion</a>
                         <a asp-area="" asp-controller="Comments" asp-action="Index" class="collapse-item">Comment</a>
                     </div>
@@ -229,7 +229,7 @@
                 <div class="modal-body">Pilih Logout, jika Anda ingin Keluar.</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="/Employees/Logout">Logout</a>
+                    <a class="btn btn-primary" href="/Logins/Logout">Logout</a>
                 </div>
             </div>
         </div>
@@ -262,10 +262,12 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
     <script src="https://cdn.datatables.net/buttons/2.0.1/js/buttons.html5.min.js"></script>
     <script src="https://cdn.datatables.net/buttons/2.0.1/js/buttons.print.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <script src="~/js/discussion.js" asp-append-version="true"></script>
     <script src="~/js/comment.js" asp-append-version="true"></script>
     <script src="~/js/landing.js" asp-append-version="true"></script>
+    <script src="~/js/profile.js" asp-append-version="true"></script>
 
     @RenderSection("Scripts", required: false)
 </body>

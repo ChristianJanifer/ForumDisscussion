@@ -56,7 +56,7 @@ $(document).ready(function () {
                         icon: "success",
                         button: "Okey!",
                     }).then(function () {
-                        window.location.reload();
+                        window.location = "/Comments";
                     });
                     $("#contentComment").val("");
                     $("#dateCom").val("");

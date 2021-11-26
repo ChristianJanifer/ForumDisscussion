@@ -105,7 +105,7 @@ namespace API_Forum.Controllers
                             );
                 var idtoken = new JwtSecurityTokenHandler().WriteToken(token);
                 claims.Add(new Claim("TokenSecurity", idtoken.ToString()));
-                return Ok(new JWTokenVM { Messages = "Login Berhasil", Token = idtoken, Roles = user.GetRole(loginVM) });
+                return Ok(new JWTokenVM { Messages = "Login Berhasil", Token = idtoken, Roles = user.GetRole(loginVM), UserId = user.GetId(loginVM) });
             }
             else if (result == 1)
             {
@@ -117,6 +117,13 @@ namespace API_Forum.Controllers
             }
         }
 
+        [HttpDelete("Delete/{id}")]
+        public ActionResult DeleteUser(int id)
+        {
+            var result = user.Delete(id);
+            return Ok(result);
+        }
+
         [HttpGet("GetDiscussion")]
         public ActionResult GetDiscussion()
         {
@@ -124,21 +131,12 @@ namespace API_Forum.Controllers
             return Ok(result);
         }
 
-        /*[HttpGet("GetDiscussion/{id}")]
-        public ActionResult GetDiscussion(int id)
-        {
-            var result = user.GetDiscussion(id);
-            return Ok(result);
-        }*/
-
         [HttpGet("GetComment/{id}")]
         public ActionResult GetComment(int id)
         {
             var result = user.GetComment(id);
             return Ok(result);
         }
-
-        
 
         [HttpGet]
         [Route("Replies")]
@@ -156,30 +154,52 @@ namespace API_Forum.Controllers
             }
         }
 
-        /*[Route("PostCategory")]
-        [HttpPost]
-        public ActionResult PostCategory(CategoryVM categoryVM)
+        [HttpGet]
+        [Route("Gender")]
+        public ActionResult GetGender()
         {
-            var result = user.PostCategory(categoryVM);
-            return Ok(result);
+            var getGender = user.GetGender();
 
+            if (getGender != null)
+            {
+                return Ok(getGender);
+            }
+            else
+            {
+                return NotFound(new { status = HttpStatusCode.OK, result = getGender, message = "Tidak ada data tampil" });
+            }
         }
 
         [HttpGet]
-        [Route("GetCategoryAll")]
-
-        public ActionResult GetCategoryAll()
+        [Route("UserDis")]
+        public ActionResult GetUserDis()
         {
-            var result = user.GetCategoryAll();
-            return Ok(result);
+            var getUserDis = user.GetUserDis();
+
+            if (getUserDis != null)
+            {
+                return Ok(getUserDis);
+            }
+            else
+            {
+                return NotFound(new { status = HttpStatusCode.OK, result = getUserDis, message = "Tidak ada data tampil" });
+            }
         }
 
         [HttpGet]
-        [Route("GetCategory/{id}")]
-        public ActionResult GetCategory(int id)
+        [Route("CatDis")]
+        public ActionResult GetCatDis()
         {
-            var result = user.GetCategory(id);
-            return Ok(result);
-        }*/
+            var getCatDis = user.GetCatDis();
+
+            if (getCatDis != null)
+            {
+                return Ok(getCatDis);
+            }
+            else
+            {
+                return NotFound(new { status = HttpStatusCode.OK, result = getCatDis, message = "Tidak ada data tampil" });
+            }
+        }
     }
 }

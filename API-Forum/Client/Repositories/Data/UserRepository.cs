@@ -40,6 +40,12 @@ namespace Client.Repositories.Data
             return entities;
         }
 
+        public HttpStatusCode DeleteUser(int id)
+        {
+            var result = httpClient.DeleteAsync(address.link + request + "Delete/" + id).Result;
+            return result.StatusCode;
+        }
+
         public async Task<List<DiscussionVM>> GetLanding()
         {
             List<DiscussionVM> entities = new List<DiscussionVM>();
@@ -52,18 +58,6 @@ namespace Client.Repositories.Data
             return entities;
         }
 
-        /*public async Task<List<DiscussionVM>> GetLandingbyId(int id)
-        {
-            List<DiscussionVM> entities = new List<DiscussionVM>();
-
-            using (var response = await httpClient.GetAsync(request + "GetDiscussion/" + id))
-            {
-                string apiResponse = await response.Content.ReadAsStringAsync();
-                entities = JsonConvert.DeserializeObject<List<DiscussionVM>>(apiResponse);
-            }
-            return entities;
-        }*/
-
         public async Task<List<CommentVM>> GetReplybyId(int id)
         {
             List<CommentVM> entities = new List<CommentVM>();
@@ -75,36 +69,5 @@ namespace Client.Repositories.Data
             }
             return entities;
         }
-
-        /*public HttpStatusCode PostCategory(CategoryVM entity)
-        {
-            StringContent content = new StringContent(JsonConvert.SerializeObject(entity), Encoding.UTF8, "application/json");
-            var result = httpClient.PostAsync(address.link + request + "PostCategory/", content).Result;
-            return result.StatusCode;
-        }
-
-        public async Task<List<CategoryVM>> GetCategoryAll()
-        {
-            List<CategoryVM> entities = new List<CategoryVM>();
-
-            using (var response = await httpClient.GetAsync(request + "GetCategoryAll/"))
-            {
-                string apiResponse = await response.Content.ReadAsStringAsync();
-                entities = JsonConvert.DeserializeObject<List<CategoryVM>>(apiResponse);
-            }
-            return entities;
-        }
-
-        public async Task<List<CategoryVM>> GetCategorybyId(int id)
-        {
-            List<CategoryVM> entities = new List<CategoryVM>();
-
-            using (var response = await httpClient.GetAsync(request + "GetCategory/" + id))
-            {
-                string apiResponse = await response.Content.ReadAsStringAsync();
-                entities = JsonConvert.DeserializeObject<List<CategoryVM>>(apiResponse);
-            }
-            return entities;
-        }*/
     }
 }
