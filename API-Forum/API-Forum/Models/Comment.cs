@@ -22,11 +22,13 @@ namespace API_Forum.Models
         public int UserId { get; set; }
 
         public int DisId { get; set; }
+
         public Status Status { get; set; }
+
         [JsonIgnore]
         public virtual User User { get; set; }
+
         [JsonIgnore]
-        [ForeignKey("DisId")]
         public virtual Discussion Discussion { get; set; }
     }
 }

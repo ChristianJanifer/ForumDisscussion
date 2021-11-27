@@ -233,7 +233,7 @@ namespace API_Forum.Migrations
                     b.HasOne("API_Forum.Models.Discussion", "Discussion")
                         .WithMany("Comments")
                         .HasForeignKey("DisId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.HasOne("API_Forum.Models.User", "User")

@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace API_Forum.Migrations
 {
-    public partial class forumjalanpls : Migration
+    public partial class ForumDatabase : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -170,8 +170,7 @@ namespace API_Forum.Migrations
                         name: "FK_Tb_T_Comment_Tb_T_Discussion_DisId",
                         column: x => x.DisId,
                         principalTable: "Tb_T_Discussion",
-                        principalColumn: "DisId",
-                        onDelete: ReferentialAction.NoAction);
+                        principalColumn: "DisId");
                 });
 
             migrationBuilder.CreateIndex(

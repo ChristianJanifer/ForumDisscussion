@@ -35,31 +35,33 @@
             </ul>
         </nav>
     </header>
-    <section class="section main-banner" id="top" data-section="section1">
-        <video autoplay muted loop id="bg-video">
-            <source src="assets/images/course-video.mp4" type="video/mp4" />
-        </video>
-
-        <div class="video-overlay header-text">
-            <div class="caption">
-                <h6>PT. Mitra Integrasi Informatika</h6>
-                <h2><em>Forum</em> Discussion</h2>
+    @* <section class="section main-banner" id="top" data-section="section1">
+            <video autoplay muted loop id="bg-video">
+                <source src="assets/images/course-video.mp4" type="video/mp4" />
+            </video>
+            <div class="video-overlay header-text">
+                <div class="caption">
+                    <h6>PT. Mitra Integrasi Informatika</h6>
+                    <h2><em>Forum</em> Discussion</h2>
+                </div>
             </div>
-        </div>
-    </section>
-    <section class="mt-3">
-        <div class="container">
-            <div class="row chat">
-                <div class="col-5 p-4">
-                    <div class="row">
-                        <i class="fas fa-thumbtack mr-2 pl-3"></i>
-                        <h6>Welcome New Users! Please read this before posting!</h6>
+        </section>
+        <section class="mt-3">
+            <div class="container">
+                <div class="row chat">
+                    <div class="col-5 p-4">
+                        <div class="row">
+                            <i class="fas fa-thumbtack mr-2 pl-3"></i>
+                            <h6>Welcome New Users! Please read this before posting!</h6>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </section>*@
+    <section class="mt-3" style="margin-top:100px;">
+        @RenderBody()
     </section>
-    @RenderBody()
+
     <footer class="bg-white mt-5">
         <div class="container">
             <section>

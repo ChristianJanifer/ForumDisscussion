@@ -16,6 +16,7 @@ namespace API_Forum.Models
         public int RoleId { get; set; }
 
         public string RoleName { get; set; }
+
         [JsonIgnore]
         public virtual ICollection<AccountRole> AccountRoles { get; set; }
     }

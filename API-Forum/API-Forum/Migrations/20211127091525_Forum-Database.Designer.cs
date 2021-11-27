@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace API_Forum.Migrations
 {
     [DbContext(typeof(MyContext))]
-    [Migration("20211123084002_forumjalanpls")]
-    partial class forumjalanpls
+    [Migration("20211127091525_Forum-Database")]
+    partial class ForumDatabase
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -235,7 +235,7 @@ namespace API_Forum.Migrations
                     b.HasOne("API_Forum.Models.Discussion", "Discussion")
                         .WithMany("Comments")
                         .HasForeignKey("DisId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.HasOne("API_Forum.Models.User", "User")

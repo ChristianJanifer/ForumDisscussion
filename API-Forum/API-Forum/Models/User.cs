@@ -28,12 +28,16 @@ namespace API_Forum.Models
         public DateTime BirthDate { get; set; }
 
         public string Phone { get; set; }
+
         public Status Status { get; set; }
+
         [JsonIgnore]
         public virtual Account Account { get; set; }
+
         [JsonIgnore]
         public virtual ICollection<Discussion> Discussions { get; set; }
         [JsonIgnore]
+
         public virtual ICollection<Comment> Comments { get; set; }
     }
 

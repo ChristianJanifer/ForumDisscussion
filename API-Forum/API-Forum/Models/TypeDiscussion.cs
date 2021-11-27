@@ -16,6 +16,7 @@ namespace API_Forum.Models
         public int TypeId { get; set; }
 
         public string TypeName { get; set; }
+
         [JsonIgnore]
         public virtual ICollection<Discussion> Discussions { get; set; }
     }

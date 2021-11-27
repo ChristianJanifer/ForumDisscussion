@@ -57,7 +57,9 @@ namespace API_Forum.Context
             // Relasi Discussion dan Comment
             modelBuilder.Entity<Discussion>()
                 .HasMany(co => co.Comments)
-                .WithOne(dis => dis.Discussion);
+                .WithOne(dis => dis.Discussion)
+                .HasForeignKey(dis => dis.DisId)
+                .OnDelete(DeleteBehavior.NoAction);
 
             // Relasi Discussion dan Category
             modelBuilder.Entity<Category>()

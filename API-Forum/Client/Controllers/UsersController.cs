@@ -34,6 +34,11 @@ namespace Client.Controllers
             return View();
         }
 
+        public IActionResult Content()
+        {
+            return View();
+        }
+
         public async Task<JsonResult> GetProfile()
         {
             var result = await user.GetProfile();
@@ -55,6 +60,12 @@ namespace Client.Controllers
         public async Task<JsonResult> GetReplybyId(int id)
         {
             var result = await user.GetReplybyId(id);
+            return Json(result);
+        }
+
+        public async Task<JsonResult> GetDiscussion(int id)
+        {
+            var result = await user.GetDiscussionById(id);
             return Json(result);
         }
     }
