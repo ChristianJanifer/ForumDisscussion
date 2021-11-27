@@ -1,45 +1,141 @@
-﻿$(document).ready(function () {
-    $('#tableUser').DataTable({
-        'ajax': {
-            'url': "GetLanding",
-            'dataSrc': ''
-        },
-        'columns': [
-            {
-                "data": "disId",
-            },
-            {
-                "data": "title",
-            },
-            {
-                "data": "content",
-            },
-            {
-                "data": "",
-                "render": function (data, type, row, meta) {
-                    var date = row['dateDis'].substr(0, 10);
-                    return date;
-                }
-            },
-            {
-                "data": "categoryName",
-            },
-            {
-                "data": "",
-                "render": function (data, type, row, meta) {
-                    return row['firstName'] + ' ' + row['lastName'];
-                }
-            },
-            {
-                "data": "",
-                "render": function (data, type, row, meta) {
-                    var button = '<td> <button onclick="getCom(' + row['disId'] + ');" class="btn btn-primary btn-sm text-center" data-toggle="modal" data-target="#exampleModal">Click Comment </button></td>';
-                    return button;
-                }
-            }
-        ]
-    });
+﻿$.ajax({
+    url: "/Users/GetLanding/",
+    success: function (result) {
+        console.log(result);
+        var listSerah = "";
+        $.each(result, function (key, val) {
+            listSerah += `
+<section class="py-4">
+    <div class="card">
+        <div class="card-body">
+            <div class="container">
+                <div class="card">
+                    <div class="card-body">
+                        <h5>${val.title}</h5>
+                        <hr>
+                        <span class="category text-body pt-1 mr-3">${val.categoryName}</span>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between py-3 px-5">
+                            <div class="row comment">
+                                <span class="color2 mr-2 text-white">${val.firstName.substr(0, 1)}</span>
+                                <span class="text-body font-weight-bold">${val.firstName} ${val.lastName}</span>
+                            </div>
+                            <div class="row time text-muted align-self-center">
+                                <i class="far fa-clock pr-2"><span class="align-self-center"> ${val.dateDis.substr(0, 10)}</span></i>
+                            </div>
+                        </div>
+                        <hr>
+                        <p class="text-muted">
+                            ${val.content}
+                        </p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-body">
+                        <a onclick="getDiskusi(${val.disId})" class="btn btn-primary">Detail Discussion >></a>
+                        <button type="button" class="btn btn-secondary" onclick=window.location.reload();>Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+`
+        });
+        $('#diskusi').html(listSerah);
+    },
+    error: function (errormessage) {
+        alert(errormessage.responseText);
+    }
+});
 
+function getDiskusi(id) {
+    $.ajax({
+        url: "/Users/GetDiscussionbyId/" + id,
+        success: function (result) {
+            console.log(result);
+            var listSerah = "";
+            $.each(result, function (key, val) {
+                listSerah += `
+<section class="py-4">
+    <div class="card">
+        <div class="card-body">
+            <div class="container">
+                <div class="card">
+                    <div class="card-body">
+                        <h5>${val.title}</h5>
+                        <hr>
+                        <span class="category text-body pt-1 mr-3">${val.categoryName}</span>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between py-3 px-5">
+                            <div class="row comment">
+                                <span class="color2 mr-2 text-white">${val.firstName.substr(0, 1)}</span>
+                                <span class="text-body font-weight-bold">${val.firstName} ${val.lastName}</span>
+                            </div>
+                            <div class="row time text-muted align-self-center">
+                                <i class="far fa-clock pr-2"><span class="align-self-center"> ${val.dateDis.substr(0, 10)}</span></i>
+                            </div>
+                        </div>
+                        <hr>
+                        <p class="text-muted">
+                            ${val.content}
+                        </p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-body">
+                        <a onclick="getComment(${val.disId})" href="#tampilKomen" class="btn btn-primary" data-toggle="collapse">Show Comment >></a>
+                        <button type="button" class="btn btn-secondary" onclick=window.location.reload();>Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+`
+            });
+            $('#diskusi').html(listSerah);
+        },
+        error: function (errormessage) {
+            alert(errormessage.responseText);
+        }
+    });
+}
+
+function getComment(id) {
+    $.ajax({
+        url: "/Users/GetReplyById/" + id,
+        success: function (result) {
+            console.log(result);
+            var listSerah = "";
+            $.each(result, function (key, val) {
+                listSerah += `<div class="row">
+                                <div class="col">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <p class="card-text">Oleh : ${val.firstName} | Date published : ${val.dateCom.substr(0, 10)} </p>
+                                            <hr>
+                                            <p class="card-text">${val.content}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                              </div>`
+            });
+            $('#tampilKomen').html(listSerah);
+        },
+        error: function (errormessage) {
+            alert(errormessage.responseText);
+        }
+    });
+}
+
+$(document).ready(function () {
     $('#tableMember').DataTable({
         'ajax': {
             'url': "Users/GetProfile",
@@ -100,52 +196,8 @@
     });
 });
 
-
-function getCom(id) {
-    listSerah = "";
-    listCo = "";
-    listDa = "";
-    listFn = "";
-    $.ajax({
-        url: "GetReplybyId/" + id,
-        success: function (result) {
-            console.log(result);
-
-            for (let i = 0; i < result.length; i++) {
-                listCo += `<p>${result[i].content}</p>`;
-                listDa += `<p>${result[i].dateCom.substr(0, 10)}</p>`;
-                listFn += `<p>${result[i].firstName}</p>`;
-            }
-
-            listSerah += `  <div class="container-fluid">
-                                <div class="row">
-                                    <table class="table">
-                                        <tr>
-                                            <td>Comments</td>
-                                            <td>Date Comments</td>
-                                            <td>First Name</td>
-                                        </tr>
-                                        <tr>
-                                            <td>${listCo}</td>
-                                            <td>${listDa}</td>
-                                            <td>${listFn}</td>
-                                        </tr>
-                                    </table>
-                                </div>
-                            </div>
-                         `;
-            $('.modal-body').html(listSerah);
-
-        },
-        error: function (errormessage) {
-            alert(errormessage.responseText);
-        }
-    });
-    return false;
-}
-
 function deleteUser(id) {
-    swal({
+    Swal.fire({
         title: "Are you sure?",
         text: "Hapus Data Ini !!",
         icon: "warning",
@@ -163,7 +215,7 @@ function deleteUser(id) {
                 dataType: "json",
                 data: { id: id },
                 success: function (result) {
-                    swal({
+                    Swal.fire({
                         title: "Good job!",
                         text: "DATA BERHASIL DIHAPUS!!",
                         icon: "success",
@@ -173,7 +225,7 @@ function deleteUser(id) {
                     });
                 },
                 error: function (errormessage) {
-                    swal({
+                    Swal.fire({
                         title: "Failed!",
                         text: "DATA GAGAL DIHAPUS!!",
                         icon: "error",
@@ -182,7 +234,9 @@ function deleteUser(id) {
                 }
             });
         } else {
-            swal("DATA GAGAL DIHAPUS!!");
+            Swal.fire({
+                text: "DATA GAGAL DIHAPUS!!"
+            });
         }
     });
 }

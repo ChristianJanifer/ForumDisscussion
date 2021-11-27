@@ -18,13 +18,15 @@
 
     <!-- Custom styles for this template-->
     <link href="~/admin/css/sb-admin-2.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="~/page/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 
     <style>
         form .error {
             color: #ff0000;
         }
     </style>
-
 </head>
 <body>
 
@@ -49,9 +51,8 @@
 
             <!-- Nav Item - Employee -->
             <li class="nav-item active">
-                <a class="nav-link" href="#">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>Dashboard</span>
+                <a class="nav-link" asp-area="" asp-controller="Discussions" asp-action="LihatDiskusi">
+                    Dashboard
                 </a>
             </li>
 
@@ -73,19 +74,13 @@
                 <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a asp-area="" asp-controller="Users" asp-action="Profile" class="collapse-item">Profile</a>
-                        <a asp-area="" asp-controller="Discussions" asp-action="Index" class="collapse-item">Discussion</a>
+                        <a asp-area="" asp-controller="Discussions" asp-action="CreateDiskusi" class="collapse-item">Create Discussion</a>
+                        <a asp-area="" asp-controller="Discussions" asp-action="Index" class="collapse-item">Hapus Discussion</a>
                         <a asp-area="" asp-controller="Comments" asp-action="Index" class="collapse-item">Comment</a>
                     </div>
                 </div>
             </li>
 
-            <!-- Nav Item - Charts -->
-            <!--<li class="nav-item">
-                <a class="nav-link" href="#">
-                    <i class="fas fa-fw fa-chart-area"></i>
-                    <span>Charts</span>
-                </a>
-            </li>-->
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
 
@@ -252,7 +247,6 @@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.js"></script>
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js"></script>
 
     <!-- Libary Save File .JavaScript -->
@@ -264,9 +258,10 @@
     <script src="https://cdn.datatables.net/buttons/2.0.1/js/buttons.print.min.js"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
+    <script src="https://kit.fontawesome.com/f1364fd64f.js"></script>
+
     <script src="~/js/discussion.js" asp-append-version="true"></script>
     <script src="~/js/comment.js" asp-append-version="true"></script>
-    <script src="~/js/landing.js" asp-append-version="true"></script>
     <script src="~/js/profile.js" asp-append-version="true"></script>
 
     @RenderSection("Scripts", required: false)
