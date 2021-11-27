@@ -7502,23 +7502,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Buala Hulu\\.nuget\\packages\\": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "C:\\Users\\Christian Janifer\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Buala Hulu\\Documents\\GitHub\\ForumDisscussion\\API-Forum\\Client\\Client.csproj",
+      "projectUniqueName": "D:\\METRODATA CODING CAMP\\GitHub\\ForumDisscussion\\API-Forum\\Client\\Client.csproj",
       "projectName": "Client",
-      "projectPath": "C:\\Users\\Buala Hulu\\Documents\\GitHub\\ForumDisscussion\\API-Forum\\Client\\Client.csproj",
-      "packagesPath": "C:\\Users\\Buala Hulu\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Buala Hulu\\Documents\\GitHub\\ForumDisscussion\\API-Forum\\Client\\obj\\",
+      "projectPath": "D:\\METRODATA CODING CAMP\\GitHub\\ForumDisscussion\\API-Forum\\Client\\Client.csproj",
+      "packagesPath": "C:\\Users\\Christian Janifer\\.nuget\\packages\\",
+      "outputPath": "D:\\METRODATA CODING CAMP\\GitHub\\ForumDisscussion\\API-Forum\\Client\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-      ],
       "configFilePaths": [
-        "C:\\Users\\Buala Hulu\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Christian Janifer\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -7532,8 +7528,8 @@
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
           "projectReferences": {
-            "C:\\Users\\Buala Hulu\\Documents\\GitHub\\ForumDisscussion\\API-Forum\\API-Forum\\API-Forum.csproj": {
-              "projectPath": "C:\\Users\\Buala Hulu\\Documents\\GitHub\\ForumDisscussion\\API-Forum\\API-Forum\\API-Forum.csproj"
+            "D:\\METRODATA CODING CAMP\\GitHub\\ForumDisscussion\\API-Forum\\API-Forum\\API-Forum.csproj": {
+              "projectPath": "D:\\METRODATA CODING CAMP\\GitHub\\ForumDisscussion\\API-Forum\\API-Forum\\API-Forum.csproj"
             }
           }
         }
