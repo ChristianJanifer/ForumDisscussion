@@ -214,5 +214,5 @@ C:\Users\LENOVO\Documents\GitHub\ForumDisscussion\API-Forum\Client\obj\Debug\net
 C:\Users\LENOVO\Documents\GitHub\ForumDisscussion\API-Forum\Client\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_LayoutMember.cshtml.g.cs
 C:\Users\LENOVO\Documents\GitHub\ForumDisscussion\API-Forum\Client\obj\Debug\netcoreapp3.1\Razor\Views\TypeDiscussions\Index.cshtml.g.cs
 C:\Users\LENOVO\Documents\GitHub\ForumDisscussion\API-Forum\Client\obj\Debug\netcoreapp3.1\Razor\Views\Users\Profile.cshtml.g.cs
-C:\Users\LENOVO\Documents\GitHub\ForumDisscussion\API-Forum\Client\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_LayoutDiskusi.cshtml.g.cs
-C:\Users\LENOVO\Documents\GitHub\ForumDisscussion\API-Forum\Client\obj\Debug\netcoreapp3.1\Razor\Views\Users\Content.cshtml.g.cs
+C:\Users\LENOVO\Documents\GitHub\ForumDisscussion\API-Forum\Client\obj\Debug\netcoreapp3.1\Razor\Views\Discussions\CreateDiskusi.cshtml.g.cs
+C:\Users\LENOVO\Documents\GitHub\ForumDisscussion\API-Forum\Client\obj\Debug\netcoreapp3.1\Razor\Views\Discussions\LihatDiskusi.cshtml.g.cs

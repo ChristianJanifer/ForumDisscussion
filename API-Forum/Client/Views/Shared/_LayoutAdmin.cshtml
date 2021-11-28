@@ -19,6 +19,9 @@
     <!-- Custom styles for this template-->
     <link href="~/admin/css/sb-admin-2.min.css" rel="stylesheet">
 
+    <link rel="stylesheet" type="text/css" href="~/page/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
     <style>
         form .error {
             color: #ff0000;
@@ -48,8 +51,8 @@
             <hr class="sidebar-divider my-0">
 
             <!-- Nav Item - Employee -->
-            <li class="nav-item active">
-                <a class="nav-link"  asp-area="" asp-controller="Admins" asp-action="Dashboard">
+            <li class="nav-item">
+                <a class="nav-link" asp-area="" asp-controller="Admins" asp-action="Dashboard">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span>
                 </a>
@@ -86,11 +89,11 @@
 
             <!-- Nav Item - Charts -->
             <!--<li class="nav-item">
-        <a class="nav-link" href="#">
-            <i class="fas fa-fw fa-chart-area"></i>
-            <span>Charts</span>
-        </a>
-    </li>-->
+                <a class="nav-link" href="#">
+                    <i class="fas fa-fw fa-chart-area"></i>
+                    <span>Charts</span>
+                </a>
+            </li>-->
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
 
@@ -257,7 +260,6 @@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.js"></script>
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js"></script>
 
     <!-- Libary Save File .JavaScript -->
@@ -267,11 +269,15 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
     <script src="https://cdn.datatables.net/buttons/2.0.1/js/buttons.html5.min.js"></script>
     <script src="https://cdn.datatables.net/buttons/2.0.1/js/buttons.print.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script src="https://kit.fontawesome.com/f1364fd64f.js"></script>
 
     <script src="~/js/category.js" asp-append-version="true"></script>
     <script src="~/js/type.js" asp-append-version="true"></script>
     <script src="~/js/member.js" asp-append-version="true"></script>
     <script src="~/js/chart.js" asp-append-version="true"></script>
+
 
     @RenderSection("Scripts", required: false)
 </body>

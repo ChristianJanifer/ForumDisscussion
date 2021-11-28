@@ -237,6 +237,7 @@ namespace API_Forum.Repository.Data
 						 select new CommentVM
 						 {
 							 FirstName = u.FirstName,
+							 LastName = u.LastName,
 							 Content = c.Content,
 							 DateCom = c.DateComment
 						 });

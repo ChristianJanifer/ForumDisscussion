@@ -40,6 +40,7 @@ namespace Client.Controllers
             var jwtToken = await log.Login(login);
             var token = jwtToken.Token;
             var role = jwtToken.Roles;
+            var id = jwtToken.UserId;
 
             if (token == null)
             {
@@ -47,6 +48,7 @@ namespace Client.Controllers
             }
 
             HttpContext.Session.SetString("JWToken", token);
+            HttpContext.Session.SetInt32("UserId", id);
 
             foreach (var x in role)
             {
@@ -56,7 +58,7 @@ namespace Client.Controllers
                 }
                 else
                 {
-                    return RedirectToAction("Dashboard", "Members");
+                    return RedirectToAction("LihatDiskusi", "Discussions");
                 }
             }
 
