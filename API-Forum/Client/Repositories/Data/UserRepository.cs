@@ -40,6 +40,18 @@ namespace Client.Repositories.Data
             return entities;
         }
 
+        public async Task<ProfileVM> Profile(int id)
+        {
+            ProfileVM entity = null;
+
+            using (var response = await httpClient.GetAsync(request + "Profile/" + id))
+            {
+                string apiResponse = await response.Content.ReadAsStringAsync();
+                entity = JsonConvert.DeserializeObject<ProfileVM>(apiResponse);
+            }
+            return entity;
+        }
+
         public HttpStatusCode DeleteUser(int id)
         {
             var result = httpClient.DeleteAsync(address.link + request + "Delete/" + id).Result;

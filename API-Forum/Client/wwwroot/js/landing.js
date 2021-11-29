@@ -38,6 +38,8 @@
     }
 });
 
+
+
 function getDiskusi(id) {
     $.ajax({
         url: "/Users/GetDiscussion/" + id,

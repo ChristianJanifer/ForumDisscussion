@@ -2,6 +2,7 @@
 using API_Forum.ViewModel;
 using Client.Base.Controllers;
 using Client.Repositories.Data;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -31,12 +32,19 @@ namespace Client.Controllers
 
         public IActionResult Profile()
         {
+            
             return View();
         }
 
         public async Task<JsonResult> GetProfile()
         {
             var result = await user.GetProfile();
+            return Json(result);
+        }
+
+        public async Task<JsonResult> ProfileUser(int id)
+        {
+            var result = await user.Profile(id);
             return Json(result);
         }
 

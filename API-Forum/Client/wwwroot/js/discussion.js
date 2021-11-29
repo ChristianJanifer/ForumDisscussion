@@ -327,12 +327,13 @@ function getDiskusi(id) {
                             <h5>${val.content}</h5>
                         </p>
                         <hr>
-                        <button type="button" class="btn btn-warning" onclick="window.location.href='/Logins';">Comment</button>
+                        <button type="button" class="btn btn-warning" href="#postKomen" data-toggle="collapse">Comment</button>
                         <button type="button" class="btn btn-secondary" onclick=window.location.reload();>Back</button>
                     </div>
                 </div>
 </section>
 `
+                $("#dis").val(val.disId);
             });
             $('#diskusi').html(listSerah);
             $.ajax({
@@ -375,30 +376,78 @@ function getDiskusi(id) {
     });
 }
 
-/*function getComment(id) {
-    $.ajax({
-        url: "/Users/GetReplyById/" + id,
-        success: function (result) {
-            console.log(result);
-            var listSerah = "";
-            $.each(result, function (key, val) {
-                listSerah += `<div class="row">
-                                <div class="col">
-                                    <div class="card">
-                                        <div class="card-body">
-                                            <p class="card-text">Oleh : ${val.firstName} | Date published : ${val.dateCom.substr(0, 10)} </p>
-                                            <hr>
-                                            <p class="card-text">${val.content}</p>
-                                        </div>
-                                    </div>
-                                </div>
-                              </div>`
-            });
-            $('#tampilKomen').html(listSerah);
+$(document).ready(function () {
+    $("#formComment").validate({
+        rules: {
+            contentComment: {
+                required: true
+            },
+            dateCom: {
+                required: true
+            },
+            userId: {
+                required: true
+            },
+            disId: {
+                required: true
+            }
         },
-        error: function (errormessage) {
-            alert(errormessage.responseText);
+        errorPlacement: function (error, element) { },
+        highlight: function (element) {
+            $(element).closest('.form-control').addClass('is-invalid');
+        },
+        unhighlight: function (element) {
+            $(element).closest('.form-control').removeClass('is-invalid');
         }
     });
-}*/
+});
+
+function validComment() {
+    var ini = $("#formComment").valid();
+    console.log(ini);
+
+    if (ini === true) {
+        insertComment();
+    }
+    else {
+        Swal.fire(
+            'Failed!',
+            'Please enter all fields.',
+            'error'
+        );
+    }
+}
+
+function insertComment() {
+    var obj = new Object();
+    obj.Content = $("#contentComment").val();
+    obj.DateComment = $("#dateCom").val();
+    obj.UserId = $("#user").val();
+    obj.DisId = $("#dis").val();
+
+    console.log(obj);
+    $.ajax({
+        url: "/Comments/Comment/",
+        type: "POST",
+        data: { entity: obj },
+        dataType: 'json'
+    }).done((result) => {
+        console.log(result);
+        Swal.fire({
+            icon: 'success',
+            title: 'Your work has been saved',
+        }).then(function () {
+            window.location = "/Discussions/LihatDiskusi";
+        });
+        clearTextBoxx();
+    }).fail((error) => {
+        console.log(error);
+        Swal.fire({
+            title: 'Error!',
+            text: 'Do you want to continue',
+            icon: 'error',
+            confirmButtonText: 'Cool'
+        });
+    });
+}
 

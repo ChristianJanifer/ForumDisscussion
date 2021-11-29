@@ -12,7 +12,7 @@
     <div class="container bg-white p-4">
         <div class="row d-flex justify-content-between p-3">
             <div class="">
-                <img src="/page/img/message_icon2.png" class="img-fluid">
+                <img src="/page/img/wrote2.png" class="img-fluid">
                 <span class="pl-2 text-body font-weight-bold">Edit Profile</span>
             </div>
         </div>
@@ -22,7 +22,7 @@
                     <div class="col">
                         <div class="form-group">
                             <label for="inputNIK">UserId</label>
-                            <input type="text" class="form-control" id="id" name="id" placeholder="Enter NIK" value=@HttpContextAccessor.HttpContext.Session.GetInt32("UserId") disabled>
+                            <input type="text" class="form-control" id="id" name="id" placeholder="User Id" value="@HttpContextAccessor.HttpContext.Session.GetInt32("UserId")"  disabled>
                             <div class="invalid-feedback">
                                 Please insert your nik
                             </div>
@@ -95,7 +95,7 @@
                     </div>
                 </div>
                 <div class="row d-flex justify-content-end mt-4 px-3">
-                    <button type="button" class="btn btn-warning" onclick="valid()">Add Data</button>
+                    <button type="button" class="btn btn-warning" onclick="ValidateUpdate(document.getElementById('id').value)">Save Changes</button>
                     <button type="button" class="btn btn-danger" onclick=window.location.reload();>Close</button>
                 </div>
             </form>
