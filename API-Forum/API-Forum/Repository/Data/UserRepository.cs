@@ -304,6 +304,20 @@ namespace API_Forum.Repository.Data
 			return result;
 		}
 
+		public IEnumerable<ReplyVM> GetRepliesbyId(int id)
+		{
+			var result = from u in context.Users
+						 join c in context.Comments on u.UserId equals c.UserId
+						 where c.DisId == id
+						 group c by c.DisId into a
+						 select new ReplyVM
+						 {
+							 DisId = a.Key,
+							 Value = a.Count()
+						 };
+			return result;
+		}
+
 		public IEnumerable GetGender()
 		{
 			var result = from u in context.Users
@@ -333,11 +347,11 @@ namespace API_Forum.Repository.Data
 		{
 			var result = from c in context.Categories
 						 join d in context.Discussions on c.CategoryId equals d.CategoryId
-						 group d by d.CategoryId into c
+						 group d by c.CategoryName into x
 						 select new
 						 {
-							 CategoryId = c.Key,
-							 value = c.Count()
+							 categoryName = x.Key,
+							 value = x.Count()
 						 };
 			return result;
 		}

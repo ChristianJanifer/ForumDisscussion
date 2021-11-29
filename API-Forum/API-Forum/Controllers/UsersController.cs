@@ -175,6 +175,13 @@ namespace API_Forum.Controllers
             }
         }
 
+        [HttpGet("Replies/{id}")]
+        public ActionResult GetRepliesbyId(int id)
+        {
+            var result = user.GetRepliesbyId(id);
+            return Ok(result);
+        }
+
         [HttpGet]
         [Route("Gender")]
         public ActionResult GetGender()

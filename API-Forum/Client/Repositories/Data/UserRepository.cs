@@ -129,5 +129,17 @@ namespace Client.Repositories.Data
             }
             return entities;
         }
+
+        public async Task<List<ReplyVM>> GetRepliesbyId(int id)
+        {
+            List<ReplyVM> entities = new List<ReplyVM>();
+
+            using (var response = await httpClient.GetAsync(request + "Replies/" + id))
+            {
+                string apiResponse = await response.Content.ReadAsStringAsync();
+                entities = JsonConvert.DeserializeObject<List<ReplyVM>>(apiResponse);
+            }
+            return entities;
+        }
     }
 }

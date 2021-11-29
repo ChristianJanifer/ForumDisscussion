@@ -94,5 +94,11 @@ namespace Client.Controllers
             var result = await user.GetNewByDate();
             return Json(result);
         }
+
+        public async Task<JsonResult> GetRepliesbyId(int id)
+        {
+            var result = await user.GetRepliesbyId(id);
+            return Json(result);
+        }
     }
 }
