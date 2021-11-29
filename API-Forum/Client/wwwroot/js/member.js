@@ -66,7 +66,6 @@ function getDiskusi(id) {
                             <h5>${val.content}</h5>
                         </p>
                         <hr>
-                        <button type="button" class="btn btn-warning" onclick="window.location.href='/Logins';">Comment</button>
                         <button type="button" class="btn btn-secondary" onclick=window.location.reload();>Back</button>
                     </div>
                 </div>
@@ -114,32 +113,6 @@ function getDiskusi(id) {
     });
 }
 
-/*function getComment(id) {
-    $.ajax({
-        url: "/Users/GetReplyById/" + id,
-        success: function (result) {
-            console.log(result);
-            var listSerah = "";
-            $.each(result, function (key, val) {
-                listSerah += `<div class="row">
-                                <div class="col">
-                                    <div class="card">
-                                        <div class="card-body">
-                                            <p class="card-text">Oleh : ${val.firstName} | Date published : ${val.dateCom.substr(0, 10)} </p>
-                                            <hr>
-                                            <p class="card-text">${val.content}</p>
-                                        </div>
-                                    </div>
-                                </div>
-                              </div>`
-            });
-            $('#tampilKomen').html(listSerah);
-        },
-        error: function (errormessage) {
-            alert(errormessage.responseText);
-        }
-    });
-}*/
 
 $(document).ready(function () {
     $('#tableMember').DataTable({

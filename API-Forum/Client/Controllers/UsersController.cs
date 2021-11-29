@@ -36,6 +36,12 @@ namespace Client.Controllers
             return View();
         }
 
+        public IActionResult ProfileAdmin()
+        {
+
+            return View();
+        }
+
         public async Task<JsonResult> GetProfile()
         {
             var result = await user.GetProfile();

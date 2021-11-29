@@ -114,6 +114,13 @@ namespace API_Forum.Repository.Data
 
 		}
 
+		public string GetFullName(LoginVM loginVM)
+		{
+			var checkEmail = context.Users.Where(p => p.Email == loginVM.Email).FirstOrDefault();
+			var Fullname = checkEmail.FirstName + " " + checkEmail.LastName;
+			return Fullname;
+		}
+
 		public override int Delete(int id)
 		{
 			var find = context.Users.Find(id);

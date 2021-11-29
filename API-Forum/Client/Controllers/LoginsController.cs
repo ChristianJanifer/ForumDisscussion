@@ -41,6 +41,7 @@ namespace Client.Controllers
             var token = jwtToken.Token;
             var role = jwtToken.Roles;
             var id = jwtToken.UserId;
+            var name = jwtToken.FullName;
 
             if (token == null)
             {
@@ -48,6 +49,7 @@ namespace Client.Controllers
             }
 
             HttpContext.Session.SetString("JWToken", token);
+            HttpContext.Session.SetString("Username", name);
             HttpContext.Session.SetInt32("UserId", id);
 
             foreach (var x in role)
