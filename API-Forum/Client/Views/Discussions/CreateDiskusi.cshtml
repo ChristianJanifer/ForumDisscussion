@@ -1,6 +1,10 @@
 ﻿@*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
+@using Microsoft.AspNetCore.Http;
+
+@inject IHttpContextAccessor HttpContextAccessor
+
 @{
     Layout = "_LayoutMember";
 }
@@ -43,8 +47,7 @@
                 <div class="form-row">
                     <div class="form-group col-md-4">
                         <label for="formInputUserId">Name User</label>
-                        <select id="userId" class="form-control" name="userId">
-                        </select>
+                        <input type="text" class="form-control" id="userId" name="userId" placeholder="UserId" value="@HttpContextAccessor.HttpContext.Session.GetInt32("UserId")" disabled>
                     </div>
                     <div class="form-group col-md-4">
                         <label for="formInputCategoryId">Category</label>

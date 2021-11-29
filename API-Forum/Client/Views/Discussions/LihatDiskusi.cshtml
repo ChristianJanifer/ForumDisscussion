@@ -1,12 +1,16 @@
 ﻿@*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
+@using Microsoft.AspNetCore.Http;
+
+@inject IHttpContextAccessor HttpContextAccessor
 @{
     Layout = "_LayoutMember";
 }
 
 <section class="my-5">
     <div class="container bg-white p-4">
+        <h6 class="hid"></h6>
         <div class="row d-flex justify-content-between p-3">
             <div class="pl-2 text-body font-weight-bold">
                 <h4>Forum Discussion</h4>
@@ -14,8 +18,7 @@
         </div>
         <div class="container" id="diskusi">
         </div>
-        <div class="collapse" id="tampilKomen">
-            
+        <div class="container" id="tampilKomen">
         </div>
         <div class="collapse" id="postKomen">
             <section class="new-topic my-5">
@@ -39,15 +42,13 @@
                                 </div>
                                 <div class="form-group col-md-6">
                                     <label for="formInputUserId">Name User</label>
-                                    <select id="user" class="form-control" name="userId">
-                                    </select>
+                                    <input type="text" class="form-control" id="user" name="user" placeholder="UserId" value="@HttpContextAccessor.HttpContext.Session.GetInt32("UserId")" disabled>
                                 </div>
                             </div>
                             <div class="form-row">
                                 <div class="form-group col-md-4">
                                     <label for="formInputDiscussionId">Content Discussion</label>
-                                    <select id="dis" class="form-control" name="disId">
-                                    </select>
+                                    <input type="text" class="form-control" id="dis" name="dis" placeholder="DisId" disabled>
                                 </div>
                             </div>
                             <div class="row d-flex justify-content-end mt-4 px-3">
@@ -61,5 +62,6 @@
         </div>
     </div>
 </section>
+
 
 

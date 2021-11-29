@@ -14,5 +14,12 @@ namespace API_Forum.ViewModel
         public string Content { get; set; }
         public DateTime DateDis { get; set; }
         public string CategoryName { get; set; }
+        public GenericUriParserOptions StatusComt { get; set; }
+    }
+
+    public enum GenericUriParserOptions
+    {
+        Active,
+        Disable
     }
 }

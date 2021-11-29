@@ -114,6 +114,13 @@ namespace API_Forum.Repository.Data
 
 		}
 
+		public string GetFullName(LoginVM loginVM)
+		{
+			var checkEmail = context.Users.Where(p => p.Email == loginVM.Email).FirstOrDefault();
+			var Fullname = checkEmail.FirstName + " " + checkEmail.LastName;
+			return Fullname;
+		}
+
 		public override int Delete(int id)
 		{
 			var find = context.Users.Find(id);
@@ -207,7 +214,6 @@ namespace API_Forum.Repository.Data
 							 DateDis = d.DateDis,
 							 CategoryName = c.CategoryName
 						 });
-			var data = context.Discussions.Where(p => p.Status == Status.on).ToList();
 			return data1;
 		}
 
@@ -225,7 +231,47 @@ namespace API_Forum.Repository.Data
 							 Title = d.Title,
 							 Content = d.Content,
 							 DateDis = d.DateDis,
+							 CategoryName = c.CategoryName,
+							 StatusComt = (ViewModel.GenericUriParserOptions)d.StatusComt
+						 });
+			return data1;
+		}
+
+		public Object GetDiscussionByCat(int id)
+		{
+			var data1 = (from d in context.Discussions
+						 join c in context.Categories on d.CategoryId equals c.CategoryId
+						 join u in context.Users on d.UserId equals u.UserId
+						 where d.Status == Status.@on && d.CategoryId == id
+						 select new DiscussionVM
+						 {
+							 DisId = d.DisId,
+							 FirstName = u.FirstName,
+							 LastName = u.LastName,
+							 Title = d.Title,
+							 Content = d.Content,
+							 DateDis = d.DateDis,
 							 CategoryName = c.CategoryName
+						 });
+			return data1;
+		}
+
+		public Object GetDiscussionByUser(int id)
+		{
+			var data1 = (from d in context.Discussions
+						 join c in context.Categories on d.CategoryId equals c.CategoryId
+						 join u in context.Users on d.UserId equals u.UserId
+						 where d.Status == Status.@on && d.UserId == id
+						 select new DiscussionVM
+						 {
+							 DisId = d.DisId,
+							 FirstName = u.FirstName,
+							 LastName = u.LastName,
+							 Title = d.Title,
+							 Content = d.Content,
+							 DateDis = d.DateDis,
+							 CategoryName = c.CategoryName,
+							 StatusComt = (ViewModel.GenericUriParserOptions)d.StatusComt
 						 });
 			return data1;
 		}
@@ -238,6 +284,7 @@ namespace API_Forum.Repository.Data
 						 select new CommentVM
 						 {
 							 FirstName = u.FirstName,
+							 LastName = u.LastName,
 							 Content = c.Content,
 							 DateCom = c.DateComment
 						 });
@@ -292,6 +339,15 @@ namespace API_Forum.Repository.Data
 							 CategoryId = c.Key,
 							 value = c.Count()
 						 };
+			return result;
+		}
+
+		public IEnumerable GetNewByDate()
+		{
+			var result = (from d in context.Discussions
+						  where d.DateDis.Date <= DateTime.Now
+						  orderby d.DateDis descending
+						  select d).Take(5);
 			return result;
 		}
 	}

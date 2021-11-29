@@ -40,6 +40,18 @@ namespace Client.Repositories.Data
             return entities;
         }
 
+        public async Task<ProfileVM> Profile(int id)
+        {
+            ProfileVM entity = null;
+
+            using (var response = await httpClient.GetAsync(request + "Profile/" + id))
+            {
+                string apiResponse = await response.Content.ReadAsStringAsync();
+                entity = JsonConvert.DeserializeObject<ProfileVM>(apiResponse);
+            }
+            return entity;
+        }
+
         public HttpStatusCode DeleteUser(int id)
         {
             var result = httpClient.DeleteAsync(address.link + request + "Delete/" + id).Result;
@@ -58,7 +70,19 @@ namespace Client.Repositories.Data
             return entities;
         }
 
-        public async Task<List<DiscussionVM>> GetDiscussionbyId(int id)
+        public async Task<List<CommentVM>> GetReplybyId(int id)
+        {
+            List<CommentVM> entities = new List<CommentVM>();
+
+            using (var response = await httpClient.GetAsync(request + "GetComment/" + id))
+            {
+                string apiResponse = await response.Content.ReadAsStringAsync();
+                entities = JsonConvert.DeserializeObject<List<CommentVM>>(apiResponse);
+            }
+            return entities;
+        }
+
+        public async Task<List<DiscussionVM>> GetDiscussionById(int id)
         {
             List<DiscussionVM> entities = new List<DiscussionVM>();
 
@@ -70,14 +94,26 @@ namespace Client.Repositories.Data
             return entities;
         }
 
-        public async Task<List<CommentVM>> GetReplybyId(int id)
+        public async Task<List<DiscussionVM>> GetDiscussionByCat(int id)
         {
-            List<CommentVM> entities = new List<CommentVM>();
+            List<DiscussionVM> entities = new List<DiscussionVM>();
 
-            using (var response = await httpClient.GetAsync(request + "GetComment/" + id))
+            using (var response = await httpClient.GetAsync(request + "GetDiscussionByCat/" + id))
             {
                 string apiResponse = await response.Content.ReadAsStringAsync();
-                entities = JsonConvert.DeserializeObject<List<CommentVM>>(apiResponse);
+                entities = JsonConvert.DeserializeObject<List<DiscussionVM>>(apiResponse);
+            }
+            return entities;
+        }
+
+        public async Task<List<DiscussionVM>> GetDiscussionByUser(int id)
+        {
+            List<DiscussionVM> entities = new List<DiscussionVM>();
+
+            using (var response = await httpClient.GetAsync(request + "GetDiscussionByUser/" + id))
+            {
+                string apiResponse = await response.Content.ReadAsStringAsync();
+                entities = JsonConvert.DeserializeObject<List<DiscussionVM>>(apiResponse);
             }
             return entities;
         }
