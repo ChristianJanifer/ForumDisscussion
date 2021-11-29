@@ -1,74 +1,4 @@
-﻿$(document).ready(function () {
-    $('#tableDiscussion').DataTable({
-        'ajax': {
-            'url': "/Discussions/GetAll",
-            'order': [[0, 'asc']],
-            'dataSrc': ''
-        },
-        "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
-        'columnDefs': [{
-
-            'targets': [6],
-
-            'orderable': false,
-
-        }],
-
-        'columns': [
-            {
-                data: 'no', name: 'id', render: function (data, type, row, meta) {
-                    return meta.row + meta.settings._iDisplayStart + 1;
-                }
-            },
-            {
-                "data": "disId"
-            },
-            {
-                "data": "title"
-            },
-            {
-                "data": "content"
-            },
-            {
-                "data": "",
-                'render': function (data, type, row, meta) {
-                    var date = row['dateDis'].substr(0, 10);
-                    var newDate = date.split('-');
-                    return newDate[2] + '-' + newDate[1] + '-' + newDate[0];
-                }
-            },
-            {
-                "data": "",
-                "render": function (data, type, row, meta) {
-                    if (row['statusComt'] == 0) {
-                        return ("Active");
-                    }
-                    else {
-                        return ("Disable");
-                    }
-                }
-            },
-            {
-                "data": "userId"
-            },
-            {
-                "data": "categoryId"
-            },
-            {
-                "data": "typeId"
-            },
-            {
-                "data": " ",
-                "render": function (data, type, row, meta) {
-                    var button = '<td>' +
-                        '<button type="button" onclick="deleteDiscussion(' + row['disId'] + ');" class="btn btn-danger text-center"><i class="fa fa-trash"></i></button>' +
-                        '</td > ';
-                    return button;
-                }
-            }
-        ]
-    });
-});
+﻿
 
 $(document).ready(function () {
     $("#postDiskusi").validate({
@@ -305,7 +235,13 @@ function getDiskusi(id) {
         success: function (result) {
             console.log(result);
             var listSerah = "";
+            var button = "";
             $.each(result, function (key, val) {
+                if (val.statusComt == 0) {
+                    button += `<button type="button" class="btn btn-warning" href="#postKomen" data-toggle="collapse">Comment</button>`
+                } else if (val.statusComt == 1) {
+                    button += `<button type="button" class="btn btn-warning btn-disabled" href="#postKomen" data-toggle="collapse" disabled>Comment</button>`
+                }
                 listSerah += `
 <section class="py-4">
                 <div class="card">
@@ -327,7 +263,7 @@ function getDiskusi(id) {
                             <h5>${val.content}</h5>
                         </p>
                         <hr>
-                        <button type="button" class="btn btn-warning" href="#postKomen" data-toggle="collapse">Comment</button>
+                        ${button}
                         <button type="button" class="btn btn-secondary" onclick=window.location.reload();>Back</button>
                     </div>
                 </div>
@@ -364,6 +300,136 @@ function getDiskusi(id) {
                             </section>`
                     });
                     $('#tampilKomen').html(listSerah);
+                },
+                error: function (errormessage) {
+                    alert(errormessage.responseText);
+                }
+            });
+        },
+        error: function (errormessage) {
+            alert(errormessage.responseText);
+        }
+    });
+}
+
+$.ajax({
+    url: "/Users/GetDiscussionByUser/" + document.getElementById("userId").innerHTML,
+    success: function (result) {
+        console.log(result);
+        var listSerah = "";
+        $.each(result, function (key, val) {
+            listSerah += `
+<section class="py-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h6 class="h2 font-weight-bold">${val.title}</h6>
+                        <div class="d-flex justify-content-between py-3 px-5">
+                          <div class="row comment">
+                                <span class="text-body font-weight-bold">By. ${val.firstName} ${val.lastName}</span>
+                          </div>
+                          <div class="row time text-muted align-self-center">
+                                <span class="text-body pt-1 mr-3">${val.categoryName}</span>
+                          </div>
+                          <div class="row time text-muted align-self-center">
+                                <i class="far fa-clock pr-2"><span class="align-self-center"> ${val.dateDis.substr(0, 10)}</span></i>
+                          </div>
+                        </div>
+                        <hr>
+                        <p class="text-muted">
+                            <h5>${val.content}</h5>
+                        </p>
+                        <hr>
+                        <div class="d-flex justify-content-between py-3 px-5">
+                            <div class="row comment">
+                                <button onclick="getDiskusiUser(${val.disId})" class="btn btn-primary">Detail Discussion >></button>
+                            </div>
+                            <div class="row comment">
+                                <button type="button" onclick="deleteDiscussion(${val.disId});" class="btn btn-danger text-center"><i class="fa fa-trash"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+</section>
+`
+        });
+        $('#diskusi1').html(listSerah);
+    },
+    error: function (errormessage) {
+        alert(errormessage.responseText);
+    }
+});
+
+function getDiskusiUser(id) {
+    $.ajax({
+        url: "/Users/GetDiscussion/" + id,
+        success: function (result) {
+            console.log(result);
+            var listSerah = "";
+            var button = "";
+            $.each(result, function (key, val) {
+                if (val.statusComt == 0) {
+                    button += `<button type="button" class="btn btn-warning" href="#postKomen" data-toggle="collapse">Comment</button>`
+                } else if (val.statusComt == 1) {
+                    button += `<button type="button" class="btn btn-warning btn-disabled" href="#postKomen" data-toggle="collapse" disabled>Comment</button>`
+                }
+                listSerah += `
+<section class="py-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h6 class="h2 font-weight-bold">${val.title}</h6>
+                        <div class="d-flex justify-content-between py-3 px-5">
+                          <div class="row comment">
+                                <span class="text-body font-weight-bold">By. ${val.firstName} ${val.lastName}</span>
+                          </div>
+                          <div class="row time text-muted align-self-center">
+                                <span class="text-body pt-1 mr-3">${val.categoryName}</span>
+                          </div>
+                          <div class="row time text-muted align-self-center">
+                                <i class="far fa-clock pr-2"><span class="align-self-center"> ${val.dateDis.substr(0, 10)}</span></i>
+                          </div>
+                        </div>
+                        <hr>
+                        <p class="text-muted">
+                            <h5>${val.content}</h5>
+                        </p>
+                        <hr>
+                        ${button}
+                        <button type="button" class="btn btn-secondary" onclick=window.location.reload();>Back</button>
+                    </div>
+                </div>
+</section>
+`
+                $("#dis").val(val.disId);
+            });
+            $('#diskusi1').html(listSerah);
+            $.ajax({
+                url: "/Users/GetReplyById/" + id,
+                success: function (result) {
+                    console.log(result);
+                    var listSerah = "";
+                    $.each(result, function (key, val) {
+                        listSerah += `<section class="py-4">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <div class="d-flex justify-content-between py-3 px-5">
+                                              <div class="row comment">
+                                                    <span class="text-body font-weight-bold">By. ${val.firstName} ${val.lastName}</span>
+                                              </div>
+                                              <div class="row time text-muted align-self-center">
+                                                    <i class="far fa-clock pr-2"><span class="align-self-center"> ${val.dateCom.substr(0, 10)}</span></i>
+                                              </div>
+                                            </div>
+                                            <hr>
+                                            <p class="text-muted">
+                                                <h5>${val.content}</h5>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                              </div>
+                            </section>`
+                    });
+                    $('#tampilKomen1').html(listSerah);
                 },
                 error: function (errormessage) {
                     alert(errormessage.responseText);

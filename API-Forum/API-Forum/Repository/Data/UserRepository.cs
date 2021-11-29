@@ -231,7 +231,8 @@ namespace API_Forum.Repository.Data
 							 Title = d.Title,
 							 Content = d.Content,
 							 DateDis = d.DateDis,
-							 CategoryName = c.CategoryName
+							 CategoryName = c.CategoryName,
+							 StatusComt = (ViewModel.GenericUriParserOptions)d.StatusComt
 						 });
 			return data1;
 		}
@@ -251,6 +252,26 @@ namespace API_Forum.Repository.Data
 							 Content = d.Content,
 							 DateDis = d.DateDis,
 							 CategoryName = c.CategoryName
+						 });
+			return data1;
+		}
+
+		public Object GetDiscussionByUser(int id)
+		{
+			var data1 = (from d in context.Discussions
+						 join c in context.Categories on d.CategoryId equals c.CategoryId
+						 join u in context.Users on d.UserId equals u.UserId
+						 where d.Status == Status.@on && d.UserId == id
+						 select new DiscussionVM
+						 {
+							 DisId = d.DisId,
+							 FirstName = u.FirstName,
+							 LastName = u.LastName,
+							 Title = d.Title,
+							 Content = d.Content,
+							 DateDis = d.DateDis,
+							 CategoryName = c.CategoryName,
+							 StatusComt = (ViewModel.GenericUriParserOptions)d.StatusComt
 						 });
 			return data1;
 		}
