@@ -303,7 +303,6 @@ D:\METRODATA CODING CAMP\GitHub\ForumDisscussion\API-Forum\Client\obj\Debug\netc
 D:\METRODATA CODING CAMP\GitHub\ForumDisscussion\API-Forum\Client\obj\Debug\netcoreapp3.1\Razor\Views\TypeDiscussions\Index.cshtml.g.cs
 D:\METRODATA CODING CAMP\GitHub\ForumDisscussion\API-Forum\Client\obj\Debug\netcoreapp3.1\Razor\Views\Users\Dashboard.cshtml.g.cs
 D:\METRODATA CODING CAMP\GitHub\ForumDisscussion\API-Forum\Client\obj\Debug\netcoreapp3.1\Razor\Views\Users\Index.cshtml.g.cs
-D:\METRODATA CODING CAMP\GitHub\ForumDisscussion\API-Forum\Client\obj\Debug\netcoreapp3.1\Razor\Views\Users\Profile.cshtml.g.cs
 D:\METRODATA CODING CAMP\GitHub\ForumDisscussion\API-Forum\Client\obj\Debug\netcoreapp3.1\Razor\Views\_ViewImports.cshtml.g.cs
 D:\METRODATA CODING CAMP\GitHub\ForumDisscussion\API-Forum\Client\obj\Debug\netcoreapp3.1\Razor\Views\_ViewStart.cshtml.g.cs
 D:\METRODATA CODING CAMP\GitHub\ForumDisscussion\API-Forum\Client\obj\Debug\netcoreapp3.1\Client.RazorTargetAssemblyInfo.cache
@@ -313,3 +312,9 @@ D:\METRODATA CODING CAMP\GitHub\ForumDisscussion\API-Forum\Client\obj\Debug\netc
 D:\METRODATA CODING CAMP\GitHub\ForumDisscussion\API-Forum\Client\obj\Debug\netcoreapp3.1\Client.dll
 D:\METRODATA CODING CAMP\GitHub\ForumDisscussion\API-Forum\Client\obj\Debug\netcoreapp3.1\Client.pdb
 D:\METRODATA CODING CAMP\GitHub\ForumDisscussion\API-Forum\Client\obj\Debug\netcoreapp3.1\Client.genruntimeconfig.cache
+D:\METRODATA CODING CAMP\GitHub\ForumDisscussion\API-Forum\Client\obj\Debug\netcoreapp3.1\Razor\Views\Discussions\CreateDiskusi.cshtml.g.cs
+D:\METRODATA CODING CAMP\GitHub\ForumDisscussion\API-Forum\Client\obj\Debug\netcoreapp3.1\Razor\Views\Discussions\LihatDiskusi.cshtml.g.cs
+D:\METRODATA CODING CAMP\GitHub\ForumDisscussion\API-Forum\Client\obj\Debug\netcoreapp3.1\Razor\Views\Users\Content.cshtml.g.cs
+D:\METRODATA CODING CAMP\GitHub\ForumDisscussion\API-Forum\Client\obj\Debug\netcoreapp3.1\Razor\Views\Users\ProfileMember.cshtml.g.cs
+D:\METRODATA CODING CAMP\GitHub\ForumDisscussion\API-Forum\Client\obj\Debug\netcoreapp3.1\Razor\Views\Users\ProfileAdmin.cshtml.g.cs
+D:\METRODATA CODING CAMP\GitHub\ForumDisscussion\API-Forum\Client\obj\Debug\netcoreapp3.1\Razor\Views\Logins\ErrorLogin.cshtml.g.cs

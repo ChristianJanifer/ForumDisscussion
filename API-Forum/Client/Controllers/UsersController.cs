@@ -29,12 +29,12 @@ namespace Client.Controllers
             return View();
         }
 
-        public IActionResult Profile()
+        public IActionResult ProfileMember()
         {
             return View();
         }
 
-        public IActionResult Content()
+        public IActionResult ProfileAdmin()
         {
             return View();
         }
@@ -42,6 +42,18 @@ namespace Client.Controllers
         public async Task<JsonResult> GetProfile()
         {
             var result = await user.GetProfile();
+            return Json(result);
+        }
+
+        public async Task<JsonResult> ProfileUser(int id)
+        {
+            var result = await user.Profile(id);
+            return Json(result);
+        }
+
+        public async Task<JsonResult> GetAllMember()
+        {
+            var result = await user.GetAllMember();
             return Json(result);
         }
 
@@ -57,15 +69,15 @@ namespace Client.Controllers
             return Json(result);
         }
 
-        public async Task<JsonResult> GetReplybyId(int id)
+        public async Task<JsonResult> GetDiscussionbyId(int id)
         {
-            var result = await user.GetReplybyId(id);
+            var result = await user.GetDiscussionbyId(id);
             return Json(result);
         }
 
-        public async Task<JsonResult> GetDiscussion(int id)
+        public async Task<JsonResult> GetReplybyId(int id)
         {
-            var result = await user.GetDiscussionById(id);
+            var result = await user.GetReplybyId(id);
             return Json(result);
         }
     }

@@ -53,6 +53,14 @@ namespace API_Forum.Controllers
             return Ok(result);
         }
 
+        [HttpGet("GetAllMember")]
+        public ActionResult GetAllMember()
+        {
+
+            var result = user.GetAllMember();
+            return Ok(result);
+        }
+
         [HttpGet("Profile/{Id}")]
         public ActionResult GetProfile(int Id)
         {
@@ -137,7 +145,6 @@ namespace API_Forum.Controllers
             var result = user.GetDiscussionId(id);
             return Ok(result);
         }
-
 
         [HttpGet("GetComment/{id}")]
         public ActionResult GetComment(int id)

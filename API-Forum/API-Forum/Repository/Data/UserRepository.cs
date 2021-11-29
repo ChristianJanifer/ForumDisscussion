@@ -94,6 +94,27 @@ namespace API_Forum.Repository.Data
 
 		}
 
+		public IEnumerable<ProfileVM> GetAllMember()
+		{
+			var profile = (from u in context.Users
+						   join ac in context.Accounts on u.UserId equals ac.UserId
+						   join acr in context.AccountRoles on u.UserId equals acr.UserId
+						   where u.Status == Status.@on && acr.RoleId == 2
+						   select new ProfileVM
+						   {
+							   UserId = u.UserId,
+							   FirstName = u.FirstName,
+							   LastName = u.LastName,
+							   Gender = (ViewModel.Gender)u.Gender,
+							   Phone = u.Phone,
+							   BirthDate = u.BirthDate,
+							   Email = u.Email
+						   });
+			var result = profile;
+			return result;
+
+		}
+
 		public Object GetProfile(int Id)
 		{
 			var profile = (from User in context.Users
@@ -210,26 +231,26 @@ namespace API_Forum.Repository.Data
 			return data1;
 		}
 
-		public Object GetDiscussionId(int id)
-		{
-			var data1 = (from d in context.Discussions
-						 join c in context.Categories on d.CategoryId equals c.CategoryId
-						 join u in context.Users on d.UserId equals u.UserId
-						 where d.Status == Status.@on && d.DisId == id
-						 select new DiscussionVM
-						 {
-							 DisId = d.DisId,
-							 FirstName = u.FirstName,
-							 LastName = u.LastName,
-							 Title = d.Title,
-							 Content = d.Content,
-							 DateDis = d.DateDis,
-							 CategoryName = c.CategoryName
-						 });
-			return data1;
-		}
+        public Object GetDiscussionId(int id)
+        {
+            var data1 = (from d in context.Discussions
+                         join c in context.Categories on d.CategoryId equals c.CategoryId
+                         join u in context.Users on d.UserId equals u.UserId
+                         where d.Status == Status.@on && d.DisId == id
+                         select new DiscussionVM
+                         {
+                             DisId = d.DisId,
+                             FirstName = u.FirstName,
+                             LastName = u.LastName,
+                             Title = d.Title,
+                             Content = d.Content,
+                             DateDis = d.DateDis,
+                             CategoryName = c.CategoryName
+                         });
+            return data1;
+        }
 
-		public IEnumerable<CommentVM> GetComment(int id)
+        public IEnumerable<CommentVM> GetComment(int id)
 		{
 			var data1 = (from u in context.Users
 						 join c in context.Comments on u.UserId equals c.UserId
@@ -237,6 +258,7 @@ namespace API_Forum.Repository.Data
 						 select new CommentVM
 						 {
 							 FirstName = u.FirstName,
+							 LastName = u.LastName,
 							 Content = c.Content,
 							 DateCom = c.DateComment
 						 });
@@ -259,6 +281,9 @@ namespace API_Forum.Repository.Data
 		public IEnumerable GetGender()
 		{
 			var result = from u in context.Users
+						 join ac in context.Accounts on u.UserId equals ac.UserId
+						 join acr in context.AccountRoles on u.UserId equals acr.UserId
+						 where u.Status == Status.@on && acr.RoleId == 2
 						 group u by u.Gender into x
 						 select new
 						 {
@@ -272,6 +297,7 @@ namespace API_Forum.Repository.Data
 		{
 			var result = from u in context.Users
 						 join d in context.Discussions on u.UserId equals d.UserId
+						 where d.Status == Status.@on
 						 group d by d.UserId into a
 						 select new
 						 {

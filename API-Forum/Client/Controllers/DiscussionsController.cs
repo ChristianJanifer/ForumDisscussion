@@ -23,6 +23,16 @@ namespace Client.Controllers
             return View();
         }
 
+        public IActionResult LihatDiskusi()
+        {
+            return View();
+        }
+
+        public IActionResult CreateDiskusi()
+        {
+            return View();
+        }
+
         public JsonResult Discussion(Discussion entity)
         {
             var result = discussion.Discussion(entity);

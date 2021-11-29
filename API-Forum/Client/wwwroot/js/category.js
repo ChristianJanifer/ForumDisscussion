@@ -21,7 +21,7 @@
                 "data": " ",
                 "render": function (data, type, row, meta) {
                     var button = '<td>' +
-                     '<button type="button" onclick="getCategory(' + row['categoryId'] + ');"  class="btn btn-success text-center" data-toggle="modal" href="#modalCategory"><i class="fa fa-edit"></i></button>' + ' ' +
+                        '<button type="button" onclick="getCategory(' + row['categoryId'] + ');"  class="btn btn-success text-center" data-toggle="modal" href="#modalCategory"><i class="fa fa-edit"></i></button>' + ' ' +
                         '<button type="button" onclick="deleteCategory(' + row['categoryId'] + ');" class="btn btn-danger text-center"><i class="fa fa-trash"></i></button>' +
                         '</td > ';
                     return button;
@@ -50,7 +50,7 @@ $(document).ready(function () {
                 'dataType': 'json',
             }).done((result) => {
                 if (result == 200) {
-                    swal({
+                    Swal.fire({
                         title: "Good job!",
                         text: "Data Berhasil Ditambahkan!!",
                         icon: "success",
@@ -61,7 +61,7 @@ $(document).ready(function () {
 
                     $('#categoryName').val("");
                 } else if (result == 400) {
-                    swal({
+                    Swal.fire({
                         title: "Failed!",
                         text: "Data Gagal Dimasukan!!",
                         icon: "error",
@@ -69,7 +69,7 @@ $(document).ready(function () {
                     });
                 }
             }).fail((error) => {
-                swal({
+                Swal.fire({
                     title: "Failed!",
                     text: "Data Gagal Dimasukan!!",
                     icon: "error",
@@ -95,7 +95,7 @@ function getCategory(CategoryId) {
             $('#btnAdd').hide();
         },
         error: function (errormessage) {
-            swal({
+            Swal.fire({
                 title: "FAILED",
                 text: "DATA TIDAK DITEMUKAN!",
                 icon: "error"
@@ -117,7 +117,7 @@ function updateCategory() {
         success: function (result) {
             console.log(obj);
             $('#categoryName').val("");
-            swal({
+            Swal.fire({
                 title: "Good job!",
                 text: "DATA BERHASIL DIUPDATE!!",
                 icon: "success",
@@ -126,7 +126,7 @@ function updateCategory() {
             $('#tableCategory').DataTable().ajax.reload();
         },
         error: function (errormessage) {
-            swal({
+            Swal.fire({
                 title: "Failed!",
                 text: "DATA GAGAL DIUPDATE!!",
                 icon: "error",
@@ -137,7 +137,7 @@ function updateCategory() {
 }
 
 function deleteCategory(CategoryId) {
-    swal({
+    Swal.fire({
         title: "Are you sure?",
         text: "Hapus Data Ini !!",
         icon: "warning",
@@ -153,28 +153,31 @@ function deleteCategory(CategoryId) {
                 },
                 method: "DELETE",
                 dataType: "json",
-                data: { "": CategoryId },
-                success: function (result) {
-                    swal({
-                        title: "Good job!",
-                        text: "DATA BERHASIL DIHAPUS!!",
-                        icon: "success",
-                        button: "Okey!",
-                    }).then(function () {
-                        window.location = "/Categories";
-                    });
-                },
-                error: function (errormessage) {
-                    swal({
-                        title: "Failed!",
-                        text: "DATA GAGAL DIHAPUS!!",
-                        icon: "error",
-                        button: "Close",
-                    });
-                }
+                data: { "": CategoryId }
+            }).done((result) => {
+                console.log(result);
+                Swal.fire({
+                    title: "Good job!",
+                    text: "DATA BERHASIL DIHAPUS!!",
+                    icon: "success",
+                    button: "Okey!"
+                }).then(function () {
+                    window.location = "/Categories";
+                });
+            }).fail((error) => {
+                console.log(error);
+                Swal.fire({
+                    title: "Failed!",
+                    text: "DATA GAGAL DIHAPUS!!",
+                    icon: "error",
+                    button: "Close"
+                });
             });
-        } else {
-            swal("DATA GAGAL DIHAPUS!!");
+        }
+        else {
+            Swal.fire({
+                text: "DATA GAGAL DIHAPUS!!"
+            });
         }
     });
 }

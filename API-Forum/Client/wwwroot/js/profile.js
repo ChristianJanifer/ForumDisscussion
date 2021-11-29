@@ -1,68 +1,10 @@
 ﻿$(document).ready(function () {
-    $('#tableProfile').DataTable({
-        'ajax': {
-            'url': "/Users/GetProfile",
-            'dataSrc': ''
-        },
-        'columns': [
-            {
-                "data": "userId",
-            },
-            {
-                "data": "",
-                "render": function (data, type, row, meta) {
-                    return row['firstName'] + ' ' + row['lastName'];
-                }
-            },
-            {
-                "data": "email",
-            },
-            {
-                'data': '',
-                'render': function (data, type, row, meta) {
-                    var date = row['birthDate'].substr(0, 10);
-                    var newDate = date.split('-');
-                    return newDate[2] + '-' + newDate[1] + '-' + newDate[0];
-                }
-            },
-            {
-                'data': '',
-                'render': function (data, type, row, meta) {
-                    if (row['gender'] == 0) {
-                        return 'Male';
-                    } else {
-                        return 'Female';
-                    }
-                }
-            },
-            {
-                'data': '',
-                'render': function (data, type, row, meta) {
-                    if (row['phone'].substr(0, 1) == '0') {
-                        return '+62' + row['phone'].substr(1);
-                    }
-                    else {
-                        return '+62' + row['phone'];
-                    }
-                }
-            },
-            {
-                "data": " ",
-                "render": function (data, type, row, meta) {
-                    return `<button type="button" class="btn btn-info" data-toggle="modal" href="#update" onclick="getUser('${row['userId']}')"><i class="fas fa-edit"></i></button>`;
-                }
-            }
-        ]
-    });
-});
-
-function getUser(id) {
     console.log(id);
     $.ajax({
-        url: "Get/" + id,
+        url: "/Users/ProfileUser/" + $('#id').val(),
         success: function (result) {
-            console.log(result);
-            $('#id').val(result.userId);
+            console.log(result);/*
+            $('#id').val(result.userId);*/
             $('#firstName').val(result.firstName);
             $('#lastName').val(result.lastName);
             $('#phone').val(result.phone);
@@ -76,7 +18,7 @@ function getUser(id) {
             }
         }
     })
-}
+})
 
 function ValidateUpdate(id) {
     var ini = $("#update1").valid();

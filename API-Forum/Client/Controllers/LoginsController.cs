@@ -23,8 +23,13 @@ namespace Client.Controllers
         {
             return View();
         }
-        
+
         public IActionResult Reset()
+        {
+            return View();
+        }
+
+        public IActionResult ErrorLogin()
         {
             return View();
         }
@@ -40,13 +45,15 @@ namespace Client.Controllers
             var jwtToken = await log.Login(login);
             var token = jwtToken.Token;
             var role = jwtToken.Roles;
+            var id = jwtToken.UserId;
 
             if (token == null)
             {
-                return RedirectToAction("Index", "Logins");
+                return RedirectToAction("ErrorLogin", "Logins");
             }
 
             HttpContext.Session.SetString("JWToken", token);
+            HttpContext.Session.SetInt32("UserId", id);
 
             foreach (var x in role)
             {
@@ -56,7 +63,7 @@ namespace Client.Controllers
                 }
                 else
                 {
-                    return RedirectToAction("Dashboard", "Members");
+                    return RedirectToAction("LihatDiskusi", "Discussions");
                 }
             }
 

@@ -50,7 +50,7 @@ $(document).ready(function () {
                 'dataType': 'json',
             }).done((result) => {
                 if (result == 200) {
-                    swal({
+                    Swal.fire({
                         title: "Good job!",
                         text: "Data Berhasil Ditambahkan!!",
                         icon: "success",
@@ -60,7 +60,7 @@ $(document).ready(function () {
                     });
                     $('#typeName').val("");
                 } else if (result == 400) {
-                    swal({
+                    Swal.fire({
                         title: "Failed!",
                         text: "Data Gagal Dimasukan!!",
                         icon: "error",
@@ -68,7 +68,7 @@ $(document).ready(function () {
                     });
                 }
             }).fail((error) => {
-                swal({
+                Swal.fire({
                     title: "Failed!",
                     text: "Data Gagal Dimasukan!!",
                     icon: "error",
@@ -94,7 +94,7 @@ function getType(TypeId) {
             $('#btnAdd').hide();
         },
         error: function (errormessage) {
-            swal({
+            Swal.fire({
                 title: "FAILED",
                 text: "DATA TIDAK DITEMUKAN!",
                 icon: "error"
@@ -116,7 +116,7 @@ function updateType() {
         success: function (result) {
             console.log(obj);
             $('#typeName').val("");
-            swal({
+            Swal.fire({
                 title: "Good job!",
                 text: "DATA BERHASIL DIUPDATE!!",
                 icon: "success",
@@ -125,7 +125,7 @@ function updateType() {
             $('#tableType').DataTable().ajax.reload();
         },
         error: function (errormessage) {
-            swal({
+            Swal.fire({
                 title: "Failed!",
                 text: "DATA GAGAL DIUPDATE!!",
                 icon: "error",
@@ -136,7 +136,7 @@ function updateType() {
 }
 
 function deleteType(TypeId) {
-    swal({
+    Swal.fire({
         title: "Are you sure?",
         text: "Hapus Data Ini !!",
         icon: "warning",
@@ -154,7 +154,7 @@ function deleteType(TypeId) {
                 dataType: "json",
                 data: { "": TypeId },
                 success: function (result) {
-                    swal({
+                    Swal.fire({
                         title: "Good job!",
                         text: "DATA BERHASIL DIHAPUS!!",
                         icon: "success",
@@ -164,7 +164,7 @@ function deleteType(TypeId) {
                     });
                 },
                 error: function (errormessage) {
-                    swal({
+                    Swal.fire({
                         title: "Failed!",
                         text: "DATA GAGAL DIHAPUS!!",
                         icon: "error",
@@ -173,7 +173,9 @@ function deleteType(TypeId) {
                 }
             });
         } else {
-            swal("DATA GAGAL DIHAPUS!!");
+            Swal.fire({
+                text: "DATA GAGAL DIHAPUS!!"
+            });
         }
     });
 }
