@@ -86,5 +86,11 @@ namespace Client.Controllers
             var result = await user.GetDiscussionByCat(id);
             return Json(result);
         }
+
+        public async Task<JsonResult> GetDiscussionByUser(int id)
+        {
+            var result = await user.GetDiscussionByUser(id);
+            return Json(result);
+        }
     }
 }

@@ -195,7 +195,6 @@ D:\METRODATA CODING CAMP\GitHub\ForumDisscussion\API-Forum\API-Forum\bin\Debug\n
 D:\METRODATA CODING CAMP\GitHub\ForumDisscussion\API-Forum\API-Forum\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.pdb
 D:\METRODATA CODING CAMP\GitHub\ForumDisscussion\API-Forum\API-Forum\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll
 D:\METRODATA CODING CAMP\GitHub\ForumDisscussion\API-Forum\API-Forum\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
-D:\METRODATA CODING CAMP\GitHub\ForumDisscussion\API-Forum\API-Forum\obj\Debug\netcoreapp3.1\API-Forum.csproj.AssemblyReference.cache
 D:\METRODATA CODING CAMP\GitHub\ForumDisscussion\API-Forum\API-Forum\obj\Debug\netcoreapp3.1\API-Forum.GeneratedMSBuildEditorConfig.editorconfig
 D:\METRODATA CODING CAMP\GitHub\ForumDisscussion\API-Forum\API-Forum\obj\Debug\netcoreapp3.1\API-Forum.AssemblyInfoInputs.cache
 D:\METRODATA CODING CAMP\GitHub\ForumDisscussion\API-Forum\API-Forum\obj\Debug\netcoreapp3.1\API-Forum.AssemblyInfo.cs
@@ -208,3 +207,4 @@ D:\METRODATA CODING CAMP\GitHub\ForumDisscussion\API-Forum\API-Forum\obj\Debug\n
 D:\METRODATA CODING CAMP\GitHub\ForumDisscussion\API-Forum\API-Forum\obj\Debug\netcoreapp3.1\API-Forum.dll
 D:\METRODATA CODING CAMP\GitHub\ForumDisscussion\API-Forum\API-Forum\obj\Debug\netcoreapp3.1\API-Forum.pdb
 D:\METRODATA CODING CAMP\GitHub\ForumDisscussion\API-Forum\API-Forum\obj\Debug\netcoreapp3.1\API-Forum.genruntimeconfig.cache
+D:\METRODATA CODING CAMP\GitHub\ForumDisscussion\API-Forum\API-Forum\obj\Debug\netcoreapp3.1\API-Forum.csproj.AssemblyReference.cache

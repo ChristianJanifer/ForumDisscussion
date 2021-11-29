@@ -21,11 +21,14 @@
                           </div>
                         </div>
                         <hr>
-                        <p class="text-muted">
-                            <h5>${val.content}</h5>
-                        </p>
+                         </p>
                         <hr>
-                        <button onclick="getDiskusi(${val.disId})" class="btn btn-primary">Detail Discussion >></button>
+                        <div class="d-flex justify-content-between py-3 px-5">
+                            <div class="row comment">
+                                <button onclick="getDiskusi(${val.disId})" class="btn btn-primary">Detail Discussion >></button>
+                            </div>
+                            
+                        </div>
                     </div>
                 </div>
 </section>
@@ -37,8 +40,6 @@
         alert(errormessage.responseText);
     }
 });
-
-
 
 function getDiskusi(id) {
     $.ajax({
@@ -59,6 +60,7 @@ function getDiskusi(id) {
                           <div class="row time text-muted align-self-center">
                                 <span class="text-body pt-1 mr-3">${val.categoryName}</span>
                           </div>
+                         
                           <div class="row time text-muted align-self-center">
                                 <i class="far fa-clock pr-2"><span class="align-self-center"> ${val.dateDis.substr(0, 10)}</span></i>
                           </div>
@@ -153,6 +155,7 @@ function getDiskusiCat(id) {
                           <div class="row time text-muted align-self-center">
                                 <span class="text-body pt-1 mr-3">${val.categoryName}</span>
                           </div>
+                         
                           <div class="row time text-muted align-self-center">
                                 <i class="far fa-clock pr-2"><span class="align-self-center"> ${val.dateDis.substr(0, 10)}</span></i>
                           </div>

@@ -153,6 +153,13 @@ namespace API_Forum.Controllers
             return Ok(result);
         }
 
+        [HttpGet("GetDiscussionByUser/{id}")]
+        public ActionResult GetDiscussionByUser(int id)
+        {
+            var result = user.GetDiscussionByUser(id);
+            return Ok(result);
+        }
+
         [HttpGet("GetComment/{id}")]
         public ActionResult GetComment(int id)
         {
@@ -175,6 +182,22 @@ namespace API_Forum.Controllers
                 return NotFound(new { status = HttpStatusCode.OK, result = getReplies, message = "Tidak ada data tampil" });
             }
         }
+
+        /*[HttpGet]
+        [Route("Replies/{id}")]
+        public ActionResult GetRepliesId(int id)
+        {
+            var getRepliesId = user.GetRepliesId(id);
+
+            if (getRepliesId != null)
+            {
+                return Ok(getRepliesId);
+            }
+            else
+            {
+                return NotFound(new { status = HttpStatusCode.OK, result = getRepliesId, message = "Tidak ada data tampil" });
+            }
+        }*/
 
         [HttpGet]
         [Route("Gender")]

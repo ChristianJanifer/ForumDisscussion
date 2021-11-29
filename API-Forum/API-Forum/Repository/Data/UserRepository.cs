@@ -132,7 +132,13 @@ namespace API_Forum.Repository.Data
 						   });
 			var result = profile.First();
 			return result;
+		}
 
+		public string GetFullName(LoginVM loginVM)
+		{
+			var checkEmail = context.Users.Where(p => p.Email == loginVM.Email).FirstOrDefault();
+			var Fullname = checkEmail.FirstName + " " + checkEmail.LastName;
+			return Fullname;
 		}
 
 		public override int Delete(int id)
@@ -231,24 +237,25 @@ namespace API_Forum.Repository.Data
 			return data1;
 		}
 
-        public Object GetDiscussionId(int id)
-        {
-            var data1 = (from d in context.Discussions
-                         join c in context.Categories on d.CategoryId equals c.CategoryId
-                         join u in context.Users on d.UserId equals u.UserId
-                         where d.Status == Status.@on && d.DisId == id
-                         select new DiscussionVM
-                         {
-                             DisId = d.DisId,
-                             FirstName = u.FirstName,
-                             LastName = u.LastName,
-                             Title = d.Title,
-                             Content = d.Content,
-                             DateDis = d.DateDis,
-                             CategoryName = c.CategoryName
-                         });
-            return data1;
-        }
+		public Object GetDiscussionId(int id)
+		{
+			var data1 = (from d in context.Discussions
+						 join c in context.Categories on d.CategoryId equals c.CategoryId
+						 join u in context.Users on d.UserId equals u.UserId
+						 where d.Status == Status.@on && d.DisId == id
+						 select new DiscussionVM
+						 {
+							 DisId = d.DisId,
+							 FirstName = u.FirstName,
+							 LastName = u.LastName,
+							 Title = d.Title,
+							 Content = d.Content,
+							 DateDis = d.DateDis,
+							 CategoryName = c.CategoryName,
+							 StatusComt = (ViewModel.GenericUriParserOptions)d.StatusComt
+						 });
+			return data1;
+		}
 
 		public Object GetDiscussionByCat(int id)
 		{
@@ -265,6 +272,26 @@ namespace API_Forum.Repository.Data
 							 Content = d.Content,
 							 DateDis = d.DateDis,
 							 CategoryName = c.CategoryName
+						 });
+			return data1;
+		}
+
+		public Object GetDiscussionByUser(int id)
+		{
+			var data1 = (from d in context.Discussions
+						 join c in context.Categories on d.CategoryId equals c.CategoryId
+						 join u in context.Users on d.UserId equals u.UserId
+						 where d.Status == Status.@on && d.UserId == id
+						 select new DiscussionVM
+						 {
+							 DisId = d.DisId,
+							 FirstName = u.FirstName,
+							 LastName = u.LastName,
+							 Title = d.Title,
+							 Content = d.Content,
+							 DateDis = d.DateDis,
+							 CategoryName = c.CategoryName,
+							 StatusComt = (ViewModel.GenericUriParserOptions)d.StatusComt
 						 });
 			return data1;
 		}
@@ -288,6 +315,9 @@ namespace API_Forum.Repository.Data
 		{
 			var result = from u in context.Users
 						 join c in context.Comments on u.UserId equals c.UserId
+						 join ac in context.Accounts on u.UserId equals ac.UserId
+						 join acr in context.AccountRoles on u.UserId equals acr.UserId
+						 where c.Status == Status.@on && acr.RoleId == 2
 						 group c by c.DisId into a
 						 select new
 						 {
@@ -296,6 +326,21 @@ namespace API_Forum.Repository.Data
 						 };
 			return result;
 		}
+
+		/*public object GetRepliesId(int id)
+		{
+			var result = from u in context.Users
+						 join c in context.Comments on u.UserId equals c.UserId
+						 join ac in context.Accounts on u.UserId equals ac.UserId
+						 join acr in context.AccountRoles on u.UserId equals acr.UserId
+						 where c.Status == Status.@on && c.DisId == id && acr.RoleId == 2
+						 group c by c.DisId into a
+						 select new
+						 {
+							 value = a.Count()
+						 };
+			return result;
+		}*/
 
 		public IEnumerable GetGender()
 		{
@@ -316,7 +361,9 @@ namespace API_Forum.Repository.Data
 		{
 			var result = from u in context.Users
 						 join d in context.Discussions on u.UserId equals d.UserId
-						 where d.Status == Status.@on
+						 join ac in context.Accounts on u.UserId equals ac.UserId
+						 join acr in context.AccountRoles on u.UserId equals acr.UserId
+						 where d.Status == Status.@on && acr.RoleId == 2
 						 group d by d.UserId into a
 						 select new
 						 {
@@ -328,14 +375,14 @@ namespace API_Forum.Repository.Data
 
 		public IEnumerable GetCatDis()
 		{
-			var result = from c in context.Categories
-						 join d in context.Discussions on c.CategoryId equals d.CategoryId
-						 group d by d.CategoryId into c
-						 select new
-						 {
-							 CategoryId = c.Key,
-							 value = c.Count()
-						 };
+            var result = from c in context.Categories
+                         join d in context.Discussions on c.CategoryId equals d.CategoryId
+                         group d by c.CategoryName into x
+                         select new
+                         {
+                             categoryName = x.Key,
+                             value = x.Count()
+                         };
 			return result;
 		}
 	}

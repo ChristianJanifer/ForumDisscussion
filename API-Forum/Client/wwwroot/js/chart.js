@@ -133,7 +133,7 @@ $(document).ready(function () {
 
             $.each(result, function (key, val) {
                 series.push(val.value);
-                label.push(val.categoryId);
+                label.push(val.categoryName);
             });
             var options = {
                 chart: {
