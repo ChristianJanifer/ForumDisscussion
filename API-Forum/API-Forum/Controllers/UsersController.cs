@@ -124,6 +124,13 @@ namespace API_Forum.Controllers
             return Ok(result);
         }
 
+        [HttpGet("GetTrending")]
+        public ActionResult GetTrending()
+        {
+            var result = user.GetTrending();
+            return Ok(result);
+        }
+
         [HttpGet("GetDiscussion")]
         public ActionResult GetDiscussion()
         {

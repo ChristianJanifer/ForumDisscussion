@@ -202,6 +202,7 @@ namespace API_Forum.Repository.Data
 		{
 			var data1 = (from d in context.Discussions
 						 join c in context.Categories on d.CategoryId equals c.CategoryId
+						 join t in context.TypeDiscussions on d.TypeId equals t.TypeId
 						 join u in context.Users on d.UserId equals u.UserId
 						 where d.Status == Status.@on
 						 select new DiscussionVM
@@ -212,7 +213,13 @@ namespace API_Forum.Repository.Data
 							 Title = d.Title,
 							 Content = d.Content,
 							 DateDis = d.DateDis,
-							 CategoryName = c.CategoryName
+							 Views = d.Views,
+							 UserId = u.UserId,
+                             CategoryId = c.CategoryId,
+							 TypeId = t.TypeId,
+							 CategoryName = c.CategoryName,
+							 StatusComt = (ViewModel.GenericUriParserOptions)d.StatusComt,
+							 Status = (ViewModel.Status1)d.Status
 						 });
 			return data1;
 		}
@@ -221,6 +228,7 @@ namespace API_Forum.Repository.Data
 		{
 			var data1 = (from d in context.Discussions
 						 join c in context.Categories on d.CategoryId equals c.CategoryId
+						 join t in context.TypeDiscussions on d.TypeId equals t.TypeId
 						 join u in context.Users on d.UserId equals u.UserId
 						 where d.Status == Status.@on && d.DisId == id
 						 select new DiscussionVM
@@ -231,8 +239,13 @@ namespace API_Forum.Repository.Data
 							 Title = d.Title,
 							 Content = d.Content,
 							 DateDis = d.DateDis,
+							 Views = d.Views,
+							 UserId = u.UserId,
+							 CategoryId = c.CategoryId,
+							 TypeId = t.TypeId,
 							 CategoryName = c.CategoryName,
-							 StatusComt = (ViewModel.GenericUriParserOptions)d.StatusComt
+							 StatusComt = (ViewModel.GenericUriParserOptions)d.StatusComt,
+							 Status = (ViewModel.Status1)d.Status
 						 });
 			return data1;
 		}
@@ -241,6 +254,7 @@ namespace API_Forum.Repository.Data
 		{
 			var data1 = (from d in context.Discussions
 						 join c in context.Categories on d.CategoryId equals c.CategoryId
+						 join t in context.TypeDiscussions on d.TypeId equals t.TypeId
 						 join u in context.Users on d.UserId equals u.UserId
 						 where d.Status == Status.@on && d.CategoryId == id
 						 select new DiscussionVM
@@ -251,7 +265,13 @@ namespace API_Forum.Repository.Data
 							 Title = d.Title,
 							 Content = d.Content,
 							 DateDis = d.DateDis,
-							 CategoryName = c.CategoryName
+							 Views = d.Views,
+							 UserId = u.UserId,
+							 CategoryId = c.CategoryId,
+							 TypeId = t.TypeId,
+							 CategoryName = c.CategoryName,
+							 StatusComt = (ViewModel.GenericUriParserOptions)d.StatusComt,
+							 Status = (ViewModel.Status1)d.Status
 						 });
 			return data1;
 		}
@@ -260,6 +280,7 @@ namespace API_Forum.Repository.Data
 		{
 			var data1 = (from d in context.Discussions
 						 join c in context.Categories on d.CategoryId equals c.CategoryId
+						 join t in context.TypeDiscussions on d.TypeId equals t.TypeId
 						 join u in context.Users on d.UserId equals u.UserId
 						 where d.Status == Status.@on && d.UserId == id
 						 select new DiscussionVM
@@ -270,9 +291,41 @@ namespace API_Forum.Repository.Data
 							 Title = d.Title,
 							 Content = d.Content,
 							 DateDis = d.DateDis,
+							 Views = d.Views,
+							 UserId = u.UserId,
+							 CategoryId = c.CategoryId,
+							 TypeId = t.TypeId,
 							 CategoryName = c.CategoryName,
-							 StatusComt = (ViewModel.GenericUriParserOptions)d.StatusComt
+							 StatusComt = (ViewModel.GenericUriParserOptions)d.StatusComt,
+							 Status = (ViewModel.Status1)d.Status
 						 });
+			return data1;
+		}
+
+		public Object GetTrending()
+		{
+			var data1 = (from d in context.Discussions
+						 join c in context.Categories on d.CategoryId equals c.CategoryId
+						 join t in context.TypeDiscussions on d.TypeId equals t.TypeId
+						 join u in context.Users on d.UserId equals u.UserId
+						 where d.Status == Status.@on
+						 orderby d.Views descending
+						 select new DiscussionVM
+						 {
+							 DisId = d.DisId,
+							 FirstName = u.FirstName,
+							 LastName = u.LastName,
+							 Title = d.Title,
+							 Content = d.Content,
+							 DateDis = d.DateDis,
+							 Views = d.Views,
+							 UserId = u.UserId,
+							 CategoryId = c.CategoryId,
+							 TypeId = t.TypeId,
+							 CategoryName = c.CategoryName,
+							 StatusComt = (ViewModel.GenericUriParserOptions)d.StatusComt,
+							 Status = (ViewModel.Status1)d.Status
+						 }).Take(3);
 			return data1;
 		}
 

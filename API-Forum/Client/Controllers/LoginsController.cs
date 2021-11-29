@@ -24,7 +24,17 @@ namespace Client.Controllers
             return View();
         }
 
+        [Authorize]
         public IActionResult Reset()
+        {
+            return View();
+        }
+
+        public IActionResult Error401()
+        {
+            return View();
+        }
+        public IActionResult ErrorNotfound()
         {
             return View();
         }

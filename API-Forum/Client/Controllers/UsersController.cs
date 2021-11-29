@@ -2,6 +2,7 @@
 using API_Forum.ViewModel;
 using Client.Base.Controllers;
 using Client.Repositories.Data;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -18,23 +19,26 @@ namespace Client.Controllers
             this.user = repository;
         }
 
-        /*[Authorize]*/
+        [Authorize]
         public IActionResult Index()
         {
             return View();
         }
 
+        [Authorize]
         public IActionResult Dashboard()
         {
             return View();
         }
 
+        [Authorize]
         public IActionResult Profile()
         {
 
             return View();
         }
 
+        [Authorize]
         public IActionResult ProfileAdmin()
         {
 
@@ -86,6 +90,12 @@ namespace Client.Controllers
         public async Task<JsonResult> GetDiscussionByUser(int id)
         {
             var result = await user.GetDiscussionByUser(id);
+            return Json(result);
+        }
+
+        public async Task<JsonResult> GetTrending()
+        {
+            var result = await user.GetTrending();
             return Json(result);
         }
 
