@@ -25,6 +25,7 @@ namespace API_Forum.Models
         [JsonConverter(typeof(StringEnumConverter))]
         public GenericUriParserOptions StatusComt { get; set; }
 
+        public int Views { get; set; }
         public int UserId { get; set; }
         public int CategoryId { get; set; }
         public int TypeId { get; set; }

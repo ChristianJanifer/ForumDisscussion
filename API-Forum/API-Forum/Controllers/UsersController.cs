@@ -124,6 +124,13 @@ namespace API_Forum.Controllers
             return Ok(result);
         }
 
+        [HttpGet("GetTrending")]
+        public ActionResult GetTrending()
+        {
+            var result = user.GetTrending();
+            return Ok(result);
+        }
+
         [HttpGet("GetDiscussion")]
         public ActionResult GetDiscussion()
         {
@@ -164,6 +171,22 @@ namespace API_Forum.Controllers
         public ActionResult GetReplies()
         {
             var getReplies = user.GetReplies();
+
+            if (getReplies != null)
+            {
+                return Ok(getReplies);
+            }
+            else
+            {
+                return NotFound(new { status = HttpStatusCode.OK, result = getReplies, message = "Tidak ada data tampil" });
+            }
+        }
+
+        [HttpGet]
+        [Route("Replies/{id}")]
+        public ActionResult GetReply(int id)
+        {
+            var getReplies = user.GetReply(id);
 
             if (getReplies != null)
             {

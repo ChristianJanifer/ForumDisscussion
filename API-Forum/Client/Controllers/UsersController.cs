@@ -89,5 +89,17 @@ namespace Client.Controllers
             var result = await user.GetDiscussionByUser(id);
             return Json(result);
         }
+
+        public async Task<JsonResult> GetTrending()
+        {
+            var result = await user.GetTrending();
+            return Json(result);
+        }
+
+        public async Task<JsonResult> GetCountReply(int id)
+        {
+            var result = await user.GetCountReply(id);
+            return Json(result);
+        }
     }
 }

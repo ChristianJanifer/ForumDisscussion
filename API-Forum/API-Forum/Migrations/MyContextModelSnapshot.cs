@@ -124,6 +124,9 @@ namespace API_Forum.Migrations
                     b.Property<int>("UserId")
                         .HasColumnType("int");
 
+                    b.Property<int>("Views")
+                        .HasColumnType("int");
+
                     b.HasKey("DisId");
 
                     b.HasIndex("CategoryId");
