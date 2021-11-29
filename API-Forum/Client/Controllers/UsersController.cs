@@ -2,6 +2,7 @@
 using API_Forum.ViewModel;
 using Client.Base.Controllers;
 using Client.Repositories.Data;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -18,25 +19,41 @@ namespace Client.Controllers
             this.user = repository;
         }
 
-        /*[Authorize]*/
+        [Authorize]
         public IActionResult Index()
         {
             return View();
         }
 
+        [Authorize]
         public IActionResult Dashboard()
         {
             return View();
         }
 
+        [Authorize]
         public IActionResult Profile()
         {
+
+            return View();
+        }
+
+        [Authorize]
+        public IActionResult ProfileAdmin()
+        {
+
             return View();
         }
 
         public async Task<JsonResult> GetProfile()
         {
             var result = await user.GetProfile();
+            return Json(result);
+        }
+
+        public async Task<JsonResult> ProfileUser(int id)
+        {
+            var result = await user.Profile(id);
             return Json(result);
         }
 
@@ -55,6 +72,42 @@ namespace Client.Controllers
         public async Task<JsonResult> GetReplybyId(int id)
         {
             var result = await user.GetReplybyId(id);
+            return Json(result);
+        }
+
+        public async Task<JsonResult> GetDiscussion(int id)
+        {
+            var result = await user.GetDiscussionById(id);
+            return Json(result);
+        }
+
+        public async Task<JsonResult> GetDiscussionByCat(int id)
+        {
+            var result = await user.GetDiscussionByCat(id);
+            return Json(result);
+        }
+
+        public async Task<JsonResult> GetDiscussionByUser(int id)
+        {
+            var result = await user.GetDiscussionByUser(id);
+            return Json(result);
+        }
+
+        public async Task<JsonResult> GetTrending()
+        {
+            var result = await user.GetTrending();
+            return Json(result);
+        }
+
+        public async Task<JsonResult> GetNewByDate()
+        {
+            var result = await user.GetNewByDate();
+            return Json(result);
+        }
+
+        public async Task<JsonResult> GetRepliesbyId(int id)
+        {
+            var result = await user.GetRepliesbyId(id);
             return Json(result);
         }
     }

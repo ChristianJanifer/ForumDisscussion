@@ -5,7 +5,7 @@
 
 @inject IHttpContextAccessor HttpContextAccessor
 @{
-    Layout = "_LayoutMember";
+    Layout = "_LayoutAdmin";
 }
 
 <section class="new-topic my-5">
@@ -95,7 +95,7 @@
                     </div>
                 </div>
                 <div class="row d-flex justify-content-end mt-4 px-3">
-                    <button type="button" class="btn btn-warning" onclick="ValidateUpdate(document.getElementById('id').value)">Save Changes</button>
+                    <button type="button" class="btn btn-warning" onclick="ValidateUpdateA(document.getElementById('id').value)">Save Changes</button>
                     <button type="button" class="btn btn-danger" onclick=window.location.reload();>Close</button>
                 </div>
             </form>

@@ -114,6 +114,13 @@ namespace API_Forum.Repository.Data
 
 		}
 
+		public string GetFullName(LoginVM loginVM)
+		{
+			var checkEmail = context.Users.Where(p => p.Email == loginVM.Email).FirstOrDefault();
+			var Fullname = checkEmail.FirstName + " " + checkEmail.LastName;
+			return Fullname;
+		}
+
 		public override int Delete(int id)
 		{
 			var find = context.Users.Find(id);
@@ -195,6 +202,7 @@ namespace API_Forum.Repository.Data
 		{
 			var data1 = (from d in context.Discussions
 						 join c in context.Categories on d.CategoryId equals c.CategoryId
+						 join t in context.TypeDiscussions on d.TypeId equals t.TypeId
 						 join u in context.Users on d.UserId equals u.UserId
 						 where d.Status == Status.@on
 						 select new DiscussionVM
@@ -205,9 +213,119 @@ namespace API_Forum.Repository.Data
 							 Title = d.Title,
 							 Content = d.Content,
 							 DateDis = d.DateDis,
-							 CategoryName = c.CategoryName
+							 Views = d.Views,
+							 UserId = u.UserId,
+                             CategoryId = c.CategoryId,
+							 TypeId = t.TypeId,
+							 CategoryName = c.CategoryName,
+							 StatusComt = (ViewModel.GenericUriParserOptions)d.StatusComt,
+							 Status = (ViewModel.Status1)d.Status
 						 });
-			var data = context.Discussions.Where(p => p.Status == Status.on).ToList();
+			return data1;
+		}
+
+		public Object GetDiscussionId(int id)
+		{
+			var data1 = (from d in context.Discussions
+						 join c in context.Categories on d.CategoryId equals c.CategoryId
+						 join t in context.TypeDiscussions on d.TypeId equals t.TypeId
+						 join u in context.Users on d.UserId equals u.UserId
+						 where d.Status == Status.@on && d.DisId == id
+						 select new DiscussionVM
+						 {
+							 DisId = d.DisId,
+							 FirstName = u.FirstName,
+							 LastName = u.LastName,
+							 Title = d.Title,
+							 Content = d.Content,
+							 DateDis = d.DateDis,
+							 Views = d.Views,
+							 UserId = u.UserId,
+							 CategoryId = c.CategoryId,
+							 TypeId = t.TypeId,
+							 CategoryName = c.CategoryName,
+							 StatusComt = (ViewModel.GenericUriParserOptions)d.StatusComt,
+							 Status = (ViewModel.Status1)d.Status
+						 });
+			return data1;
+		}
+
+		public Object GetDiscussionByCat(int id)
+		{
+			var data1 = (from d in context.Discussions
+						 join c in context.Categories on d.CategoryId equals c.CategoryId
+						 join t in context.TypeDiscussions on d.TypeId equals t.TypeId
+						 join u in context.Users on d.UserId equals u.UserId
+						 where d.Status == Status.@on && d.CategoryId == id
+						 select new DiscussionVM
+						 {
+							 DisId = d.DisId,
+							 FirstName = u.FirstName,
+							 LastName = u.LastName,
+							 Title = d.Title,
+							 Content = d.Content,
+							 DateDis = d.DateDis,
+							 Views = d.Views,
+							 UserId = u.UserId,
+							 CategoryId = c.CategoryId,
+							 TypeId = t.TypeId,
+							 CategoryName = c.CategoryName,
+							 StatusComt = (ViewModel.GenericUriParserOptions)d.StatusComt,
+							 Status = (ViewModel.Status1)d.Status
+						 });
+			return data1;
+		}
+
+		public Object GetDiscussionByUser(int id)
+		{
+			var data1 = (from d in context.Discussions
+						 join c in context.Categories on d.CategoryId equals c.CategoryId
+						 join t in context.TypeDiscussions on d.TypeId equals t.TypeId
+						 join u in context.Users on d.UserId equals u.UserId
+						 where d.Status == Status.@on && d.UserId == id
+						 select new DiscussionVM
+						 {
+							 DisId = d.DisId,
+							 FirstName = u.FirstName,
+							 LastName = u.LastName,
+							 Title = d.Title,
+							 Content = d.Content,
+							 DateDis = d.DateDis,
+							 Views = d.Views,
+							 UserId = u.UserId,
+							 CategoryId = c.CategoryId,
+							 TypeId = t.TypeId,
+							 CategoryName = c.CategoryName,
+							 StatusComt = (ViewModel.GenericUriParserOptions)d.StatusComt,
+							 Status = (ViewModel.Status1)d.Status
+						 });
+			return data1;
+		}
+
+		public Object GetTrending()
+		{
+			var data1 = (from d in context.Discussions
+						 join c in context.Categories on d.CategoryId equals c.CategoryId
+						 join t in context.TypeDiscussions on d.TypeId equals t.TypeId
+						 join u in context.Users on d.UserId equals u.UserId
+						 where d.Status == Status.@on
+						 orderby d.Views descending
+						 select new DiscussionVM
+						 {
+							 DisId = d.DisId,
+							 FirstName = u.FirstName,
+							 LastName = u.LastName,
+							 Title = d.Title,
+							 Content = d.Content,
+							 DateDis = d.DateDis,
+							 Views = d.Views,
+							 UserId = u.UserId,
+							 CategoryId = c.CategoryId,
+							 TypeId = t.TypeId,
+							 CategoryName = c.CategoryName,
+							 StatusComt = (ViewModel.GenericUriParserOptions)d.StatusComt,
+							 Status = (ViewModel.Status1)d.Status
+						 }).Take(3);
 			return data1;
 		}
 
@@ -219,6 +337,7 @@ namespace API_Forum.Repository.Data
 						 select new CommentVM
 						 {
 							 FirstName = u.FirstName,
+							 LastName = u.LastName,
 							 Content = c.Content,
 							 DateCom = c.DateComment
 						 });
@@ -234,6 +353,20 @@ namespace API_Forum.Repository.Data
 						 {
 							 DisId = a.Key,
 							 value = a.Count()
+						 };
+			return result;
+		}
+
+		public IEnumerable<ReplyVM> GetRepliesbyId(int id)
+		{
+			var result = from u in context.Users
+						 join c in context.Comments on u.UserId equals c.UserId
+						 where c.DisId == id
+						 group c by c.DisId into a
+						 select new ReplyVM
+						 {
+							 DisId = a.Key,
+							 Value = a.Count()
 						 };
 			return result;
 		}
@@ -267,12 +400,32 @@ namespace API_Forum.Repository.Data
 		{
 			var result = from c in context.Categories
 						 join d in context.Discussions on c.CategoryId equals d.CategoryId
-						 group d by d.CategoryId into c
+						 group d by c.CategoryName into x
 						 select new
 						 {
-							 CategoryId = c.Key,
-							 value = c.Count()
+							 categoryName = x.Key,
+							 value = x.Count()
 						 };
+			return result;
+		}
+
+		public IEnumerable<DiscussionVM> GetNewByDate()
+		{
+			var result = (from d in context.Discussions
+						  join c in context.Categories on d.CategoryId equals c.CategoryId
+						  join u in context.Users on d.UserId equals u.UserId
+						  where d.DateDis.Date <= DateTime.Now
+						  orderby d.DateDis descending
+						  select new DiscussionVM
+						  {
+							  DisId = d.DisId,
+							  FirstName = u.FirstName,
+							  LastName = u.LastName,
+							  Title = d.Title,
+							  Content = d.Content,
+							  DateDis = d.DateDis,
+							  CategoryName = c.CategoryName
+						  }).Take(5);
 			return result;
 		}
 	}

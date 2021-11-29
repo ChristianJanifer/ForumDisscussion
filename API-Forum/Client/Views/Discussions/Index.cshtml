@@ -1,105 +1,32 @@
 ﻿@*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
+@using Microsoft.AspNetCore.Http;
+
+@inject IHttpContextAccessor HttpContextAccessor
 @{
     Layout = "_LayoutMember";
 }
 
+<section class="my-5">
+    <div class="container bg-white p-4">
+        <div class="row d-flex justify-content-between p-3">
+            <div class="pl-2 text-body font-weight-bold">
+                <h6 class="text-hide" id="userId">@HttpContextAccessor.HttpContext.Session.GetInt32("UserId")</h6>
+                <h4>List Diskusi User</h4>
+            </div>
+        </div>
+        <div class="container" id="diskusi1">
+        </div>
+        <div class="container">
+            <div class="container" id="jumlahKomen1">
 
-<div class="container-fluid p-3 text-black">
-    <div class="text-black">
-        <h2>Discussion</h2>
-        <p>
-            <button class="btn btn-primary" data-toggle="modal" data-target="#modalDiscussion">
-                <i class="fa fa-plus"></i>
-            </button>
-        </p>
-    </div>
-    <div class="card shadow mb-4">
-        <div class="card-header py-3"></div>
-        <div class="card-body">
-            <div class="table-responsive">
-                <table class="table table-hover table-primary" id="tableDiscussion" width="150%" cellspacing="0">
-                    <thead>
-                        <tr>
-                            <th>No</th>
-                            <th>Discussion Id</th>
-                            <th>Title</th>
-                            <th>Content</th>
-                            <th>Date</th>
-                            <th>StatusComt</th>
-                            <th>User Id</th>
-                            <th>Category Id</th>
-                            <th>Type Id</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody class="tbody" id="listDiscussion"></tbody>
-                </table>
+            </div>
+            <div class="container" id="tampilKomen1">
+
             </div>
         </div>
     </div>
+</section>
 
-    <div class="modal" id="modalDiscussion" name="modalDiscussion" tabindex="-1" role="dialog">
-        <div class="modal-dialog modal-lg" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Data Discussion</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <form id="formDiscussion">
-                        <div class="form-group">
-                            <label for="formInputTitle">Title</label>
-                            <input type="text" class="form-control" id="title" name="title" placeholder="Title">
-                        </div>
-                        <div class="form-group">
-                            <label for="formInputContent">Content</label>
-                            <input type="text" class="form-control" id="content" name="content" placeholder="Content">
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-6">
-                                <label for="formInputDateDis">Date Discussion</label>
-                                <input type="date" class="form-control" id="dateDis" name="dateDis" placeholder="DateDis">
-                            </div>
-                            <div class="form-group col-md-6">
-                                <label for="formInputStatusComt">Status Comt</label>
-                                <select id="statusComt" class="form-control" name="statusComt" required>
-                                    <option>Choose...</option>
-                                    <option value="0">Active</option>
-                                    <option value="1">Disable</option>
-                                </select>
-                                <div class="invalid-tooltip">
-                                    Please insert your statusComt
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-4">
-                                <label for="formInputUserId">Name User</label>
-                                <select id="userId" class="form-control" name="userId">
-                                </select>
-                            </div>
-                            <div class="form-group col-md-4">
-                                <label for="formInputCategoryId">Category</label>
-                                <select id="categoryId" class="form-control" name="categoryId">
-                                </select>
-                            </div>
-                            <div class="form-group col-md-4">
-                                <label for="formInputTypeId">Type</label>
-                                <select id="typeId" class="form-control" name="typeId">
-                                </select>
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="submit" class="btn btn-warning">Add Data</button>
-                            <button type="button" class="btn btn-danger" data-dismiss="modal" onclick=window.location.reload();>Close</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+

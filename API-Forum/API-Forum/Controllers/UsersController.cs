@@ -48,7 +48,7 @@ namespace API_Forum.Controllers
         [HttpGet("Profile")]
         public ActionResult GetProfile()
         {
-            
+
             var result = user.GetProfileAll();
             return Ok(result);
         }
@@ -105,7 +105,7 @@ namespace API_Forum.Controllers
                             );
                 var idtoken = new JwtSecurityTokenHandler().WriteToken(token);
                 claims.Add(new Claim("TokenSecurity", idtoken.ToString()));
-                return Ok(new JWTokenVM { Messages = "Login Berhasil", Token = idtoken, Roles = user.GetRole(loginVM), UserId = user.GetId(loginVM) });
+                return Ok(new JWTokenVM { Messages = "Login Berhasil", Token = idtoken, Roles = user.GetRole(loginVM), UserId = user.GetId(loginVM), FullName = user.GetFullName(loginVM) });
             }
             else if (result == 1)
             {
@@ -124,10 +124,38 @@ namespace API_Forum.Controllers
             return Ok(result);
         }
 
+        [HttpGet("GetTrending")]
+        public ActionResult GetTrending()
+        {
+            var result = user.GetTrending();
+            return Ok(result);
+        }
+
         [HttpGet("GetDiscussion")]
         public ActionResult GetDiscussion()
         {
             var result = user.GetDiscussion();
+            return Ok(result);
+        }
+
+        [HttpGet("GetDiscussionId/{id}")]
+        public ActionResult GetDiscussionId(int id)
+        {
+            var result = user.GetDiscussionId(id);
+            return Ok(result);
+        }
+
+        [HttpGet("GetDiscussionByCat/{id}")]
+        public ActionResult GetDiscussionByCat(int id)
+        {
+            var result = user.GetDiscussionByCat(id);
+            return Ok(result);
+        }
+
+        [HttpGet("GetDiscussionByUser/{id}")]
+        public ActionResult GetDiscussionByUser(int id)
+        {
+            var result = user.GetDiscussionByUser(id);
             return Ok(result);
         }
 
@@ -152,6 +180,13 @@ namespace API_Forum.Controllers
             {
                 return NotFound(new { status = HttpStatusCode.OK, result = getReplies, message = "Tidak ada data tampil" });
             }
+        }
+
+        [HttpGet("Replies/{id}")]
+        public ActionResult GetRepliesbyId(int id)
+        {
+            var result = user.GetRepliesbyId(id);
+            return Ok(result);
         }
 
         [HttpGet]
@@ -200,6 +235,13 @@ namespace API_Forum.Controllers
             {
                 return NotFound(new { status = HttpStatusCode.OK, result = getCatDis, message = "Tidak ada data tampil" });
             }
+        }
+
+        [HttpGet("GetNewByDate")]
+        public ActionResult GetNewByDate()
+        {
+            var result = user.GetNewByDate();
+            return Ok(result);
         }
     }
 }

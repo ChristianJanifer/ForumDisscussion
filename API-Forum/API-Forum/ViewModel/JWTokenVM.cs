@@ -10,7 +10,7 @@ namespace API_Forum.ViewModel
         public string Messages { get; set; }
         public string Token { get; set; }
         public string[] Roles { get; set; }
-
         public int UserId { get; set; }
+        public string FullName { get; set; }
     }
 }

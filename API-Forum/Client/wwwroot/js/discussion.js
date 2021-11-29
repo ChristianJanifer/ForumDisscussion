@@ -1,74 +1,55 @@
 ﻿$(document).ready(function () {
-    $('#tableDiscussion').DataTable({
-        'ajax': {
-            'url': "/Discussions/GetAll",
-            'order': [[0, 'asc']],
-            'dataSrc': ''
-        },
-        "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
-        'columnDefs': [{
-
-            'targets': [6],
-
-            'orderable': false,
-
-        }],
-
-        'columns': [
-            {
-                data: 'no', name: 'id', render: function (data, type, row, meta) {
-                    return meta.row + meta.settings._iDisplayStart + 1;
-                }
+    $("#postDiskusi").validate({
+        rules: {
+            title: {
+                required: true
             },
-            {
-                "data": "disId"
+            contentD: {
+                required: true
             },
-            {
-                "data": "title"
+            dateDis: {
+                required: true
             },
-            {
-                "data": "content"
+            statusComt: {
+                required: true
             },
-            {
-                "data": "",
-                'render': function (data, type, row, meta) {
-                    var date = row['dateDis'].substr(0, 10);
-                    var newDate = date.split('-');
-                    return newDate[2] + '-' + newDate[1] + '-' + newDate[0];
-                }
+            userId: {
+                required: true
             },
-            {
-                "data": "",
-                "render": function (data, type, row, meta) {
-                    if (row['statusComt'] == 0) {
-                        return ("Active");
-                    }
-                    else {
-                        return ("Disable");
-                    }
-                }
+            categoryId: {
+                required: true
             },
-            {
-                "data": "userId"
-            },
-            {
-                "data": "categoryId"
-            },
-            {
-                "data": "typeId"
-            },
-            {
-                "data": " ",
-                "render": function (data, type, row, meta) {
-                    var button = '<td>' +
-                        '<button type="button" onclick="deleteDiscussion(' + row['disId'] + ');" class="btn btn-danger text-center"><i class="fa fa-trash"></i></button>' +
-                        '</td > ';
-                    return button;
-                }
+            typeId: {
+                required: true
             }
-        ]
+        },
+        errorPlacement: function (error, element) { },
+        highlight: function (element) {
+            $(element).closest('.form-control').addClass('is-invalid');
+        },
+        unhighlight: function (element) {
+            $(element).closest('.form-control').removeClass('is-invalid');
+        }
     });
 });
+
+
+
+function valid() {
+    var ini = $("#postDiskusi").valid();
+    console.log(ini);
+
+    if (ini === true) {
+        insertData();
+    }
+    else {
+        Swal.fire(
+            'Failed!',
+            'Please enter all fields.',
+            'error'
+        );
+    }
+}
 
 $.ajax({
     url: "/Users/GetAll",
@@ -106,82 +87,61 @@ $.ajax({
     }
 })
 
-$(document).ready(function () {
+function clearTextBox() {
+    $('#title').val("");
+    $('#contentD').val("");
+    $('#dateDis').val("");
+    $('#statusComt').val("");
+    $('#userId').val(0);
+    $('#categoryId').val(0);
+    $('#typeId').val(0);
+    $('#title').css('border-color', 'lightgrey');
+    $('#contentD').css('border-color', 'lightgrey');
+    $('#dateDis').css('border-color', 'lightgrey');
+    $('#statusComt').css('border-color', 'lightgrey');
+    $('#userId').css('border-color', 'lightgrey');
+    $('#categoryId').css('border-color', 'lightgrey');
+    $('#typeId').css('border-color', 'lightgrey');
+}
 
-    $("#formDiscussion").validate({
-        rules: {
-            title: "required",
-            content: "required",
-            dateDis: "required",
-            userId: "required",
-            categoryId: "required",
-            typeId: "required",
-        },
-        messages: {
-            title: "Please input",
-            content: "Please input",
-            dateDis: "Please input ",
-            userId: "Please input",
-            categoryId: "Please input",
-            typeId: "Please input ",
-        },
-        submitHandler: function () {
-            var obj = new Object();
-            obj.Title = $('#title').val();
-            obj.Content = $('#content').val();
-            obj.DateDis = $('#dateDis').val();
-            obj.StatusComt = $('#statusComt').val();
-            obj.UserId = parseInt$('#userId').val();
-            obj.CategoryId = parseInt($('#categoryId').val());
-            obj.TypeId = parseInt($('#typeId').val());
+function insertData() {
+    var obj = new Object();
+    obj.Title = $('#title').val();
+    obj.Content = $('#contentD').val();
+    obj.DateDis = $('#dateDis').val();
+    obj.StatusComt = $('#statusComt').val();
+    obj.UserId = parseInt($('#userId').val());
+    obj.CategoryId = parseInt($('#categoryId').val());
+    obj.TypeId = parseInt($('#typeId').val());
 
-            console.log(obj);
-            $.ajax({
-                url: "/Discussions/Discussion",
-                'type': 'POST',
-                'data': { entity: obj },
-                'dataType': 'json',
-            }).done((result) => {
-                if (result == 200) {
-                    swal({
-                        title: "Good job!",
-                        text: "Data Berhasil Ditambahkan!!",
-                        icon: "success",
-                        button: "Okey!",
-                    }).then(function () {
-                        window.location= "/Discussions";
-                    });
-
-                    $('#title').val("");
-                    $('#content').val("");
-                    $('#dateDis').val("");
-                    $('#statusComt').val("");
-                    $('#userId').val("");
-                    $('#categoryId').val("");
-                    $('#typeId').val("");
-
-                } else if (result == 400) {
-                    swal({
-                        title: "Failed!",
-                        text: "Data Gagal Dimasukan!!",
-                        icon: "error",
-                        button: "Close",
-                    });
-                }
-            }).fail((error) => {
-                swal({
-                    title: "Failed!",
-                    text: "Data Gagal Dimasukan!!",
-                    icon: "error",
-                    button: "Close",
-                });
-            });
-        }
+    console.log(obj);
+    $.ajax({
+        url: "/Discussions/Discussion",
+        type: "POST",
+        data: { entity: obj },
+        dataType: 'json'
+    }).done((result) => {
+        console.log(result);
+        Swal.fire({
+            icon: 'success',
+            title: 'Your work has been saved',
+        }).then(function () {
+            window.location = "/Discussions/CreateDiskusi";
+        });
+        clearTextBox();
+    }).fail((error) => {
+        console.log(error);
+        Swal.fire({
+            title: 'Error!',
+            text: 'Do you want to continue',
+            icon: 'error',
+            confirmButtonText: 'Cool'
+        });
     });
-});
+}
 
 function deleteDiscussion(DisId) {
-    swal({
+    Swal.fire({
         title: "Are you sure?",
         text: "Hapus Data Ini !!",
         icon: "warning",
@@ -190,7 +150,7 @@ function deleteDiscussion(DisId) {
     }).then((willDelete) => {
         if (willDelete) {
             $.ajax({
-                url: "/Discussions/Delete/" + DisId,
+                url: "/Discussions/DeleteDis/" + DisId,
                 headers: {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json'
@@ -198,27 +158,620 @@ function deleteDiscussion(DisId) {
                 method: "DELETE",
                 dataType: "json",
                 data: { "": DisId },
+            }).done((result) => {
+                console.log(result);
+                Swal.fire({
+                    title: "Good job!",
+                    text: "DATA BERHASIL DIHAPUS!!",
+                    icon: "success",
+                    button: "Okey!"
+                }).then(function () {
+                    window.location = "/Discussions";
+                });
+            }).fail((error) => {
+                console.log(error);
+                Swal.fire({
+                    title: "Failed!",
+                    text: "DATA GAGAL DIHAPUS!!",
+                    icon: "error",
+                    button: "Close"
+                });
+            });
+        }
+        else {
+            Swal.fire({
+                text: "DATA GAGAL DIHAPUS!!"
+            });
+        }
+    });
+}
+
+$.ajax({
+    url: "/Users/GetLanding/",
+    success: function (result) {
+        console.log(result);
+        var listSerah = "";
+        $.each(result, function (key, val) {
+            listSerah += `
+<section class="py-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h6 class="h2 font-weight-bold">${val.title}</h6>
+                        <div class="d-flex justify-content-between py-3 px-5">
+                          <div class="row comment">
+                                <span class="text-body font-weight-bold">By. ${val.firstName} ${val.lastName}</span>
+                          </div>
+                          <div class="row time text-muted align-self-center">
+                                <span class="text-body pt-1 mr-3">${val.categoryName}</span>
+                          </div>
+                          <div class="row time text-muted align-self-center">
+                                <i class="far fa-clock pr-2"><span class="align-self-center"> ${val.dateDis.substr(0, 10)}</span></i>
+                          </div>
+                        </div>
+                        <hr>
+                        <p class="text-muted">
+                            <h5>${val.content}</h5>
+                        </p>
+                        <hr>
+                        <div class="d-flex justify-content-between py-3 px-5">
+                            <div class="row comment">
+                                <button onclick="getDiskusi(${val.disId})" class="btn btn-primary">Detail Discussion >></button>
+                            </div>
+                            <div class="row comment">
+                                <span class="text-body pt-1 mr-3">${val.views} Views</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+</section>
+`
+        });
+        $('#diskusi').html(listSerah);
+    },
+    error: function (errormessage) {
+        alert(errormessage.responseText);
+    }
+});
+
+function getDiskusi(id) {
+    $.ajax({
+        url: "/Users/GetDiscussion/" + id,
+        success: function (result) {
+            console.log(result);
+            var listSerah = "";
+            var button = "";
+            $.each(result, function (key, val) {
+                var obj = new Object();
+                obj.disId = val.disId;
+                obj.title = val.title;
+                obj.content = val.content;
+                obj.dateDis = val.dateDis;
+                obj.statusComt = val.statusComt;
+                obj.views = parseInt(val.views + 1);
+                obj.userId = parseInt(val.userId);
+                obj.categoryId = parseInt(val.categoryId);
+                obj.typeId = parseInt(val.typeId);
+                obj.status = parseInt(val.status);
+
+                console.log(obj);
+                $.ajax({
+                    url: "Put/",
+                    type: "PUT",
+                    data: { id: id, entity: obj },
+                    dataType: 'json'
+                }).done((result) => {
+                    console.log(result);
+                }).fail((error) => {
+                    console.log(error);
+                })
+                if (val.statusComt == 0) {
+                    button += `<button type="button" class="btn btn-warning" href="#postKomen" data-toggle="collapse">Comment</button>`
+                } else if (val.statusComt == 1) {
+                    button += `<button type="button" class="btn btn-warning btn-disabled" href="#postKomen" data-toggle="collapse" disabled>Comment</button>`
+                }
+                listSerah += `
+<section class="py-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h6 class="h2 font-weight-bold">${val.title}</h6>
+                        <div class="d-flex justify-content-between py-3 px-5">
+                          <div class="row comment">
+                                <span class="text-body font-weight-bold">By. ${val.firstName} ${val.lastName}</span>
+                          </div>
+                          <div class="row time text-muted align-self-center">
+                                <span class="text-body pt-1 mr-3">${val.categoryName}</span>
+                          </div>
+                          <div class="row time text-muted align-self-center">
+                                <i class="far fa-clock pr-2"><span class="align-self-center"> ${val.dateDis.substr(0, 10)}</span></i>
+                          </div>
+                        </div>
+                        <hr>
+                        <p class="text-muted">
+                            <h5>${val.content}</h5>
+                        </p>
+                        <hr>
+                        <div class="d-flex justify-content-between py-3 px-5">
+                            <div class="row comment">
+                                ${button}
+                                <button type="button" class="btn btn-secondary" onclick=window.location.reload();>Back</button>
+                            </div>
+                            <div class="row comment">
+                                <span class="text-body pt-1 mr-3">${val.views} Views</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+</section>
+`
+                $("#dis").val(val.disId);
+            });
+            $('#diskusi').html(listSerah);
+            $.ajax({
+                url: "/Users/GetRepliesbyId/" + id,
                 success: function (result) {
-                    swal({
-                        title: "Good job!",
-                        text: "DATA BERHASIL DIHAPUS!!",
-                        icon: "success",
-                        button: "Okey!",
-                    }).then(function () {
-                        window.location = "/Discussions";
+                    console.log(result);
+                    var value = "";
+                    $.each(result, function (key, val) {
+                        for (let i = 0; i < result.length; i++) {
+                            value += `<span class="text-body pt-1 mr-3">${val.value} Comments</span>`;
+                        }
+                    });
+                    $('#jumlahKomen').html(value);
+                    $.ajax({
+                        url: "/Users/GetReplyById/" + id,
+                        success: function (result) {
+                            console.log(result);
+                            var listSerah = "";
+                            $.each(result, function (key, val) {
+                                listSerah += `
+                                            <section class="py-4">
+                                                <div class="card">
+                                                    <div class="card-body">
+                                                        <div class="d-flex justify-content-between py-3 px-5">
+                                                            <div class="row comment">
+                                                                <span class="text-body font-weight-bold">By. ${val.firstName} ${val.lastName}</span>
+                                                            </div>
+                                                            <div class="row time text-muted align-self-center">
+                                                                <i class="far fa-clock pr-2"><span class="align-self-center"> ${val.dateCom.substr(0, 10)}</span></i>
+                                                            </div>
+                                                        </div>
+                                                        <hr>
+                                                        <p class="text-muted">
+                                                            <h5>${val.content}</h5>
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </section>`
+                            });
+                            $('#tampilKomen').html(listSerah);
+                        },
+                        error: function (errormessage) {
+                            alert(errormessage.responseText);
+                        }
                     });
                 },
                 error: function (errormessage) {
-                    swal({
-                        title: "Failed!",
-                        text: "DATA GAGAL DIHAPUS!!",
-                        icon: "error",
-                        button: "Close",
-                    });
+                    alert(errormessage.responseText);
                 }
             });
-        } else {
-            swal("DATA GAGAL DIHAPUS!!");
+        },
+        error: function (errormessage) {
+            alert(errormessage.responseText);
         }
+    });
+}
+
+$.ajax({
+    url: "/Categories/GetAll",
+    success: function (result) {
+        console.log(result);
+        var listSerah = "";
+        $.each(result, function (key, val) {
+            listSerah += `
+<button class="btn" onclick="getDiskusiCat(${val.categoryId})">${val.categoryName}</button><br>
+`
+        });
+        $('#category').html(listSerah);
+    },
+    error: function (errormessage) {
+        alert(errormessage.responseText);
+    }
+});
+
+function getTrend() {
+    $.ajax({
+        url: "/Users/GetTrending",
+        success: function (result) {
+            console.log(result);
+            var listSerah = "";
+            $.each(result, function (key, val) {
+                listSerah += `
+<section class="py-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h6 class="h2 font-weight-bold">${val.title}</h6>
+                        <div class="d-flex justify-content-between py-3 px-5">
+                          <div class="row comment">
+                                <span class="text-body font-weight-bold">By. ${val.firstName} ${val.lastName}</span>
+                          </div>
+                          <div class="row time text-muted align-self-center">
+                                <span class="text-body pt-1 mr-3">${val.categoryName}</span>
+                          </div>
+                          <div class="row time text-muted align-self-center">
+                                <i class="far fa-clock pr-2"><span class="align-self-center"> ${val.dateDis.substr(0, 10)}</span></i>
+                          </div>
+                        </div>
+                        <hr>
+                        <p class="text-muted">
+                            <h5>${val.content}</h5>
+                        </p>
+                        <hr>
+                        <div class="d-flex justify-content-between py-3 px-5">
+                            <div class="row comment">
+                                <button onclick="getDiskusi(${val.disId})" class="btn btn-primary">Detail Discussion >></button>
+                            </div>
+                            <div class="row comment">
+                                <span class="text-body pt-1 mr-3">${val.views} Views</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+</section>
+`
+            });
+            $('#diskusi').html(listSerah);
+        },
+        error: function (errormessage) {
+            alert(errormessage.responseText);
+        }
+    });
+}
+
+function getDiskusiCat(id) {
+    $.ajax({
+        url: "/Users/GetDiscussionByCat/" + id,
+        success: function (result) {
+            console.log(result);
+            var listSerah = "";
+            $.each(result, function (key, val) {
+                listSerah += `
+<section class="py-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h6 class="h2 font-weight-bold">${val.title}</h6>
+                        <div class="d-flex justify-content-between py-3 px-5">
+                          <div class="row comment">
+                                <span class="text-body font-weight-bold">By. ${val.firstName} ${val.lastName}</span>
+                          </div>
+                          <div class="row time text-muted align-self-center">
+                                <span class="text-body pt-1 mr-3">${val.categoryName}</span>
+                          </div>
+                          <div class="row time text-muted align-self-center">
+                                <i class="far fa-clock pr-2"><span class="align-self-center"> ${val.dateDis.substr(0, 10)}</span></i>
+                          </div>
+                        </div>
+                        <hr>
+                        <p class="text-muted">
+                            <h5>${val.content}</h5>
+                        </p>
+                        <hr>
+                        <div class="d-flex justify-content-between py-3 px-5">
+                            <div class="row comment">
+                                <button onclick="getDiskusi(${val.disId})" class="btn btn-primary">Detail Discussion >></button>
+                            </div>
+                            <div class="row comment">
+                                <span class="text-body pt-1 mr-3">${val.views} Views</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+</section>
+`
+            });
+            $('#diskusi').html(listSerah);
+        },
+        error: function (errormessage) {
+            alert(errormessage.responseText);
+        }
+    });
+}
+
+function getNewThread() {
+    $.ajax({
+        url: "/Users/GetNewByDate/",
+        success: function (result) {
+            console.log(result);
+            var listSerah = "";
+            $.each(result, function (key, val) {
+                listSerah += `
+<section class="py-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h6 class="h2 font-weight-bold">${val.title}</h6>
+                        <div class="d-flex justify-content-between py-3 px-5">
+                          <div class="row comment">
+                                <span class="text-body font-weight-bold">By. ${val.firstName} ${val.lastName}</span>
+                          </div>
+                          <div class="row time text-muted align-self-center">
+                                <span class="text-body pt-1 mr-3">${val.categoryName}</span>
+                          </div>
+                          <div class="row time text-muted align-self-center">
+                                <i class="far fa-clock pr-2"><span class="align-self-center"> ${val.dateDis.substr(0, 10)}</span></i>
+                          </div>
+                        </div>
+                        <hr>
+                        <p class="text-muted">
+                            <h5>${val.content}</h5>
+                        </p>
+                        <hr>
+                        <div class="d-flex justify-content-between py-3 px-5">
+                            <div class="row comment">
+                                <button onclick="getDiskusi(${val.disId})" class="btn btn-primary">Detail Discussion >></button>
+                            </div>
+                            <div class="row comment">
+                                <span class="text-body pt-1 mr-3">${val.views} Views</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+</section>
+`
+            });
+            $('#diskusi').html(listSerah);
+        },
+        error: function (errormessage) {
+            alert(errormessage.responseText);
+        }
+    });
+}
+
+$.ajax({
+    url: "/Users/GetDiscussionByUser/" + document.getElementById("userId").innerHTML,
+    success: function (result) {
+        console.log(result);
+        var listSerah = "";
+        $.each(result, function (key, val) {
+            listSerah += `
+<section class="py-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h6 class="h2 font-weight-bold">${val.title}</h6>
+                        <div class="d-flex justify-content-between py-3 px-5">
+                          <div class="row comment">
+                                <span class="text-body font-weight-bold">By. ${val.firstName} ${val.lastName}</span>
+                          </div>
+                          <div class="row time text-muted align-self-center">
+                                <span class="text-body pt-1 mr-3">${val.categoryName}</span>
+                          </div>
+                          <div class="row time text-muted align-self-center">
+                                <i class="far fa-clock pr-2"><span class="align-self-center"> ${val.dateDis.substr(0, 10)}</span></i>
+                          </div>
+                        </div>
+                        <hr>
+                        <p class="text-muted">
+                            <h5>${val.content}</h5>
+                        </p>
+                        <hr>
+                        <div class="d-flex justify-content-between py-3 px-5">
+                            <div class="row comment">
+                                <button onclick="getDiskusiUser(${val.disId})" class="btn btn-primary">Detail Discussion >></button>
+                            </div>
+                            <div class="row comment">
+                                <span class="text-body pt-1 mr-3">${val.views} Views</span>
+                                <button type="button" onclick="deleteDiscussion(${val.disId});" class="btn btn-danger text-center"><i class="fa fa-trash"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+</section>
+`
+        });
+        $('#diskusi1').html(listSerah);
+    },
+    error: function (errormessage) {
+        alert(errormessage.responseText);
+    }
+});
+
+function getDiskusiUser(id) {
+    $.ajax({
+        url: "/Users/GetDiscussion/" + id,
+        success: function (result) {
+            console.log(result);
+            var listSerah = "";
+            var button = "";
+            $.each(result, function (key, val) {
+                var obj = new Object();
+                obj.disId = val.disId;
+                obj.title = val.title;
+                obj.content = val.content;
+                obj.dateDis = val.dateDis;
+                obj.statusComt = val.statusComt;
+                obj.views = parseInt(val.views + 1);
+                obj.userId = parseInt(val.userId);
+                obj.categoryId = parseInt(val.categoryId);
+                obj.typeId = parseInt(val.typeId);
+                obj.status = parseInt(val.status);
+
+                console.log(obj);
+                $.ajax({
+                    url: "Discussions/Put/",
+                    type: "PUT",
+                    data: { id: id, entity: obj },
+                    dataType: 'json'
+                }).done((result) => {
+                    console.log(result);
+                }).fail((error) => {
+                    console.log(error);
+                })
+                if (val.statusComt == 0) {
+                    button += `<button type="button" class="btn btn-warning" href="#postKomen" data-toggle="collapse">Comment</button>`
+                } else if (val.statusComt == 1) {
+                    button += `<button type="button" class="btn btn-warning btn-disabled" href="#postKomen" data-toggle="collapse" disabled>Comment</button>`
+                }
+                listSerah += `
+<section class="py-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h6 class="h2 font-weight-bold">${val.title}</h6>
+                        <div class="d-flex justify-content-between py-3 px-5">
+                          <div class="row comment">
+                                <span class="text-body font-weight-bold">By. ${val.firstName} ${val.lastName}</span>
+                          </div>
+                          <div class="row time text-muted align-self-center">
+                                <span class="text-body pt-1 mr-3">${val.categoryName}</span>
+                          </div>
+                          <div class="row time text-muted align-self-center">
+                                <i class="far fa-clock pr-2"><span class="align-self-center"> ${val.dateDis.substr(0, 10)}</span></i>
+                          </div>
+                        </div>
+                        <hr>
+                        <p class="text-muted">
+                            <h5>${val.content}</h5>
+                        </p>
+                        <hr>
+                        <div class="d-flex justify-content-between py-3 px-5">
+                            <div class="row comment">
+                                ${button}
+                                <button type="button" class="btn btn-secondary" onclick=window.location.reload();>Back</button>
+                            </div>
+                            <div class="row comment">
+                                <span class="text-body pt-1 mr-3">${val.views} Views</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+</section>
+`
+                $("#dis").val(val.disId);
+            });
+            $('#diskusi1').html(listSerah);
+            $.ajax({
+                url: "/Users/GetRepliesbyId/" + id,
+                success: function (result) {
+                    console.log(result);
+                    var value = "";
+                    $.each(result, function (key, val) {
+                        for (let i = 0; i < result.length; i++) {
+                            value += `<span class="text-body pt-1 mr-3">${val.value} Comments</span>`;
+                        }
+                    });
+                    $('#jumlahKomen1').html(value);
+                    $.ajax({
+                        url: "/Users/GetReplyById/" + id,
+                        success: function (result) {
+                            console.log(result);
+                            var listSerah = "";
+                            $.each(result, function (key, val) {
+                                listSerah += `
+                                            <section class="py-4">
+                                                <div class="card">
+                                                    <div class="card-body">
+                                                        <div class="d-flex justify-content-between py-3 px-5">
+                                                            <div class="row comment">
+                                                                <span class="text-body font-weight-bold">By. ${val.firstName} ${val.lastName}</span>
+                                                            </div>
+                                                            <div class="row time text-muted align-self-center">
+                                                                <i class="far fa-clock pr-2"><span class="align-self-center"> ${val.dateCom.substr(0, 10)}</span></i>
+                                                            </div>
+                                                        </div>
+                                                        <hr>
+                                                        <p class="text-muted">
+                                                            <h5>${val.content}</h5>
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </section>`
+                            });
+                            $('#tampilKomen1').html(listSerah);
+                        },
+                        error: function (errormessage) {
+                            alert(errormessage.responseText);
+                        }
+                    });
+                },
+                error: function (errormessage) {
+                    alert(errormessage.responseText);
+                }
+            });
+        },
+        error: function (errormessage) {
+            alert(errormessage.responseText);
+        }
+    });
+}
+
+$(document).ready(function () {
+    $("#formComment").validate({
+        rules: {
+            contentComment: {
+                required: true
+            },
+            dateCom: {
+                required: true
+            },
+            userId: {
+                required: true
+            },
+            disId: {
+                required: true
+            }
+        },
+        errorPlacement: function (error, element) { },
+        highlight: function (element) {
+            $(element).closest('.form-control').addClass('is-invalid');
+        },
+        unhighlight: function (element) {
+            $(element).closest('.form-control').removeClass('is-invalid');
+        }
+    });
+});
+
+function validComment() {
+    var ini = $("#formComment").valid();
+    console.log(ini);
+
+    if (ini === true) {
+        insertComment();
+    }
+    else {
+        Swal.fire(
+            'Failed!',
+            'Please enter all fields.',
+            'error'
+        );
+    }
+}
+
+function insertComment() {
+    var obj = new Object();
+    obj.Content = $("#contentComment").val();
+    obj.DateComment = $("#dateCom").val();
+    obj.UserId = $("#user").val();
+    obj.DisId = $("#dis").val();
+
+    console.log(obj);
+    $.ajax({
+        url: "/Comments/Comment/",
+        type: "POST",
+        data: { entity: obj },
+        dataType: 'json'
+    }).done((result) => {
+        console.log(result);
+        Swal.fire({
+            icon: 'success',
+            title: 'Your work has been saved',
+        }).then(function () {
+            window.location = "/Discussions/LihatDiskusi";
+        });
+        clearTextBoxx();
+    }).fail((error) => {
+        console.log(error);
+        Swal.fire({
+            title: 'Error!',
+            text: 'Do you want to continue',
+            icon: 'error',
+            confirmButtonText: 'Cool'
+        });
     });
 }
