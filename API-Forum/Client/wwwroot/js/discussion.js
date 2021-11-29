@@ -152,7 +152,7 @@ function deleteDiscussion(DisId) {
     }).then((willDelete) => {
         if (willDelete) {
             $.ajax({
-                url: "/Discussions/Delete/" + DisId,
+                url: "/Discussions/DeleteDis/" + DisId,
                 headers: {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json'

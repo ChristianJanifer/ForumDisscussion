@@ -21,5 +21,13 @@ namespace API_Forum.Repository.Data
             var data = context.Discussions.Where(p => p.Status == Status.on).ToList();
             return data;
         }
+
+        public override int Delete(int id)
+        {
+            var find = context.Discussions.Find(id);
+            find.Status = Status.off;
+            var result = context.SaveChanges();
+            return result;
+        }
     }
 }

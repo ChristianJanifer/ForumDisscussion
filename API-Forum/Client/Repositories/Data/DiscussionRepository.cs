@@ -33,5 +33,11 @@ namespace Client.Repositories.Data
             var result = httpClient.PostAsync(address.link + request, content).Result;
             return result.StatusCode;
         }
+
+        public HttpStatusCode DeleteDis(int id)
+        {
+            var result = httpClient.DeleteAsync(address.link + request + "Delete/" + id).Result;
+            return result.StatusCode;
+        }
     }
 }

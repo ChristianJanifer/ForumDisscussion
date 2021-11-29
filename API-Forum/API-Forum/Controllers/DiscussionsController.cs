@@ -23,5 +23,12 @@ namespace API_Forum.Controllers
             var result = discussion.GetAll();
             return Ok(result);
         }
+
+        [HttpDelete("Delete/{id}")]
+        public ActionResult DeleteUser(int id)
+        {
+            var result = discussion.Delete(id);
+            return Ok(result);
+        }
     }
 }

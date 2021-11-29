@@ -38,5 +38,11 @@ namespace Client.Controllers
             var result = discussion.Discussion(entity);
             return Json(result);
         }
+
+        public JsonResult DeleteDis(int id)
+        {
+            var result = discussion.DeleteDis(id);
+            return Json(result);
+        }
     }
 }
