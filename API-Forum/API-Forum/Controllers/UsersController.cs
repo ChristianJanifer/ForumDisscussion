@@ -113,7 +113,7 @@ namespace API_Forum.Controllers
                             );
                 var idtoken = new JwtSecurityTokenHandler().WriteToken(token);
                 claims.Add(new Claim("TokenSecurity", idtoken.ToString()));
-                return Ok(new JWTokenVM { Messages = "Login Berhasil", Token = idtoken, Roles = user.GetRole(loginVM), UserId = user.GetId(loginVM) });
+                return Ok(new JWTokenVM { Messages = "Login Berhasil", Token = idtoken, Roles = user.GetRole(loginVM), UserId = user.GetId(loginVM), FullName = user.GetFullName(loginVM) });
             }
             else if (result == 1)
             {
@@ -143,6 +143,13 @@ namespace API_Forum.Controllers
         public ActionResult GetDiscussionId(int id)
         {
             var result = user.GetDiscussionId(id);
+            return Ok(result);
+        }
+
+        [HttpGet("GetDiscussionByCat/{id}")]
+        public ActionResult GetDiscussionByCat(int id)
+        {
+            var result = user.GetDiscussionByCat(id);
             return Ok(result);
         }
 
