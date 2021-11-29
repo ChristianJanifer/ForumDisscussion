@@ -342,12 +342,23 @@ namespace API_Forum.Repository.Data
 			return result;
 		}
 
-		public IEnumerable GetNewByDate()
+		public IEnumerable<DiscussionVM> GetNewByDate()
 		{
 			var result = (from d in context.Discussions
+						  join c in context.Categories on d.CategoryId equals c.CategoryId
+						  join u in context.Users on d.UserId equals u.UserId
 						  where d.DateDis.Date <= DateTime.Now
 						  orderby d.DateDis descending
-						  select d).Take(5);
+						  select new DiscussionVM
+						  {
+							  DisId = d.DisId,
+							  FirstName = u.FirstName,
+							  LastName = u.LastName,
+							  Title = d.Title,
+							  Content = d.Content,
+							  DateDis = d.DateDis,
+							  CategoryName = c.CategoryName
+						  }).Take(5);
 			return result;
 		}
 	}

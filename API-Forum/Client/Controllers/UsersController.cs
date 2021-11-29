@@ -88,5 +88,11 @@ namespace Client.Controllers
             var result = await user.GetDiscussionByUser(id);
             return Json(result);
         }
+
+        public async Task<JsonResult> GetNewByDate()
+        {
+            var result = await user.GetNewByDate();
+            return Json(result);
+        }
     }
 }

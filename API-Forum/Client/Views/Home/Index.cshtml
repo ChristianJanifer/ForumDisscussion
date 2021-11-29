@@ -19,13 +19,29 @@
 
                         </div>
                     </div>
+
                 </div>
             </div>
             <div class="col">
+                <div class="dropdown mx-2">
+                    <button class="btn" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Choose Today!
+                        <i class="fas fa-chevron-down pl-2"></i>
+                    </button>
+                    <div class="dropdown-menu py-3 mt-0" aria-labelledby="dropdownMenuButton">
+                        <div class="row">
+                            <div class="col-2">
+                                <ul class="list-group">
+                                    <li class="list-item"><button class="btn" onclick="getNewThread()">Hot Tread!</button></li>
+                                    <li class="list-item"><button class="btn" onclick="getNewThread()">New Threa!</button></li>
+                                </ul>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
                 <div class="container" id="diskusi">
                 </div>
                 <div class="container">
-                    <h6 class="h5 font-weight-bold">Comments</h6>
                     <div class="container" id="tampilKomen">
 
                     </div>
