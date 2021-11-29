@@ -138,6 +138,13 @@ namespace API_Forum.Controllers
             return Ok(result);
         }
 
+        [HttpGet("GetDiscussionByCat/{id}")]
+        public ActionResult GetDiscussionByCat(int id)
+        {
+            var result = user.GetDiscussionByCat(id);
+            return Ok(result);
+        }
+
         [HttpGet("GetComment/{id}")]
         public ActionResult GetComment(int id)
         {
