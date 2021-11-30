@@ -409,6 +409,18 @@ namespace API_Forum.Repository.Data
 			return result;
 		}
 
+		public IEnumerable GetViews()
+		{
+			var result = from d in context.Discussions
+						 orderby d.Title, d.Views
+						 select new
+						 {
+							 d.Title,
+							 d.Views	 
+						 };
+			return result;
+		}
+
 		public IEnumerable<DiscussionVM> GetNewByDate()
 		{
 			var result = (from d in context.Discussions

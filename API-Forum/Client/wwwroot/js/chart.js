@@ -1,5 +1,76 @@
 ﻿$(document).ready(function () {
     $.ajax({
+        url: "https://localhost:44312/API/Users/Views",
+        success: function (result) {
+            //console.log(result);
+            var label = [];
+            var series = [];
+
+            $.each(result, function (key, val) {
+                series.push(val.views);
+                label.push(val.title);
+            })
+            var options = {
+                series: [{
+                    name: "Count ",
+                    data: series
+                }],
+                chart: {
+                    height: 230,
+                    foreColor: "#ccc",
+                    type: "area",
+                    stacked: true,
+                    toolbar: {
+                        autoSelected: "pan",
+                        show: false
+                    }
+                },
+                dataLabels: {
+                    enabled: false
+                },
+                markers: {
+                    size: 5,
+                    colors: ["#000524"],
+                    strokeColor: "#00BAEC",
+                    strokeWidth: 3
+                },
+                fill: {
+                    type: "gradient",
+                    gradient: {
+                        enabled: true,
+                        opacityFrom: 0.55,
+                        opacityTo: 0
+                    }
+                },
+                yaxis: {
+                    title: {
+                        text: 'Views',
+                        align: 'Center'
+                    },
+                },
+                xaxis: {
+                    title: {
+                        text: 'Title',
+                        align: 'Center'
+                    },
+                    categories: label
+                },
+                tooltip: {
+                    y: {
+                        formatter: function (val) {
+                            return val + " Views"
+                        }
+                    }
+                }
+            };
+            var chart = new ApexCharts(document.querySelector("#chartViews"), options);
+            chart.render();
+        }
+    })
+});
+
+$(document).ready(function () {
+    $.ajax({
         url: "https://localhost:44312/API/Users/Replies",
         success: function (result) {
             //console.log(result);
@@ -16,7 +87,7 @@
                     data: series
                 }],
                 chart: {
-                    height: 280,
+                    height: 300,
                     type: "area",
                     stacked: true
                 },
@@ -137,7 +208,9 @@ $(document).ready(function () {
             });
             var options = {
                 chart: {
-                    type: 'pie'
+                    height : 200,
+                    type: 'pie',
+                    stacked : true
                 },
                 series: series,
                 labels: label
@@ -166,7 +239,9 @@ $(document).ready(function () {
             });
             var options = {
                 chart: {
-                    type: 'donut'
+                    height: 200,
+                    type: 'donut',
+                    stacked: true
                 },
                 series: series,
                 labels: label,

@@ -329,10 +329,6 @@ function getNewThread() {
     });
 }
 
-
-
-
-
 $(document).ready(function () {
     $('#tableMember').DataTable({
         'ajax': {
