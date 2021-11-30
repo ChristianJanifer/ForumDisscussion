@@ -118,7 +118,7 @@ function getDiskusi(id) {
                     var value = "";
                     $.each(result, function (key, val) {
                         for (let i = 0; i < result.length; i++) {
-                            value += `<span class="text-body pt-1 mr-3">${val.value} Comments</span>`;
+                            value += `<span class="text-light pt-1 mr-3">${val.value} Comments</span>`;
                         }
                     });
                     $('#jumlahKomen').html(value);
@@ -183,9 +183,9 @@ $.ajax({
     }
 });
 
-function getTrend() {
+function getDiskusiCat(id) {
     $.ajax({
-        url: "/Users/GetTrending",
+        url: "/Users/GetDiscussionByCat/" + id,
         success: function (result) {
             console.log(result);
             var listSerah = "";
@@ -232,9 +232,9 @@ function getTrend() {
     });
 }
 
-function getDiskusiCat(id) {
+function getTrend() {
     $.ajax({
-        url: "/Users/GetDiscussionByCat/" + id,
+        url: "/Users/GetTrending",
         success: function (result) {
             console.log(result);
             var listSerah = "";
