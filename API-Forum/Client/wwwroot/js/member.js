@@ -434,3 +434,51 @@ function deleteUser(id) {
         }
     });
 }
+
+$.ajax({
+    url: "/Users/GetProfile",
+    success: function (result) {
+        console.log(result);
+        var name = "";
+        $.each(result, function (key, val) {
+            name = `<span class="text-body pt-1 mr-3">${result.length} People</span>`
+        });
+        $("#hitungUser").html(name);
+    }
+})
+
+$.ajax({
+    url: "/Users/GetLanding",
+    success: function (result) {
+        console.log(result);
+        var name = "";
+        $.each(result, function (key, val) {
+            name = `<span class="text-body pt-1 mr-3">${result.length} Discussions</span>`
+        });
+        $("#hitungDiskusi").html(name);
+    }
+})
+
+$.ajax({
+    url: "/Categories/GetAll",
+    success: function (result) {
+        console.log(result);
+        var name = "";
+        $.each(result, function (key, val) {
+            name = `<span class="text-body pt-1 mr-3">${result.length} Categories</span>`
+        });
+        $("#hitungCategory").html(name);
+    }
+})
+
+$.ajax({
+    url: "/Comments/GetAll",
+    success: function (result) {
+        console.log(result);
+        var name = "";
+        $.each(result, function (key, val) {
+            name = `<span class="text-body pt-1 mr-3">${result.length} Comments</span>`
+        });
+        $("#hitungComments").html(name);
+    }
+})
