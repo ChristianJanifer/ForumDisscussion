@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace API_Forum.Migrations
 {
-    public partial class ForumDatabase : Migration
+    public partial class DatabaseForum : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -93,6 +93,7 @@ namespace API_Forum.Migrations
                     Content = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     DateDis = table.Column<DateTime>(type: "datetime2", nullable: false),
                     StatusComt = table.Column<int>(type: "int", nullable: false),
+                    Views = table.Column<int>(type: "int", nullable: false),
                     UserId = table.Column<int>(type: "int", nullable: false),
                     CategoryId = table.Column<int>(type: "int", nullable: false),
                     TypeId = table.Column<int>(type: "int", nullable: false),

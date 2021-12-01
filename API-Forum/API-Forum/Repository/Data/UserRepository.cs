@@ -222,6 +222,7 @@ namespace API_Forum.Repository.Data
 		{
 			var data1 = (from d in context.Discussions
 						 join c in context.Categories on d.CategoryId equals c.CategoryId
+						 join t in context.TypeDiscussions on d.TypeId equals t.TypeId
 						 join u in context.Users on d.UserId equals u.UserId
 						 where d.Status == Status.@on
 						 select new DiscussionVM
@@ -232,7 +233,13 @@ namespace API_Forum.Repository.Data
 							 Title = d.Title,
 							 Content = d.Content,
 							 DateDis = d.DateDis,
-							 CategoryName = c.CategoryName
+							 Views = d.Views,
+							 UserId = u.UserId,
+							 CategoryId = c.CategoryId,
+							 TypeId = t.TypeId,
+							 CategoryName = c.CategoryName,
+							 StatusComt = (ViewModel.GenericUriParserOptions)d.StatusComt,
+							 Status = (ViewModel.Status1)d.Status
 						 });
 			return data1;
 		}
@@ -241,6 +248,7 @@ namespace API_Forum.Repository.Data
 		{
 			var data1 = (from d in context.Discussions
 						 join c in context.Categories on d.CategoryId equals c.CategoryId
+						 join t in context.TypeDiscussions on d.TypeId equals t.TypeId
 						 join u in context.Users on d.UserId equals u.UserId
 						 where d.Status == Status.@on && d.DisId == id
 						 select new DiscussionVM
@@ -251,8 +259,13 @@ namespace API_Forum.Repository.Data
 							 Title = d.Title,
 							 Content = d.Content,
 							 DateDis = d.DateDis,
+							 Views = d.Views,
+							 UserId = u.UserId,
+							 CategoryId = c.CategoryId,
+							 TypeId = t.TypeId,
 							 CategoryName = c.CategoryName,
-							 StatusComt = (ViewModel.GenericUriParserOptions)d.StatusComt
+							 StatusComt = (ViewModel.GenericUriParserOptions)d.StatusComt,
+							 Status = (ViewModel.Status1)d.Status
 						 });
 			return data1;
 		}
@@ -261,6 +274,7 @@ namespace API_Forum.Repository.Data
 		{
 			var data1 = (from d in context.Discussions
 						 join c in context.Categories on d.CategoryId equals c.CategoryId
+						 join t in context.TypeDiscussions on d.TypeId equals t.TypeId
 						 join u in context.Users on d.UserId equals u.UserId
 						 where d.Status == Status.@on && d.CategoryId == id
 						 select new DiscussionVM
@@ -271,7 +285,13 @@ namespace API_Forum.Repository.Data
 							 Title = d.Title,
 							 Content = d.Content,
 							 DateDis = d.DateDis,
-							 CategoryName = c.CategoryName
+							 Views = d.Views,
+							 UserId = u.UserId,
+							 CategoryId = c.CategoryId,
+							 TypeId = t.TypeId,
+							 CategoryName = c.CategoryName,
+							 StatusComt = (ViewModel.GenericUriParserOptions)d.StatusComt,
+							 Status = (ViewModel.Status1)d.Status
 						 });
 			return data1;
 		}
@@ -280,6 +300,7 @@ namespace API_Forum.Repository.Data
 		{
 			var data1 = (from d in context.Discussions
 						 join c in context.Categories on d.CategoryId equals c.CategoryId
+						 join t in context.TypeDiscussions on d.TypeId equals t.TypeId
 						 join u in context.Users on d.UserId equals u.UserId
 						 where d.Status == Status.@on && d.UserId == id
 						 select new DiscussionVM
@@ -290,9 +311,41 @@ namespace API_Forum.Repository.Data
 							 Title = d.Title,
 							 Content = d.Content,
 							 DateDis = d.DateDis,
+							 Views = d.Views,
+							 UserId = u.UserId,
+							 CategoryId = c.CategoryId,
+							 TypeId = t.TypeId,
 							 CategoryName = c.CategoryName,
-							 StatusComt = (ViewModel.GenericUriParserOptions)d.StatusComt
+							 StatusComt = (ViewModel.GenericUriParserOptions)d.StatusComt,
+							 Status = (ViewModel.Status1)d.Status
 						 });
+			return data1;
+		}
+
+		public Object GetTrending()
+		{
+			var data1 = (from d in context.Discussions
+						 join c in context.Categories on d.CategoryId equals c.CategoryId
+						 join t in context.TypeDiscussions on d.TypeId equals t.TypeId
+						 join u in context.Users on d.UserId equals u.UserId
+						 where d.Status == Status.@on
+						 orderby d.Views descending
+						 select new DiscussionVM
+						 {
+							 DisId = d.DisId,
+							 FirstName = u.FirstName,
+							 LastName = u.LastName,
+							 Title = d.Title,
+							 Content = d.Content,
+							 DateDis = d.DateDis,
+							 Views = d.Views,
+							 UserId = u.UserId,
+							 CategoryId = c.CategoryId,
+							 TypeId = t.TypeId,
+							 CategoryName = c.CategoryName,
+							 StatusComt = (ViewModel.GenericUriParserOptions)d.StatusComt,
+							 Status = (ViewModel.Status1)d.Status
+						 }).Take(3);
 			return data1;
 		}
 
@@ -327,20 +380,19 @@ namespace API_Forum.Repository.Data
 			return result;
 		}
 
-		/*public object GetRepliesId(int id)
+		public Object GetRepliesId(int id)
 		{
 			var result = from u in context.Users
 						 join c in context.Comments on u.UserId equals c.UserId
-						 join ac in context.Accounts on u.UserId equals ac.UserId
-						 join acr in context.AccountRoles on u.UserId equals acr.UserId
-						 where c.Status == Status.@on && c.DisId == id && acr.RoleId == 2
+						 where c.DisId == id
 						 group c by c.DisId into a
-						 select new
+						 select new ReplyVM
 						 {
-							 value = a.Count()
+							 DisId = a.Key,
+							 Value = a.Count()
 						 };
 			return result;
-		}*/
+		}
 
 		public IEnumerable GetGender()
 		{
@@ -383,6 +435,38 @@ namespace API_Forum.Repository.Data
                              categoryName = x.Key,
                              value = x.Count()
                          };
+			return result;
+		}
+
+		public IEnumerable GetViews()
+		{
+			var result = from d in context.Discussions
+						 orderby d.Title, d.Views
+						 select new
+						 {
+							 d.Title,
+							 d.Views
+						 };
+			return result;
+		}
+
+		public IEnumerable<DiscussionVM> GetNewByDate()
+		{
+			var result = (from d in context.Discussions
+						  join c in context.Categories on d.CategoryId equals c.CategoryId
+						  join u in context.Users on d.UserId equals u.UserId
+						  where d.DateDis.Date <= DateTime.Now
+						  orderby d.DateDis descending
+						  select new DiscussionVM
+						  {
+							  DisId = d.DisId,
+							  FirstName = u.FirstName,
+							  LastName = u.LastName,
+							  Title = d.Title,
+							  Content = d.Content,
+							  DateDis = d.DateDis,
+							  CategoryName = c.CategoryName
+						  }).Take(5);
 			return result;
 		}
 	}

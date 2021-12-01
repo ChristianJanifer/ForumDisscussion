@@ -29,6 +29,15 @@ namespace Client.Controllers
             return View();
         }
 
+        public IActionResult Error401()
+        {
+            return View();
+        }
+        public IActionResult ErrorNotfound()
+        {
+            return View();
+        }
+
         public IActionResult ErrorLogin()
         {
             return View();

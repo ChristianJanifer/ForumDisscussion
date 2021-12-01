@@ -6,42 +6,35 @@
         $.each(result, function (key, val) {
             listSerah += `
 <section class="py-4">
-    <div class="card">
-        <div class="card-body">
-            <div class="container">
                 <div class="card">
                     <div class="card-body">
-                        <h5>${val.title}</h5>
-                        <hr>
-                        <span class="category text-body pt-1 mr-3">${val.categoryName}</span>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card-body">
+                        <h6 class="h2 font-weight-bold">${val.title}</h6>
                         <div class="d-flex justify-content-between py-3 px-5">
-                            <div class="row comment">
-                                <span class="color2 mr-2 text-white">${val.firstName.substr(0, 1)}</span>
-                                <span class="text-body font-weight-bold">${val.firstName} ${val.lastName}</span>
-                            </div>
-                            <div class="row time text-muted align-self-center">
+                          <div class="row comment">
+                                <span class="text-body font-weight-bold">By. ${val.firstName} ${val.lastName}</span>
+                          </div>
+                          <div class="row time text-muted align-self-center">
+                                <span class="text-body pt-1 mr-3">${val.categoryName}</span>
+                          </div>
+                          <div class="row time text-muted align-self-center">
                                 <i class="far fa-clock pr-2"><span class="align-self-center"> ${val.dateDis.substr(0, 10)}</span></i>
-                            </div>
+                          </div>
                         </div>
                         <hr>
                         <p class="text-muted">
-                            ${val.content}
+                            <h5>${val.content}</h5>
                         </p>
+                        <hr>
+                        <div class="d-flex justify-content-between py-3 px-5">
+                            <div class="row comment">
+                                <button onclick="getDiskusi(${val.disId})" class="btn btn-primary">Detail Discussion >></button>
+                            </div>
+                            <div class="row comment">
+                                <span class="text-body pt-1 mr-3">${val.views} Views</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="card">
-                    <div class="card-body">
-                        <a onclick="getDiskusi(${val.disId})" class="btn btn-primary">Detail Discussion >></a>
-                        <button type="button" class="btn btn-secondary" onclick=window.location.reload();>Close</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 </section>
 `
         });
@@ -54,49 +47,179 @@
 
 function getDiskusi(id) {
     $.ajax({
-        url: "/Users/GetDiscussionbyId/" + id,
+        url: "/Users/GetDiscussion/" + id,
+        success: function (result) {
+            console.log(result);
+            var listSerah = "";
+            $.each(result, function (key, val) {
+                var obj = new Object();
+                obj.disId = val.disId;
+                obj.title = val.title;
+                obj.content = val.content;
+                obj.dateDis = val.dateDis;
+                obj.statusComt = val.statusComt;
+                obj.views = parseInt(val.views + 1);
+                obj.userId = parseInt(val.userId);
+                obj.categoryId = parseInt(val.categoryId);
+                obj.typeId = parseInt(val.typeId);
+                obj.status = parseInt(val.status);
+
+                console.log(obj);
+                $.ajax({
+                    url: "Discussions/Put/",
+                    type: "PUT",
+                    data: { id: id, entity: obj },
+                    dataType: 'json'
+                }).done((result) => {
+                    console.log(result);
+                }).fail((error) => {
+                    console.log(error);
+                })
+                listSerah += `
+<section class="py-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h6 class="h2 font-weight-bold">${val.title}</h6>
+                        <div class="d-flex justify-content-between py-3 px-5">
+                          <div class="row comment">
+                                <span class="text-body font-weight-bold">By. ${val.firstName} ${val.lastName}</span>
+                          </div>
+                          <div class="row time text-muted align-self-center">
+                                <span class="text-body pt-1 mr-3">${val.categoryName}</span>
+                          </div>
+                          <div class="row time text-muted align-self-center">
+                                <i class="far fa-clock pr-2"><span class="align-self-center"> ${val.dateDis.substr(0, 10)}</span></i>
+                          </div>
+                        </div>
+                        <hr>
+                        <p class="text-muted">
+                            <h5>${val.content}</h5>
+                        </p>
+                        <hr>
+                        <div class="d-flex justify-content-between py-3 px-5">
+                            <div class="row comment">
+                                <button type="button" class="btn btn-secondary" onclick=window.location.reload();>Back</button>
+                            </div>
+                            <div class="row comment">
+                                <span class="text-body pt-1 mr-3">${val.views} Views</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+</section>
+`
+            });
+            $('#diskusi').html(listSerah);
+            $.ajax({
+                url: "/Users/GetRepliesbyId/" + id,
+                success: function (result) {
+                    console.log(result);
+                    var value = "";
+                    $.each(result, function (key, val) {
+                        for (let i = 0; i < result.length; i++) {
+                            value += `<span class="text-body pt-1 mr-3">${val.value} Comments</span>`;
+                        }
+                    });
+                    $('#jumlahKomen').html(value);
+                    $.ajax({
+                        url: "/Users/GetReplyById/" + id,
+                        success: function (result) {
+                            console.log(result);
+                            var listSerah = "";
+                            $.each(result, function (key, val) {
+                                listSerah += `
+                                            <section class="py-4">
+                                                <div class="card">
+                                                    <div class="card-body">
+                                                        <div class="d-flex justify-content-between py-3 px-5">
+                                                            <div class="row comment">
+                                                                <span class="text-body font-weight-bold">By. ${val.firstName} ${val.lastName}</span>
+                                                            </div>
+                                                            <div class="row time text-muted align-self-center">
+                                                                <i class="far fa-clock pr-2"><span class="align-self-center"> ${val.dateCom.substr(0, 10)}</span></i>
+                                                            </div>
+                                                        </div>
+                                                        <hr>
+                                                        <p class="text-muted">
+                                                            <h5>${val.content}</h5>
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </section>`
+                            });
+                            $('#tampilKomen').html(listSerah);
+                        },
+                        error: function (errormessage) {
+                            alert(errormessage.responseText);
+                        }
+                    });
+                },
+                error: function (errormessage) {
+                    alert(errormessage.responseText);
+                }
+            });
+        },
+        error: function (errormessage) {
+            alert(errormessage.responseText);
+        }
+    });
+}
+
+$.ajax({
+    url: "/Categories/GetAll",
+    success: function (result) {
+        console.log(result);
+        var listSerah = "";
+        $.each(result, function (key, val) {
+            listSerah += `
+<button class="btn" onclick="getDiskusiCat(${val.categoryId})">${val.categoryName}</button><br>
+`
+        });
+        $('#category').html(listSerah);
+    },
+    error: function (errormessage) {
+        alert(errormessage.responseText);
+    }
+});
+
+function getTrend() {
+    $.ajax({
+        url: "/Users/GetTrending",
         success: function (result) {
             console.log(result);
             var listSerah = "";
             $.each(result, function (key, val) {
                 listSerah += `
 <section class="py-4">
-    <div class="card">
-        <div class="card-body">
-            <div class="container">
                 <div class="card">
                     <div class="card-body">
-                        <h5>${val.title}</h5>
-                        <hr>
-                        <span class="category text-body pt-1 mr-3">${val.categoryName}</span>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="card-body">
+                        <h6 class="h2 font-weight-bold">${val.title}</h6>
                         <div class="d-flex justify-content-between py-3 px-5">
-                            <div class="row comment">
-                                <span class="color2 mr-2 text-white">${val.firstName.substr(0, 1)}</span>
-                                <span class="text-body font-weight-bold">${val.firstName} ${val.lastName}</span>
-                            </div>
-                            <div class="row time text-muted align-self-center">
+                          <div class="row comment">
+                                <span class="text-body font-weight-bold">By. ${val.firstName} ${val.lastName}</span>
+                          </div>
+                          <div class="row time text-muted align-self-center">
+                                <span class="text-body pt-1 mr-3">${val.categoryName}</span>
+                          </div>
+                          <div class="row time text-muted align-self-center">
                                 <i class="far fa-clock pr-2"><span class="align-self-center"> ${val.dateDis.substr(0, 10)}</span></i>
-                            </div>
+                          </div>
                         </div>
                         <hr>
                         <p class="text-muted">
-                            ${val.content}
+                            <h5>${val.content}</h5>
                         </p>
+                        <hr>
+                        <div class="d-flex justify-content-between py-3 px-5">
+                            <div class="row comment">
+                                <button onclick="getDiskusi(${val.disId})" class="btn btn-primary">Detail Discussion >></button>
+                            </div>
+                            <div class="row comment">
+                                <span class="text-body pt-1 mr-3">${val.views} Views</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="card">
-                    <div class="card-body">
-                        <a onclick="getComment(${val.disId})" href="#tampilKomen" class="btn btn-primary" data-toggle="collapse">Show Comment >></a>
-                        <button type="button" class="btn btn-secondary" onclick=window.location.reload();>Close</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 </section>
 `
             });
@@ -108,26 +231,97 @@ function getDiskusi(id) {
     });
 }
 
-function getComment(id) {
+function getDiskusiCat(id) {
     $.ajax({
-        url: "/Users/GetReplyById/" + id,
+        url: "/Users/GetDiscussionByCat/" + id,
         success: function (result) {
             console.log(result);
             var listSerah = "";
             $.each(result, function (key, val) {
-                listSerah += `<div class="row">
-                                <div class="col">
-                                    <div class="card">
-                                        <div class="card-body">
-                                            <p class="card-text">Oleh : ${val.firstName} | Date published : ${val.dateCom.substr(0, 10)} </p>
-                                            <hr>
-                                            <p class="card-text">${val.content}</p>
-                                        </div>
-                                    </div>
-                                </div>
-                              </div>`
+                listSerah += `
+<section class="py-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h6 class="h2 font-weight-bold">${val.title}</h6>
+                        <div class="d-flex justify-content-between py-3 px-5">
+                          <div class="row comment">
+                                <span class="text-body font-weight-bold">By. ${val.firstName} ${val.lastName}</span>
+                          </div>
+                          <div class="row time text-muted align-self-center">
+                                <span class="text-body pt-1 mr-3">${val.categoryName}</span>
+                          </div>
+                          <div class="row time text-muted align-self-center">
+                                <i class="far fa-clock pr-2"><span class="align-self-center"> ${val.dateDis.substr(0, 10)}</span></i>
+                          </div>
+                        </div>
+                        <hr>
+                        <p class="text-muted">
+                            <h5>${val.content}</h5>
+                        </p>
+                        <hr>
+                        <div class="d-flex justify-content-between py-3 px-5">
+                            <div class="row comment">
+                                <button onclick="getDiskusi(${val.disId})" class="btn btn-primary">Detail Discussion >></button>
+                            </div>
+                            <div class="row comment">
+                                <span class="text-body pt-1 mr-3">${val.views} Views</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+</section>
+`
             });
-            $('#tampilKomen').html(listSerah);
+            $('#diskusi').html(listSerah);
+        },
+        error: function (errormessage) {
+            alert(errormessage.responseText);
+        }
+    });
+}
+
+function getNewThread() {
+    $.ajax({
+        url: "/Users/GetNewByDate/",
+        success: function (result) {
+            console.log(result);
+            var listSerah = "";
+            $.each(result, function (key, val) {
+                listSerah += `
+<section class="py-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h6 class="h2 font-weight-bold">${val.title}</h6>
+                        <div class="d-flex justify-content-between py-3 px-5">
+                          <div class="row comment">
+                                <span class="text-body font-weight-bold">By. ${val.firstName} ${val.lastName}</span>
+                          </div>
+                          <div class="row time text-muted align-self-center">
+                                <span class="text-body pt-1 mr-3">${val.categoryName}</span>
+                          </div>
+                          <div class="row time text-muted align-self-center">
+                                <i class="far fa-clock pr-2"><span class="align-self-center"> ${val.dateDis.substr(0, 10)}</span></i>
+                          </div>
+                        </div>
+                        <hr>
+                        <p class="text-muted">
+                            <h5>${val.content}</h5>
+                        </p>
+                        <hr>
+                        <div class="d-flex justify-content-between py-3 px-5">
+                            <div class="row comment">
+                                <button onclick="getDiskusi(${val.disId})" class="btn btn-primary">Detail Discussion >></button>
+                            </div>
+                            <div class="row comment">
+                                <span class="text-body pt-1 mr-3">${val.views} Views</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+</section>
+`
+            });
+            $('#diskusi').html(listSerah);
         },
         error: function (errormessage) {
             alert(errormessage.responseText);
@@ -182,6 +376,15 @@ $(document).ready(function () {
                         return '+62' + row['phone'];
                     }
                 }
+            },
+            {
+                "data": " ",
+                "render": function (data, type, row, meta) {
+                    var button = '<td>' +
+                        '<button type="button" onclick="deleteUser(' + row['userId'] + ');" class="btn btn-danger text-center"><i class="fa fa-trash"></i></button>' +
+                        '</td > ';
+                    return button;
+                }
             }
         ]
     });
@@ -231,3 +434,51 @@ function deleteUser(id) {
         }
     });
 }
+
+$.ajax({
+    url: "/Users/GetProfile",
+    success: function (result) {
+        console.log(result);
+        var name = "";
+        $.each(result, function (key, val) {
+            name = `<span class="text-body pt-1 mr-3">${result.length} People</span>`
+        });
+        $("#hitungUser").html(name);
+    }
+})
+
+$.ajax({
+    url: "/Users/GetLanding",
+    success: function (result) {
+        console.log(result);
+        var name = "";
+        $.each(result, function (key, val) {
+            name = `<span class="text-body pt-1 mr-3">${result.length} Discussions</span>`
+        });
+        $("#hitungDiskusi").html(name);
+    }
+})
+
+$.ajax({
+    url: "/Categories/GetAll",
+    success: function (result) {
+        console.log(result);
+        var name = "";
+        $.each(result, function (key, val) {
+            name = `<span class="text-body pt-1 mr-3">${result.length} Categories</span>`
+        });
+        $("#hitungCategory").html(name);
+    }
+})
+
+$.ajax({
+    url: "/Comments/GetAll",
+    success: function (result) {
+        console.log(result);
+        var name = "";
+        $.each(result, function (key, val) {
+            name = `<span class="text-body pt-1 mr-3">${result.length} Comments</span>`
+        });
+        $("#hitungComments").html(name);
+    }
+})

@@ -19,14 +19,30 @@ namespace API_Forum.ViewModel
 
         public DateTime DateDis { get; set; }
 
+        public int Views { get; set; }
+
+        public int UserId { get; set; }
+
+        public int CategoryId { get; set; }
+
+        public int TypeId { get; set; }
+
         public string CategoryName { get; set; }
 
         public GenericUriParserOptions StatusComt { get; set; }
+
+        public Status1 Status { get; set; }
     }
 
     public enum GenericUriParserOptions
     {
         Active,
         Disable
+    }
+
+    public enum Status1
+    {
+        on,
+        off
     }
 }

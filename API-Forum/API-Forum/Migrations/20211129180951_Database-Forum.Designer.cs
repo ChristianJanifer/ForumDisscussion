@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace API_Forum.Migrations
 {
     [DbContext(typeof(MyContext))]
-    [Migration("20211127091525_Forum-Database")]
-    partial class ForumDatabase
+    [Migration("20211129180951_Database-Forum")]
+    partial class DatabaseForum
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -124,6 +124,9 @@ namespace API_Forum.Migrations
                         .HasColumnType("int");
 
                     b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Views")
                         .HasColumnType("int");
 
                     b.HasKey("DisId");
