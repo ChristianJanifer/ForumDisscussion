@@ -2,23 +2,17 @@
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @{
-    Layout = "_LayoutPage";
+    ViewData["Title"] = "Sign Up";
+    Layout = "_LayoutLogin";
 }
 
-<title>Sign Up</title>
-<section class="sign-up">
-    <div class="container">
-        <div class="row d-flex justify-content-end mt-4 sign">
-            <a asp-area="" asp-controller="Home" asp-action="Index" class="text-body">Home</a>
-            <p class="pr-2 mb-0 align-self-center"> Already have an account?</p>
-            <a asp-area="" asp-controller="Logins" asp-action="Index" class="text-body">Sign In</a>
-        </div>
-        <div class="form col-8 mx-auto">
 
-            <h5 class="text-center font-weight-bold mt-5">Create a New Account</h5>
-            <p class="text-center px-5 mx-5">By singin up you can start posting, replaying to topics, vote topics and many more.</p>
+    <div class="container">
+        <div class="form col-8 mx-auto">
             <form id="register">
-                <div class="bg-white mx-3 px-4 py-4 border-top border-warning">
+                <br />
+                <div class="mx-3 px-4 py-4" id="regis">
+                    <h2><em>Sign Up</em> Member</h2>
                     <div class="row">
                         <div class="col form-group">
                             <label for="inputFirstName">First Name</label>
@@ -84,19 +78,5 @@
                     <button type="button" class="mb-3 btn-lg btn-block" onclick="Valid()">Sign Up</button>
                 </div>
             </form>
-            <div class="row footer mx-5 my-5 d-flex justify-content-between">
-                <ul class="list-group list-group-horizontal">
-                    <li><a href="#" class="text-muted pr-4">Terms</a></li>
-                    <li><a href="#" class="text-muted pr-4">Privacy</a></li>
-                    <li><a href="#" class="text-muted ">Send Feedback</a></li>
-                </ul>
-                <ul class="list-group list-group-horizontal pl-5">
-                    <li><a href="#" class="pr-3"><i class="fab fa-facebook-square text-body"></i></a></li>
-                    <li><a href="#" class="pr-3"><i class="fab fa-twitter text-body"></i></a></li>
-                    <li><a href="#" class="pr-3"><i class="fab fa-google-plus-g text-body"></i></a></li>
-                    <li><a href="#"><i class="fab fa-dribbble text-body"></i></a></li>
-                </ul>
-            </div>
         </div>
     </div>
-</section>

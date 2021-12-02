@@ -53,20 +53,38 @@ namespace Client.Controllers
         {
             var jwtToken = await log.Login(login);
             var token = jwtToken.Token;
-            var role = jwtToken.Roles;
             var id = jwtToken.UserId;
             var name = jwtToken.FullName;
 
             if (token == null)
             {
-                return RedirectToAction("Index", "Logins");
+                return RedirectToAction("Index", "Registers");
             }
 
             HttpContext.Session.SetString("JWToken", token);
             HttpContext.Session.SetString("Username", name);
             HttpContext.Session.SetInt32("UserId", id);
 
-            foreach (var x in role)
+            return RedirectToAction("LihatDiskusi", "Discussions");
+        }
+
+        public async Task<IActionResult> LoginAdmins(LoginVM login)
+        {
+            var jwtToken = await log.Login(login);
+            var token = jwtToken.Token;
+            var id = jwtToken.UserId;
+            var name = jwtToken.FullName;
+
+            if (token == null)
+            {
+                return RedirectToAction("Index", "Registers");
+            }
+
+            HttpContext.Session.SetString("JWToken", token);
+            HttpContext.Session.SetString("Username", name);
+            HttpContext.Session.SetInt32("UserId", id);
+
+            /*foreach (var x in role)
             {
                 if (x is "Admin")
                 {
@@ -76,10 +94,11 @@ namespace Client.Controllers
                 {
                     return RedirectToAction("LihatDiskusi", "Discussions");
                 }
-            }
+            }*/
 
-            return RedirectToAction("Profile", "Users");
+            return RedirectToAction("Dashboard", "Admins");
         }
+
 
         [Authorize]
         public IActionResult Logout()

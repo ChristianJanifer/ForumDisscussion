@@ -12,9 +12,10 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/2.0.1/css/buttons.dataTables.min.css">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:100,200,300,400,500,600,700,800,900" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="~/css/login.css">
+    <link rel="stylesheet" type="text/css" href="~/css/register.css">
 
 
-    <title>Login</title>
+    <title>@ViewData["Title"]</title>
 
     <link href="~/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="~/assets/css/fontawesome.css">
@@ -42,13 +43,11 @@
         </video>
 
         <div class="video-overlay header-text">
-            <div class="container">
-                @RenderBody()
-            </div>
+            @RenderBody()
         </div>
     </section>
-    <footer class="" style="background-color: rgba(22,34,57,0.85)">
-        <div class="container">
+    <!--<footer class="" style="background-color: rgba(22,34,57,0.85)">
+        <div class="container">-->
             @*<section>
                     <div class="row d-flex justify-content-between">
                         <div>
@@ -61,16 +60,16 @@
                         </div>
                     </div>
                 </section>*@
-            <section>
+            <!--<section>
                 <div class="row d-flex justify-content-between terms">
                     <div>
                         <ul class="list-group list-group-horizontal">
-                            <li><a href="#" class="pr-4">© 2021 MII</a></li>
+                            <li><a href="#" class="pr-4">© 2021 MII</a></li>-->
                             @*<li><a href="#" class="pr-4">Terms</a></li>
                                 <li><a href="#" class="pr-4">Privacy</a></li>
                                 <li><a href="#">Send Feedback</a></li>*@
-                        </ul>
-                    </div>
+                        <!--</ul>
+                    </div>-->
                     @*<div>
                             <ul class="list-group list-group-horizontal">
                                 <li><a href="#" class="pr-3"><i class="fab fa-facebook-square text-body"></i></a></li>
@@ -79,10 +78,10 @@
                                 <li><a href="#"><i class="fab fa-dribbble text-body"></i></a></li>
                             </ul>
                         </div>*@
-                </div>
+                <!--</div>
             </section>
         </div>
-    </footer>
+    </footer>-->
 
     <script src="~/vendor/jquery/jquery.min.js"></script>
     <script src="~/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>

@@ -105,7 +105,7 @@ namespace API_Forum.Controllers
                             );
                 var idtoken = new JwtSecurityTokenHandler().WriteToken(token);
                 claims.Add(new Claim("TokenSecurity", idtoken.ToString()));
-                return Ok(new JWTokenVM { Messages = "Login Berhasil", Token = idtoken, Roles = user.GetRole(loginVM), UserId = user.GetId(loginVM), FullName = user.GetFullName(loginVM) });
+                return Ok(new JWTokenVM { Messages = "Login Berhasil", Token = idtoken, UserId = user.GetId(loginVM), FullName = user.GetFullName(loginVM) });
             }
             else if (result == 1)
             {
