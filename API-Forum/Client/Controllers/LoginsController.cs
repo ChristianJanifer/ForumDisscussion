@@ -23,8 +23,22 @@ namespace Client.Controllers
         {
             return View();
         }
-        
+
+        public IActionResult LoginAdmin()
+        {
+            return View();
+        }
+
         public IActionResult Reset()
+        {
+            return View();
+        }
+
+        public IActionResult Error401()
+        {
+            return View();
+        }
+        public IActionResult ErrorNotfound()
         {
             return View();
         }

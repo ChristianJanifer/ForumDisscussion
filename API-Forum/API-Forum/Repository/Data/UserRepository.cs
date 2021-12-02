@@ -400,12 +400,51 @@ namespace API_Forum.Repository.Data
 		{
 			var result = from c in context.Categories
 						 join d in context.Discussions on c.CategoryId equals d.CategoryId
-						 group d by d.CategoryId into c
+						 group d by c.CategoryName into x
 						 select new
 						 {
-							 CategoryId = c.Key,
-							 value = c.Count()
+							 categoryName = x.Key,
+							 value = x.Count()
 						 };
+			return result;
+		}
+
+		public IEnumerable GetViews()
+		{
+			var result = from d in context.Discussions
+						 orderby d.Title, d.Views
+						 select new
+						 {
+							 d.Title,
+							 d.Views
+						 };
+			return result;
+		}
+
+		public IEnumerable<DiscussionVM> GetNewByDate()
+		{
+			var result = (from d in context.Discussions
+						  join c in context.Categories on d.CategoryId equals c.CategoryId
+						  join t in context.TypeDiscussions on d.TypeId equals t.TypeId
+						  join u in context.Users on d.UserId equals u.UserId
+						  where d.DateDis.Date <= DateTime.Now
+						  orderby d.DateDis descending
+						  select new DiscussionVM
+						  {
+							  DisId = d.DisId,
+							  FirstName = u.FirstName,
+							  LastName = u.LastName,
+							  Title = d.Title,
+							  Content = d.Content,
+							  DateDis = d.DateDis,
+							  Views = d.Views,
+							  UserId = u.UserId,
+							  CategoryId = c.CategoryId,
+							  TypeId = t.TypeId,
+							  CategoryName = c.CategoryName,
+							  StatusComt = (ViewModel.GenericUriParserOptions)d.StatusComt,
+							  Status = (ViewModel.Status1)d.Status
+						  }).Take(5);
 			return result;
 		}
 	}

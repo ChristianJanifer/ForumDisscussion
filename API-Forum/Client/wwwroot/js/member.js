@@ -45,6 +45,72 @@
     }
 });
 
+$.ajax({
+    url: "/Categories/GetAll",
+    success: function (result) {
+        console.log(result);
+        var listSerah = "";
+        $.each(result, function (key, val) {
+            listSerah += `
+<button class="btn" onclick="getDiskusiCat(${val.categoryId})">${val.categoryName}</button><br>
+`
+        });
+        $('#category').html(listSerah);
+    },
+    error: function (errormessage) {
+        alert(errormessage.responseText);
+    }
+});
+
+function getDiskusiCat(id) {
+    $.ajax({
+        url: "/Users/GetDiscussionByCat/" + id,
+        success: function (result) {
+            console.log(result);
+            var listSerah = "";
+            $.each(result, function (key, val) {
+                listSerah += `
+<section class="py-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h6 class="h2 font-weight-bold">${val.title}</h6>
+                        <div class="d-flex justify-content-between py-3 px-5">
+                          <div class="row comment">
+                                <span class="text-body font-weight-bold">By. ${val.firstName} ${val.lastName}</span>
+                          </div>
+                          <div class="row time text-muted align-self-center">
+                                <span class="text-body pt-1 mr-3">${val.categoryName}</span>
+                          </div>
+                          <div class="row time text-muted align-self-center">
+                                <i class="far fa-clock pr-2"><span class="align-self-center"> ${val.dateDis.substr(0, 10)}</span></i>
+                          </div>
+                        </div>
+                        <hr>
+                        <p class="text-muted">
+                            <h5>${val.content}</h5>
+                        </p>
+                        <hr>
+                        <div class="d-flex justify-content-between py-3 px-5">
+                            <div class="row comment">
+                                <button onclick="getDiskusi(${val.disId})" class="btn btn-primary">Detail Discussion >></button>
+                            </div>
+                            <div class="row comment">
+                                <span class="text-body pt-1 mr-3">${val.views} Views</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+</section>
+`
+            });
+            $('#diskusi').html(listSerah);
+        },
+        error: function (errormessage) {
+            alert(errormessage.responseText);
+        }
+    });
+}
+
 function getDiskusi(id) {
     $.ajax({
         url: "/Users/GetDiscussion/" + id,
@@ -111,33 +177,48 @@ function getDiskusi(id) {
             });
             $('#diskusi').html(listSerah);
             $.ajax({
-                url: "/Users/GetReplyById/" + id,
+                url: "/Users/GetCountReply/" + id,
                 success: function (result) {
                     console.log(result);
-                    var listSerah = "";
+                    var value = "";
                     $.each(result, function (key, val) {
-                        listSerah += `<section class="py-4">
-                                    <div class="card">
-                                        <div class="card-body">
-                                            <div class="d-flex justify-content-between py-3 px-5">
-                                              <div class="row comment">
-                                                    <span class="text-body font-weight-bold">By. ${val.firstName} ${val.lastName}</span>
-                                              </div>
-                                              <div class="row time text-muted align-self-center">
-                                                    <i class="far fa-clock pr-2"><span class="align-self-center"> ${val.dateCom.substr(0, 10)}</span></i>
-                                              </div>
-                                            </div>
-                                            <hr>
-                                            <p class="text-muted">
-                                                <h5>${val.content}</h5>
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                              </div>
-                            </section>`
+                        for (let i = 0; i < result.length; i++) {
+                            value += `<span class="text-body pt-1 mr-3">${val.value} Comments</span>`;
+                        }
                     });
-                    $('#tampilKomen').html(listSerah);
+                    $('#jumlahKomen').html(value);
+                    $.ajax({
+                        url: "/Users/GetReplyById/" + id,
+                        success: function (result) {
+                            console.log(result);
+                            var listSerah = "";
+                            $.each(result, function (key, val) {
+                                listSerah += `
+                                            <section class="py-4">
+                                                <div class="card">
+                                                    <div class="card-body">
+                                                        <div class="d-flex justify-content-between py-3 px-5">
+                                                            <div class="row comment">
+                                                                <span class="text-body font-weight-bold">By. ${val.firstName} ${val.lastName}</span>
+                                                            </div>
+                                                            <div class="row time text-muted align-self-center">
+                                                                <i class="far fa-clock pr-2"><span class="align-self-center"> ${val.dateCom.substr(0, 10)}</span></i>
+                                                            </div>
+                                                        </div>
+                                                        <hr>
+                                                        <p class="text-muted">
+                                                            <h5>${val.content}</h5>
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </section>`
+                            });
+                            $('#tampilKomen').html(listSerah);
+                        },
+                        error: function (errormessage) {
+                            alert(errormessage.responseText);
+                        }
+                    });
                 },
                 error: function (errormessage) {
                     alert(errormessage.responseText);
@@ -256,3 +337,51 @@ function deleteUser(id) {
         }
     });
 }
+
+$.ajax({
+    url: "/Users/GetProfile",
+    success: function (result) {
+        console.log(result);
+        var name = "";
+        $.each(result, function (key, val) {
+            name = `<span class="text-body pt-1 mr-3">${result.length} People</span>`
+        });
+        $("#hitungUser").html(name);
+    }
+})
+
+$.ajax({
+    url: "/Users/GetLanding",
+    success: function (result) {
+        console.log(result);
+        var name = "";
+        $.each(result, function (key, val) {
+            name = `<span class="text-body pt-1 mr-3">${result.length} Discussions</span>`
+        });
+        $("#hitungDiskusi").html(name);
+    }
+})
+
+$.ajax({
+    url: "/Categories/GetAll",
+    success: function (result) {
+        console.log(result);
+        var name = "";
+        $.each(result, function (key, val) {
+            name = `<span class="text-body pt-1 mr-3">${result.length} Categories</span>`
+        });
+        $("#hitungCategory").html(name);
+    }
+})
+
+$.ajax({
+    url: "/Comments/GetAll",
+    success: function (result) {
+        console.log(result);
+        var name = "";
+        $.each(result, function (key, val) {
+            name = `<span class="text-body pt-1 mr-3">${result.length} Comments</span>`
+        });
+        $("#hitungComments").html(name);
+    }
+})
