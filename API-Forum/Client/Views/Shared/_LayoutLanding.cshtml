@@ -29,7 +29,7 @@
         <a href="#menu" class="menu-link"><i class="fa fa-bars"></i></a>
         <nav id="menu" class="main-nav" role="navigation">
             <ul class="main-menu">
-                <li><a href="https://localhost:44326/">Home</a></li>
+                <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
                 <li class="has-submenu">
                     <a href="#section2">Sign In</a>
                     <ul class="sub-menu">
@@ -37,7 +37,7 @@
                         <li><a class="btn" asp-area="" asp-controller="Logins" asp-action="LoginAdmin">Admin</a></li>
                     </ul>
                 </li>
-                <li><a href="https://localhost:44326/Registers">Sign Up</a></li>
+                <li><a asp-area="" asp-controller="Registers" asp-action="Index">Sign Up</a></li>
             </ul>
         </nav>
     </header>
