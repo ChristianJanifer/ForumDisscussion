@@ -320,3 +320,5 @@ D:\METRODATA CODING CAMP\GitHub\ForumDisscussion\API-Forum\Client\obj\Debug\netc
 D:\METRODATA CODING CAMP\GitHub\ForumDisscussion\API-Forum\Client\obj\Debug\netcoreapp3.1\Razor\Views\Logins\ErrorLogin.cshtml.g.cs
 D:\METRODATA CODING CAMP\GitHub\ForumDisscussion\API-Forum\Client\obj\Debug\netcoreapp3.1\Razor\Views\Logins\Error401.cshtml.g.cs
 D:\METRODATA CODING CAMP\GitHub\ForumDisscussion\API-Forum\Client\obj\Debug\netcoreapp3.1\Razor\Views\Logins\ErrorNotFound.cshtml.g.cs
+D:\METRODATA CODING CAMP\GitHub\ForumDisscussion\API-Forum\Client\obj\Debug\netcoreapp3.1\Razor\Views\Logins\LoginAdmin.cshtml.g.cs
+D:\METRODATA CODING CAMP\GitHub\ForumDisscussion\API-Forum\Client\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_LayoutLogin.cshtml.g.cs

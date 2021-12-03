@@ -454,6 +454,7 @@ namespace API_Forum.Repository.Data
 		{
 			var result = (from d in context.Discussions
 						  join c in context.Categories on d.CategoryId equals c.CategoryId
+						  join t in context.TypeDiscussions on d.TypeId equals t.TypeId
 						  join u in context.Users on d.UserId equals u.UserId
 						  where d.DateDis.Date <= DateTime.Now
 						  orderby d.DateDis descending
@@ -465,7 +466,13 @@ namespace API_Forum.Repository.Data
 							  Title = d.Title,
 							  Content = d.Content,
 							  DateDis = d.DateDis,
-							  CategoryName = c.CategoryName
+							  Views = d.Views,
+							  UserId = u.UserId,
+							  CategoryId = c.CategoryId,
+							  TypeId = t.TypeId,
+							  CategoryName = c.CategoryName,
+							  StatusComt = (ViewModel.GenericUriParserOptions)d.StatusComt,
+							  Status = (ViewModel.Status1)d.Status
 						  }).Take(5);
 			return result;
 		}

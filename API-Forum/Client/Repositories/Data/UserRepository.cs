@@ -166,5 +166,6 @@ namespace Client.Repositories.Data
             }
             return entities;
         }
+
     }
 }
