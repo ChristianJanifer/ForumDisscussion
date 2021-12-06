@@ -385,3 +385,37 @@ $.ajax({
         $("#hitungComments").html(name);
     }
 })
+
+$.ajax({
+    url: "https://localhost:44312/API/Users/CheckAccountRole/" + document.getElementById("userId").innerHTML,
+    success: function (result) {
+        console.log(result);
+        if (result < 2) {
+            var name = `<i class="fas fa-layer-group fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Add Member Account`;
+            $("#addMember").html(name);
+        }  
+    }
+})
+
+function addMember(id) {
+    var obj = new Object();
+    obj.UserId = parseInt(id);
+    obj.RoleId = 2;
+    console.log(obj);
+    $.ajax({
+        url: "https://localhost:44312/API/AccountRoles/",
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        type: "POST",
+        data: JSON.stringify(obj),
+        dataType: 'json',
+    }).done((result) => {
+        console.log(result);
+        window.location = "/Admins/Dashboard"
+    }).fail((error) => {
+        console.log(error);
+    });
+}

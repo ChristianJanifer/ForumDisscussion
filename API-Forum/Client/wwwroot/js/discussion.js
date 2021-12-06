@@ -104,7 +104,7 @@ function clearTextBox() {
     $('#dateDis').val("");
     $('#statusComt').val("");
     $('#userId').val(0);
-    $('#categoryId').val(0);
+    $('#categoryId').val("");
     $('#typeId').val(0);
     $('#title').css('border-color', 'lightgrey');
     $('#contentD').css('border-color', 'lightgrey');

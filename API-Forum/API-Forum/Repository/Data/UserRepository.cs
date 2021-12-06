@@ -423,13 +423,6 @@ namespace API_Forum.Repository.Data
 
 		public Object GetCategory(string name)
 		{
-			/*var result = from c in context.Categories
-						 where c.CategoryName == name
-						 select new
-						 {
-							 c.CategoryId,
-							 c.CategoryName
-						 };*/
             var result1 = context.Categories.Where(p => p.CategoryName == name).FirstOrDefault();
             if (result1 == null)
             {
@@ -467,5 +460,11 @@ namespace API_Forum.Repository.Data
 						  }).Take(5);
 			return result;
 		}
+
+		public int CheckAccoutRole(int id)
+        {
+			var result = context.AccountRoles.Where(p => p.UserId == id).Count();
+			return result;
+        }
 	}
 }

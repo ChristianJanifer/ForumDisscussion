@@ -283,5 +283,12 @@ namespace API_Forum.Controllers
             var result = user.GetNewByDate();
             return Ok(result);
         }
+
+        [HttpGet("CheckAccountRole/{id}")]
+        public ActionResult CheckAccountRole(int id)
+        {
+            var result = user.CheckAccoutRole(id);
+            return Ok(result);
+        }
     }
 }
