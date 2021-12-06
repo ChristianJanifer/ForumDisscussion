@@ -421,6 +421,26 @@ namespace API_Forum.Repository.Data
 			return result;
 		}
 
+		public Object GetCategory(string name)
+		{
+			/*var result = from c in context.Categories
+						 where c.CategoryName == name
+						 select new
+						 {
+							 c.CategoryId,
+							 c.CategoryName
+						 };*/
+            var result1 = context.Categories.Where(p => p.CategoryName == name).FirstOrDefault();
+            if (result1 == null)
+            {
+				return null;
+            }
+            else
+            {
+				return result1;
+            }
+		}
+
 		public IEnumerable<DiscussionVM> GetNewByDate()
 		{
 			var result = (from d in context.Discussions

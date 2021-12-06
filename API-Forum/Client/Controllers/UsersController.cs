@@ -35,7 +35,6 @@ namespace Client.Controllers
         [Authorize]
         public IActionResult Profile()
         {
-            
             return View();
         }
 
@@ -111,5 +110,11 @@ namespace Client.Controllers
             var result = await user.GetNewByDate();
             return Json(result);
         }
+
+        /*public async Task<JsonResult> GetCategory(string name)
+        {
+            var result = await user.GetCategory(name);
+            return Json(result);
+        }*/
     }
 }

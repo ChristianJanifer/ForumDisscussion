@@ -1,4 +1,5 @@
-﻿
+﻿//const { error } = require("jquery");
+
 
 $(document).ready(function () {
     $("#postDiskusi").validate({
@@ -71,9 +72,9 @@ $.ajax({
         console.log(result);
         var categoryName = "";
         $.each(result, function (key, val) {
-            categoryName += `<option value="${val.categoryId}">${val.categoryName}</option>`
+            categoryName += `<option>${val.categoryName}</option>`
         });
-        $("#categoryId").html(categoryName);
+        $("#suggestion").html(categoryName);
     }
 })
 
@@ -88,6 +89,14 @@ $.ajax({
         $("#typeId").html(typeName);
     }
 })
+
+/*$.ajax({
+    url: "https://localhost:44312/API/Users/GetCategory/" + "Web Development",
+    type: "GET",
+    success: function (result) {
+        console.log(result);
+    }
+})*/
 
 function clearTextBox() {
     $('#title').val("");
@@ -108,39 +117,103 @@ function clearTextBox() {
 
 function insertData() {
     var obj = new Object();
-    obj.Title = $('#title').val();
-    obj.Content = $('#contentD').val();
-    obj.DateDis = $('#dateDis').val();
-    obj.StatusComt = $('#statusComt').val();
-    obj.Views = 0;
-    obj.UserId = parseInt($('#userId').val());
-    obj.CategoryId = parseInt($('#categoryId').val());
-    obj.TypeId = parseInt($('#typeId').val());
-
-    console.log(obj);
     $.ajax({
-        url: "/Discussions/Discussion",
-        type: "POST",
-        data: { entity: obj },
-        dataType: 'json'
+        url: "https://localhost:44312/API/Users/GetCategory/" + $("#categoryId").val(),
+        type: "GET",
     }).done((result) => {
         console.log(result);
-        Swal.fire({
-            icon: 'success',
-            title: 'Your work has been saved',
-        }).then(function () {
-            window.location = "/Discussions/CreateDiskusi";
+        obj.CategoryId = result.categoryId;
+        obj.Title = $('#title').val();
+        obj.Content = $('#contentD').val();
+        obj.DateDis = $('#dateDis').val();
+        obj.StatusComt = $('#statusComt').val();
+        obj.Views = 0;
+        obj.UserId = parseInt($('#userId').val());
+        obj.TypeId = parseInt($('#typeId').val());
+
+        console.log(obj);
+        $.ajax({
+            url: "/Discussions/Discussion",
+            type: "POST",
+            data: { entity: obj },
+            dataType: 'json'
+        }).done((result) => {
+            console.log(result);
+            Swal.fire({
+                icon: 'success',
+                title: 'Your work has been saved',
+            }).then(function () {
+                window.location = "/Discussions/CreateDiskusi";
+            });
+            clearTextBox();
+        }).fail((error) => {
+            console.log(error);
+            Swal.fire({
+                title: 'Error!',
+                text: 'Do you want to continue',
+                icon: 'error',
+                confirmButtonText: 'Cool'
+            });
         });
-        clearTextBox();
     }).fail((error) => {
+            var data = new Object();
+            data.categoryName = $("#categoryId").val();
+            console.log(data);
+            $.ajax({
+                url: "/Categories/Category",
+                type: "POST",
+                data: { entity: data },
+                dataType: "json",
+            }).done((result) => {
+                console.log(result);
+                if (result == 200) {
+                    console.log(result);
+                    $.ajax({
+                        url: "https://localhost:44312/API/Users/GetCategory/" + $("#categoryId").val(),
+                        type: "GET",
+                    }).done((result) => {
+                        obj.CategoryId = result.categoryId;
+                        obj.Title = $('#title').val();
+                        obj.Content = $('#contentD').val();
+                        obj.DateDis = $('#dateDis').val();
+                        obj.StatusComt = $('#statusComt').val();
+                        obj.Views = 0;
+                        obj.UserId = parseInt($('#userId').val());
+                        obj.TypeId = parseInt($('#typeId').val());
+
+                        console.log(obj);
+                        $.ajax({
+                            url: "/Discussions/Discussion",
+                            type: "POST",
+                            data: { entity: obj },
+                            dataType: 'json'
+                        }).done((result) => {
+                            console.log(result);
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'Your work has been saved',
+                            }).then(function () {
+                                window.location = "/Discussions/CreateDiskusi";
+                            });
+                            clearTextBox();
+                        }).fail((error) => {
+                            console.log(error);
+                            Swal.fire({
+                                title: 'Error!',
+                                text: 'Do you want to continue',
+                                icon: 'error',
+                                confirmButtonText: 'Cool'
+                            });
+                        });
+                    }).fail((error) => {
+                        console.log(error);
+                    });
+                }
+            }).fail((error) => {
+                console.log(error);
+            });
         console.log(error);
-        Swal.fire({
-            title: 'Error!',
-            text: 'Do you want to continue',
-            icon: 'error',
-            confirmButtonText: 'Cool'
-        });
-    });
+    });  
 }
 
 function deleteDiscussion(DisId) {

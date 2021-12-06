@@ -262,6 +262,21 @@ namespace API_Forum.Controllers
             }
         }
 
+        [HttpGet]
+        [Route("GetCategory/{categoryName}")]
+        public ActionResult GetCategory(string categoryName)
+        {
+            var getCategory = user.GetCategory(categoryName);
+            if (getCategory != null)
+            {
+                return Ok(getCategory);
+            }
+            else
+            {
+                return NotFound(new { status = HttpStatusCode.NotFound, result = getCategory, message = "Tidak ada data tampil" });
+            }
+        }
+
         [HttpGet("GetNewByDate")]
         public ActionResult GetNewByDate()
         {

@@ -51,8 +51,12 @@
                     </div>
                     <div class="form-group col-md-4">
                         <label for="formInputCategoryId">Category</label>
-                        <select id="categoryId" class="form-control" name="categoryId">
-                        </select>
+                        <input type="text" list="suggestion" name="categoryId" id="categoryId" class="form-control" placeholder="Choose Category.... ">
+                        <datalist id="suggestion">
+
+                        </datalist>
+                        @*<select id="categoryId" class="form-control" name="categoryId">
+                        </select>*@
                     </div>
                     <div class="form-group col-md-4">
                         <label for="formInputTypeId">Type</label>

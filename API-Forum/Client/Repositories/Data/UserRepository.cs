@@ -166,5 +166,17 @@ namespace Client.Repositories.Data
             return entities;
         }
 
+        /*public async Task<Category> GetCategory(string name)
+        {
+            Category entity = null;
+
+            using (var response = await httpClient.GetAsync(request + "GetCategory/" + name))
+            {
+                string apiResponse = await response.Content.ReadAsStringAsync();
+                entity = JsonConvert.DeserializeObject<Category>(apiResponse);
+            }
+            return entity;
+        }*/
+
     }
 }
